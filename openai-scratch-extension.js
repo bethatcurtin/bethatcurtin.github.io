@@ -1,5 +1,3 @@
-
-
 (function (Scratch) {
     'use strict';
 
