@@ -114,7 +114,7 @@
                         'Authorization': `Bearer ${this.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'dall-e-3',
+                        model: 'dall-e-2',
                         prompt: args.DESCRIPTION,
                         n: 1,
                         size: '512x512'
