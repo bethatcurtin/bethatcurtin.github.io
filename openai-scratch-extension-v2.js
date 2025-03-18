@@ -81,7 +81,7 @@
                         'Authorization': `Bearer ${this.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'gpt-3.5-turbo',
+                        model: 'gpt-4o-mini',
                         messages: [
                             { role: 'system', content: this.systemPrompt },
                             { role: 'user', content: args.PROMPT }
@@ -114,7 +114,7 @@
                         'Authorization': `Bearer ${this.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'dall-e-2',
+                        model: 'dall-e-3',
                         prompt: args.DESCRIPTION,
                         n: 1,
                         size: '512x512'
