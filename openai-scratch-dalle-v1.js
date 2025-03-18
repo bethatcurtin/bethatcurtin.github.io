@@ -27,20 +27,21 @@
                             }
                         }
                     },
-       
-                
+
+
                     {
                         opcode: 'setModelId',
                         blockType: Scratch.BlockType.COMMAND,
                         text: 'set model ID to [MODEL]',
                         arguments: {
                             MODEL: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'FORMAT_MENU'
-                          }
+                                type: Scratch.ArgumentType.STRING,
+                                menu: 'MODEL_MENU'
+                            }
                         }
                     },
-              
+
+
                     {
                         opcode: 'generateImage',
                         blockType: Scratch.BlockType.REPORTER,
@@ -55,10 +56,10 @@
                 ],
                 menus: {
                     MODEL_MENU: {
-                      acceptReporters: true,
-                      items: ['dalle-2', 'dalle-3']
+                        acceptReporters: true,
+                        items: ['dalle-2', 'dalle-3']
                     }
-                  }
+                }
             };
         }
 
@@ -66,42 +67,70 @@
             this.apiKey = args.KEY;
         }
 
-       
+
+
 
         setModelId(args) {
             this.modelId = args.MODEL;
         }
 
-        
+
 
         async generateImage(args) {
             if (!this.apiKey) {
                 return 'API key not set!';
             }
 
-            try {
-                const response = await fetch('https://api.openai.com/v1/images/generations', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${this.apiKey}`
-                    },
-                    body: JSON.stringify({
-                        model: 'dall-e-2',
-                        prompt: args.DESCRIPTION,
-                        n: 1,
-                        size: '256x256'
-                    })
-                });
+            if (this.modelId == 'dalle-2') {
+                try {
+                    const response = await fetch('https://api.openai.com/v1/images/generations', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${this.apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: `${this.modelId}`,
+                            prompt: args.DESCRIPTION,
+                            n: 1,
+                            size: '256x256'
+                        })
+                    });
 
-                if (!response.ok) {
-                    return `Error: ${response.status}`;
+                    if (!response.ok) {
+                        return `Error: ${response.status}`;
+                    }
+
+                    const data = await response.json();
+                    return data.data?.[0]?.url || 'Image generation failed';
+                } catch (error) {
+                    return 'Request failed';
                 }
+            } else {
+                try {
+                    const response = await fetch('https://api.openai.com/v1/images/generations', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${this.apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: `${this.modelId}`,
+                            prompt: args.DESCRIPTION,
+                            n: 1,
+                            size: '1024x1024'
+                        })
+                    });
 
-                const data = await response.json();
-                return data.data?.[0]?.url || 'Image generation failed';
-            } catch (error) {
-                return 'Request failed';
+                    if (!response.ok) {
+                        return `Error: ${response.status}`;
+                    }
+
+                    const data = await response.json();
+                    return data.data?.[0]?.url || 'Image generation failed';
+                } catch (error) {
+                    return 'Request failed';
+                }
             }
         }
     }
