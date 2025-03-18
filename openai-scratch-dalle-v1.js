@@ -57,7 +57,7 @@
                 menus: {
                     MODEL_MENU: {
                         acceptReporters: true,
-                        items: ['dalle-2', 'dalle-3']
+                        items: ['dall-e-2', 'dall-e-3']
                     }
                 }
             };
@@ -81,7 +81,7 @@
                 return 'API key not set!';
             }
 
-            if (this.modelId == 'dalle-2') {
+            if (this.modelId == 'dall-e-2') {
                 try {
                     const response = await fetch('https://api.openai.com/v1/images/generations', {
                         method: 'POST',
