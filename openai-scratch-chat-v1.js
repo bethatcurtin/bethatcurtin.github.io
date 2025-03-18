@@ -14,6 +14,9 @@
         getInfo() {
             return {
                 id: 'openaiAPI',
+                 color1: '#ff0000', // pure red
+                color2: '#00ff00', // pure green
+                color3: '#0000ff', // pure blue
                 name: 'OpenAI ChatGPTs v1',
                 blocks: [
                     {
