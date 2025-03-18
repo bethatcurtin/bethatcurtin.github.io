@@ -14,7 +14,7 @@
         getInfo() {
             return {
                 id: 'openaiAPI',
-                name: 'OpenAI Chatbot',
+                name: 'OpenAI Chatbot v3',
                 blocks: [
                     {
                         opcode: 'setApiKey',
