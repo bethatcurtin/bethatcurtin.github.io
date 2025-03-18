@@ -28,8 +28,6 @@
                             }
                         }
                     },
-
-
                     {
                         opcode: 'setModelId',
                         blockType: Scratch.BlockType.COMMAND,
@@ -41,8 +39,6 @@
                             }
                         }
                     },
-
-
                     {
                         opcode: 'generateImage',
                         blockType: Scratch.BlockType.REPORTER,
@@ -68,14 +64,9 @@
             this.apiKey = args.KEY;
         }
 
-
-
-
         setModelId(args) {
             this.modelId = args.MODEL;
         }
-
-
 
         async generateImage(args) {
             if (!this.apiKey) {
@@ -135,7 +126,6 @@
             }
         }
     }
-
     Scratch.extensions.register(new OpenAIApiExtension());
 })(Scratch);
 
