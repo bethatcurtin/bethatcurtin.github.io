@@ -54,15 +54,12 @@
                         blockType: Scratch.BlockType.COMMAND,
                         text: 'set model ID to [MODEL]',
                         arguments: {
-                            MODEL: {
-                                type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'gpt-3.5-turbo'
-                            },
+                            
                         
                         FORMAT: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: 'FORMAT_MENU'
-                          }
+                            menu: 'MODEL_MENU'
+                          }  
                         }
                     },
                     {
@@ -78,7 +75,7 @@
                     }
                 ],
                 menus: {
-                    FORMAT_MENU: {
+                    MODEL_MENU: {
                       acceptReporters: true,
                       items: ['gpt-3.5-turbo', 'gpt-4o-mini']
                     }
