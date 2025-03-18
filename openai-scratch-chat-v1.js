@@ -14,15 +14,15 @@
         getInfo() {
             return {
                 id: 'openaiAPI',
-                color1: '#EA48F7', // pure red, block main colour
-                //color2: '#5297F7', // pure green, menu colour
-                //color3: '#3233F4', // pure blue, outline colour
+                color1: '#EA48F7', // block main colour
+                //color2: '#5297F7', // menu colour
+                //color3: '#3233F4', // outline colour
                 name: 'OpenAI ChatGPTs v1',
                 blocks: [
                     {
                         opcode: 'setApiKey',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set OpenAI API key to [KEY]',
+                        text: 'set API key (chat) to [KEY]',
                         arguments: {
                             KEY: {
                                 type: Scratch.ArgumentType.STRING,
