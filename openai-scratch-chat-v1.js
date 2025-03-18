@@ -57,12 +57,13 @@
                             MODEL: {
                                 type: Scratch.ArgumentType.STRING,
                                 defaultValue: 'gpt-3.5-turbo'
-                            }
-                        },
+                            },
+                        
                         FORMAT: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'FORMAT_MENU'
                           }
+                        }
                     },
                     {
                         opcode: 'askOpenAI',
