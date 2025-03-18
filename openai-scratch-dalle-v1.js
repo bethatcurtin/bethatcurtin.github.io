@@ -20,7 +20,7 @@
                     {
                         opcode: 'setApiKey',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set API Key (Dall-e) to: [KEY]',
+                        text: 'set API key (dall-e) to [KEY]',
                         arguments: {
                             KEY: {
                                 type: Scratch.ArgumentType.STRING,
