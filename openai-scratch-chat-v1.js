@@ -56,7 +56,7 @@
                         arguments: {
                             
                         
-                        FORMAT: {
+                        MODEL: {
                             type: Scratch.ArgumentType.STRING,
                             menu: 'MODEL_MENU'
                           }  
