@@ -57,12 +57,12 @@
                         blockType: Scratch.BlockType.COMMAND,
                         text: 'set model ID to [MODEL]',
                         arguments: {
-                            
-                        
-                        MODEL: {
-                            type: Scratch.ArgumentType.STRING,
-                            menu: 'MODEL_MENU'
-                          }  
+
+
+                            MODEL: {
+                                type: Scratch.ArgumentType.STRING,
+                                menu: 'MODEL_MENU'
+                            }
                         }
                     },
                     {
@@ -79,10 +79,10 @@
                 ],
                 menus: {
                     MODEL_MENU: {
-                      acceptReporters: true,
-                      items: ['gpt-3.5-turbo', 'gpt-4o-mini']
+                        acceptReporters: true,
+                        items: ['gpt-3.5-turbo', 'gpt-4o-mini']
                     }
-                  }
+                }
             };
         }
 
@@ -138,8 +138,6 @@
                 return 'Request failed';
             }
         }
-
-        
     }
 
     Scratch.extensions.register(new OpenAIApiExtension());
