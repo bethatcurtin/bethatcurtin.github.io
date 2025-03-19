@@ -3,24 +3,22 @@
 (function (Scratch) {
     'use strict';
 
-    class OpenAIApiExtension {
+    class dalleApiExtension {
         constructor() {
             this.apiKeyDalle = '';
-            this.systemPrompt = 'You are a helpful assistant.';
-            this.temperature = 0.7; // Default temperature
-            this.modelId = 'gpt-3.5-turbo'; // Default model
+            this.modelIdDalle = 'dall-e-2'; // Default model
         }
 
         getInfo() {
             return {
-                id: 'openaiAPI',
+                id: 'dalleAPI',
                 color1: '#8D3BF6',
                 name: 'OpenAI Dalle v1',
                 blocks: [
                     {
                         opcode: 'setApiKeyDalle',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set API key (dall-e) to [KEY]',
+                        text: 'set API key (dall-e) to [KEY_DALLE]',
                         arguments: {
                             KEY_DALLE: {
                                 type: Scratch.ArgumentType.STRING,
@@ -29,13 +27,13 @@
                         }
                     },
                     {
-                        opcode: 'setModelId',
+                        opcode: 'setModelIdDalle',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set model ID to [MODEL]',
+                        text: 'set model ID to [MODEL_DALLE]',
                         arguments: {
-                            MODEL: {
+                            MODEL_DALLE: {
                                 type: Scratch.ArgumentType.STRING,
-                                menu: 'MODEL_MENU'
+                                menu: 'MODEL_DALLE_MENU'
                             }
                         }
                     },
@@ -52,7 +50,7 @@
                     }
                 ],
                 menus: {
-                    MODEL_MENU: {
+                    MODEL_DALLE_MENU: {
                         acceptReporters: true,
                         items: ['dall-e-2', 'dall-e-3']
                     }
@@ -64,8 +62,8 @@
             this.apiKeyDalle = args.KEY_DALLE;
         }
 
-        setModelId(args) {
-            this.modelId = args.MODEL;
+        setDalleModelId(args) {
+            this.modelIdDalle = args.MODEL_DALLE;
         }
 
         async generateImage(args) {
@@ -82,7 +80,7 @@
                             'Authorization': `Bearer ${this.apiKeyDalle}`
                         },
                         body: JSON.stringify({
-                            model: `${this.modelId}`,
+                            model: `${this.modelIdDalle}`,
                             prompt: args.DESCRIPTION,
                             n: 1,
                             size: '256x256'
@@ -107,7 +105,7 @@
                             'Authorization': `Bearer ${this.apiKeyDalle}`
                         },
                         body: JSON.stringify({
-                            model: `${this.modelId}`,
+                            model: `${this.modelIdDalle}`,
                             prompt: args.DESCRIPTION,
                             n: 1,
                             size: '1024x1024'
@@ -126,6 +124,6 @@
             }
         }
     }
-    Scratch.extensions.register(new OpenAIApiExtension());
+    Scratch.extensions.register(new dalleApiExtension());
 })(Scratch);
 
