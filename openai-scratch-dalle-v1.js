@@ -5,7 +5,7 @@
 
     class OpenAIApiExtension {
         constructor() {
-            this.apiKey = '';
+            this.apiKeyDalle = '';
             this.systemPrompt = 'You are a helpful assistant.';
             this.temperature = 0.7; // Default temperature
             this.modelId = 'gpt-3.5-turbo'; // Default model
@@ -18,11 +18,11 @@
                 name: 'OpenAI Dalle v1',
                 blocks: [
                     {
-                        opcode: 'setApiKey',
+                        opcode: 'setApiKeyDalle',
                         blockType: Scratch.BlockType.COMMAND,
                         text: 'set API key (dall-e) to [KEY]',
                         arguments: {
-                            KEY: {
+                            KEY_DALLE: {
                                 type: Scratch.ArgumentType.STRING,
                                 defaultValue: 'sk-YourAPIKeyHere'
                             }
@@ -60,8 +60,8 @@
             };
         }
 
-        setApiKey(args) {
-            this.apiKey = args.KEY;
+        setApiKeyDalle(args) {
+            this.apiKeyDalle = args.KEY_DALLE;
         }
 
         setModelId(args) {
@@ -69,7 +69,7 @@
         }
 
         async generateImage(args) {
-            if (!this.apiKey) {
+            if (!this.apiKeyDalle) {
                 return 'API key not set!';
             }
 
@@ -79,7 +79,7 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${this.apiKey}`
+                            'Authorization': `Bearer ${this.apiKeyDalle}`
                         },
                         body: JSON.stringify({
                             model: `${this.modelId}`,
@@ -104,7 +104,7 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${this.apiKey}`
+                            'Authorization': `Bearer ${this.apiKeyDalle}`
                         },
                         body: JSON.stringify({
                             model: `${this.modelId}`,
