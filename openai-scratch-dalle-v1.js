@@ -24,7 +24,7 @@
                         arguments: {
                             KEY_DALLE: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'sk-YourAPIKeyHere'
+                                defaultValue: 'sk-DalleAPIKeyHere'
                             }
                         }
                     },
