@@ -12,7 +12,7 @@
         getInfo() {
             return {
                 id: 'dalleAPI',
-                color1: '#8D3BF6',
+                color1: '#3233F4',
                 name: 'OpenAI Dalle v1',
                 blocks: [
                     {
