@@ -1215,8 +1215,11 @@
     .question .shadowbox .shadow {
         color: #ff00ae5e
     }
-    .question .shadowbox {
-        background: #ff00ae5e
+    .shadowbox {
+        background-color: #ff00ae5e
+    }
+    .question .shadowbox  {
+        background-color: #00ffcc5e
     }
 
     .question .question-error-wrapper {
