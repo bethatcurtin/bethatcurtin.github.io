@@ -2320,7 +2320,7 @@
     }
 
     .plug-container #plug a {
-        color: #ff00d0;
+        color: #b300ffcb;
         display: inline-block;
         height: 2.75rem;
         outline: 0;
@@ -2329,7 +2329,7 @@
     }
 
     .plug-container #plug a svg {
-        fill: #00ffee;
+        fill: #ff0000a1;
         margin-inline-start: .5rem
     }
 
