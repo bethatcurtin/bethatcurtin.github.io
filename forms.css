@@ -1139,7 +1139,8 @@
 
 
     .question {
-        margin-bottom: calc(.5rem + var(--layout-spacing, 0.5)*1.5rem)
+        margin-bottom: calc(.5rem + var(--layout-spacing, 0.5)*1.5rem);
+        color: #bb0000a7
     }
 
     .question:last-child {
