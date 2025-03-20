@@ -1140,8 +1140,8 @@
 
     .question {
         margin-bottom: calc(.5rem + var(--layout-spacing, 0.5)*1.5rem);
-        color: #abbb00a7;
-        background-color: #5100bba7
+        color: #000000;
+        background-color: #ffffff
     }
 
     .question:last-child {
@@ -1296,7 +1296,7 @@
     }
 
     .question .question-error-wrapper.info .error-message-container {
-        background-color: color-mix(in srgb, var(--palettes-info-1, #0b6ed0) 8%, transparent);
+        background-color: #00ff1a;
         color: var(--palettes-info-1, #0b6ed0)
     }
 
