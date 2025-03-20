@@ -6,7 +6,7 @@
     --background-color: #C5C5C5;
     --background-overlay-color: #000;
     --background-overlay-opacity: 0.1;
-    --questions-container-color: #00b7ff2f;
+    //--questions-container-color: #00b7ff2f;
     --font-family: '72', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --question-text-size: 1.25rem;
     --question-text-weight: bold;
@@ -582,7 +582,7 @@ select option:checked {
 }
 
 .portal {
-    background-color: var(--questions-container-color, #fff)
+    background-color: var(--questions-container-color, #ffffff00)
 }
 
 .portal,
@@ -1249,7 +1249,8 @@ textarea:hover {
 }
 
 .question .question-error-wrapper {
-    padding: 1.5rem 0
+    padding: 1.5rem 0;
+    border-radius: .5rem
 }
 
 @media(max-width: 30rem) {
@@ -1564,6 +1565,7 @@ textarea:hover {
 .error-banner {
     align-items: center;
     background: color-mix(in srgb, var(--palettes-error-1, #b00) 4%, transparent);
+    background-color: #fff;
     border: .0625rem solid var(--palettes-error-1, #b00);
     border-radius: .25rem;
     display: flex;
