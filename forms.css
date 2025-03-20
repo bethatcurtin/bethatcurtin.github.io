@@ -83,7 +83,7 @@
     --palettes-warn-1-on-bg: #e5e2df;
     --palettes-warn-2-on-bg: #cf660b;
     --palettes-correct-1-on-bg: #0e6e36;
-
+}
     @font-face {
         font-family: "72";
         font-style: normal;
@@ -3275,4 +3275,4 @@
         }
     }
 
-}
+
