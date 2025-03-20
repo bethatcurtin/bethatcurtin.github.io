@@ -1215,6 +1215,9 @@
     .question .shadowbox .shadow {
         color: #ff00ae5e
     }
+    .question .shadowbox {
+        background: #ff00ae5e
+    }
 
     .question .question-error-wrapper {
         padding: 1.5rem 0
