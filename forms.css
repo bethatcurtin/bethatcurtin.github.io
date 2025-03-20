@@ -4,8 +4,8 @@
     --logo-mobile-scale: 0.6;
     --background-url: url(https://curtin.au1.qualtrics.com/CP/Graphic.php?IM=IM_56dCRbWGJz1QKa2);
     --background-color: #E6E6E6;
-    --background-overlay-color: #fff;
-    --background-overlay-opacity: 0.3;
+    --background-overlay-color: #000;
+    --background-overlay-opacity: 0.1;
     --questions-container-color: #fff;
     --font-family: '72', 'Helvetica', Helvetica, Arial, sans-serif;
     --question-text-size: 1.25rem;
