@@ -2,18 +2,18 @@
     --branding-theme-1: #A0D8EE;
     --branding-theme-2: #C5BDF8;
     --branding-theme-3: #F1C1F2;
-    --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --accent-font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace
+    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --accent-font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace
 }
 
 h1 {
     font-size: 2rem;
-    font-family:  "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace
+    font-family:  'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace
 }
 
 h2 {
     font-size: 1.5rem;
-    font-family:  "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace
+    font-family:  'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace
 }
 button {
     cursor: pointer;
@@ -21,5 +21,5 @@ button {
     border: 0;
     border-radius: .25rem;
     color: var(--branding-theme-3, #fff);
-    font-family: var(--accent-font-family, "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace)
+    font-family: var(--accent-font-family, 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace)
 }
