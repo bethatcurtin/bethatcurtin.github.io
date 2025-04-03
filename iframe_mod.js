@@ -130,18 +130,18 @@
   class IframeExtension {
     getInfo() {
       return {
-        name: Scratch.translate("Iframe"),
+        name: "Iframe",
         id: "iframe",
         blocks: [
           
           {
             opcode: "displayHTML",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("show HTML [HTML]"),
+            text: "show HTML [HTML]",
             arguments: {
               HTML: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: `<h1>${Scratch.translate("It works!")}</h1>`,
+                defaultValue: `<h1>${"It works!"}</h1>`,
               },
             },
           },
@@ -149,18 +149,18 @@
           {
             opcode: "show",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("show iframe"),
+            text: "show iframe",
           },
           {
             opcode: "hide",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("hide iframe"),
+            text: "hide iframe",
           },
           
           {
             opcode: "setX",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe x position to [X]"),
+            text: "set iframe x position to [X]",
             arguments: {
               X: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -171,7 +171,7 @@
           {
             opcode: "setY",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe y position to [Y]"),
+            text: "set iframe y position to [Y]",
             arguments: {
               Y: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -182,7 +182,7 @@
           {
             opcode: "setWidth",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe width to [WIDTH]"),
+            text: "set iframe width to [WIDTH]",
             arguments: {
               WIDTH: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -193,7 +193,7 @@
           {
             opcode: "setHeight",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe height to [HEIGHT]"),
+            text: "set iframe height to [HEIGHT]",
             arguments: {
               HEIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
