@@ -12,31 +12,7 @@
   let iframe = null;
   let overlay = null;
 
-  // const featurePolicy = {
-  //   accelerometer: "'none'",
-  //   "ambient-light-sensor": "'none'",
-  //   battery: "'none'",
-  //   camera: "'none'",
-  //   "display-capture": "'none'",
-  //   "document-domain": "'none'",
-  //   "encrypted-media": "'none'",
-  //   fullscreen: "'none'",
-  //   geolocation: "'none'",
-  //   gyroscope: "'none'",
-  //   magnetometer: "'none'",
-  //   microphone: "'none'",
-  //   midi: "'none'",
-  //   payment: "'none'",
-  //   "picture-in-picture": "'none'",
-  //   "publickey-credentials-get": "'none'",
-  //   "speaker-selection": "'none'",
-  //   usb: "'none'",
-  //   vibrate: "'none'",
-  //   vr: "'none'",
-  //   "screen-wake-lock": "'none'",
-  //   "web-share": "'none'",
-  //   "interest-cohort": "'none'",
-  // };
+ 
 
   // const SANDBOX = [
   //   "allow-same-origin",
@@ -99,15 +75,10 @@
     iframe.style.height = "100%";
     iframe.style.border = "none";
     iframe.style.position = "absolute";
-    //iframe.setAttribute("sandbox", SANDBOX.join(" "));
-  //  iframe.setAttribute(
-  //     "allow",
-  //     Object.entries(featurePolicy)
-  //       .map(([name, permission]) => `${name} ${permission}`)
-  //       .join("; ")
-  //   );
+
+    
     iframe.setAttribute("allowtransparency", "true");
-    //iframe.setAttribute("allowtransparency", "true");
+   
     iframe.setAttribute("src", src);
 
     overlay = Scratch.renderer.addOverlay(iframe, getOverlayMode());
@@ -122,20 +93,17 @@
     }
   };
 
-  //Scratch.vm.on("STAGE_SIZE_CHANGED", updateFrameAttributes);
-
-  Scratch.vm.runtime.on("RUNTIME_DISPOSED", closeFrame);
 
   class IframeExtension {
     getInfo() {
       return {
-        name: Scratch.translate("Iframe"),
+        name: "Iframe test",
         id: "iframe",
         blocks: [
           {
             opcode: "display",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("show website [URL]"),
+            text: "show website [URL]",
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -146,11 +114,11 @@
           {
             opcode: "displayHTML",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("show HTML [HTML]"),
+            text: "show HTML [HTML]",
             arguments: {
               HTML: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: `<h1>${Scratch.translate("It works!")}</h1>`,
+                defaultValue: `<h1>"It works!"</h1>`,
               },
             },
           },
@@ -158,23 +126,23 @@
           {
             opcode: "show",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("show iframe"),
+            text: "show iframe",
           },
           {
             opcode: "hide",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("hide iframe"),
+            text: "hide iframe",
           },
           {
             opcode: "close",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("close iframe"),
+            text: "close iframe",
           },
           "---",
           {
             opcode: "get",
             blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("iframe [MENU]"),
+            text: "iframe [MENU]",
             arguments: {
               MENU: {
                 type: Scratch.ArgumentType.STRING,
@@ -185,7 +153,7 @@
           {
             opcode: "setX",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe x position to [X]"),
+            text: "set iframe x position to [X]",
             arguments: {
               X: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -196,7 +164,7 @@
           {
             opcode: "setY",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe y position to [Y]"),
+            text: "set iframe y position to [Y]",
             arguments: {
               Y: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -207,7 +175,7 @@
           {
             opcode: "setWidth",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe width to [WIDTH]"),
+            text: "set iframe width to [WIDTH]",
             arguments: {
               WIDTH: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -218,7 +186,7 @@
           {
             opcode: "setHeight",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe height to [HEIGHT]"),
+            text: "set iframe height to [HEIGHT]",
             arguments: {
               HEIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -229,7 +197,7 @@
           {
             opcode: "setInteractive",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe interactive to [INTERACTIVE]"),
+            text: "set iframe interactive to [INTERACTIVE]",
             arguments: {
               INTERACTIVE: {
                 type: Scratch.ArgumentType.STRING,
@@ -240,7 +208,7 @@
           {
             opcode: "setResize",
             blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set iframe resize behavior to [RESIZE]"),
+            text: "set iframe resize behavior to [RESIZE]",
             arguments: {
               RESIZE: {
                 type: Scratch.ArgumentType.STRING,
@@ -253,14 +221,14 @@
           getMenu: {
             acceptReporters: true,
             items: [
-              Scratch.translate("url"),
-              Scratch.translate("visible"),
+              "url",
+              "visible",
               "x",
               "y",
-              Scratch.translate("width"),
-              Scratch.translate("height"),
-              Scratch.translate("interactive"),
-              Scratch.translate("resize behavior"),
+             "width",
+              "height",
+              "interactive",
+              "resize behavior",
             ],
           },
           interactiveMenu: {
@@ -275,11 +243,11 @@
             acceptReporters: true,
             items: [
               {
-                text: Scratch.translate("scale"),
+                text: "scale",
                 value: "scale",
               },
               {
-                text: Scratch.translate("viewport"),
+                text: "viewport",
                 value: "viewport",
               },
             ],
