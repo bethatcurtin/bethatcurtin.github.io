@@ -95,7 +95,7 @@ Scratch.translate.setup({
   Scratch.vm.runtime.on("RUNTIME_DISPOSED", closeFrame);
 
   /** Defines the extension and its available blocks. */
-  class IframeExtension {
+  class IframeModded {
     getInfo() {
       return {
         name: Scratch.translate("Iframe"),
@@ -147,5 +147,5 @@ Scratch.translate.setup({
   }
 
   /** Registers the extension with Scratch. */
-  Scratch.extensions.register(new IframeExtension());
+  Scratch.extensions.register(new IframeModded());
 })(Scratch);
