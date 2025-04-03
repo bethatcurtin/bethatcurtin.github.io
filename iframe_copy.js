@@ -12,41 +12,41 @@
   let iframe = null;
   let overlay = null;
 
-  const featurePolicy = {
-    accelerometer: "'none'",
-    "ambient-light-sensor": "'none'",
-    battery: "'none'",
-    camera: "'none'",
-    "display-capture": "'none'",
-    "document-domain": "'none'",
-    "encrypted-media": "'none'",
-    fullscreen: "'none'",
-    geolocation: "'none'",
-    gyroscope: "'none'",
-    magnetometer: "'none'",
-    microphone: "'none'",
-    midi: "'none'",
-    payment: "'none'",
-    "picture-in-picture": "'none'",
-    "publickey-credentials-get": "'none'",
-    "speaker-selection": "'none'",
-    usb: "'none'",
-    vibrate: "'none'",
-    vr: "'none'",
-    "screen-wake-lock": "'none'",
-    "web-share": "'none'",
-    "interest-cohort": "'none'",
-  };
+  // const featurePolicy = {
+  //   accelerometer: "'none'",
+  //   "ambient-light-sensor": "'none'",
+  //   battery: "'none'",
+  //   camera: "'none'",
+  //   "display-capture": "'none'",
+  //   "document-domain": "'none'",
+  //   "encrypted-media": "'none'",
+  //   fullscreen: "'none'",
+  //   geolocation: "'none'",
+  //   gyroscope: "'none'",
+  //   magnetometer: "'none'",
+  //   microphone: "'none'",
+  //   midi: "'none'",
+  //   payment: "'none'",
+  //   "picture-in-picture": "'none'",
+  //   "publickey-credentials-get": "'none'",
+  //   "speaker-selection": "'none'",
+  //   usb: "'none'",
+  //   vibrate: "'none'",
+  //   vr: "'none'",
+  //   "screen-wake-lock": "'none'",
+  //   "web-share": "'none'",
+  //   "interest-cohort": "'none'",
+  // };
 
-  const SANDBOX = [
-    "allow-same-origin",
-    "allow-scripts",
-    "allow-forms",
-    "allow-modals",
-    "allow-popups",
+  // const SANDBOX = [
+  //   "allow-same-origin",
+  //   "allow-scripts",
+  //   "allow-forms",
+  //   "allow-modals",
+  //   "allow-popups",
 
-    // The big one we don't want to include is allow-top-navigation
-  ];
+  //   // The big one we don't want to include is allow-top-navigation
+  // ];
 
   let x = 0;
   let y = 0;
