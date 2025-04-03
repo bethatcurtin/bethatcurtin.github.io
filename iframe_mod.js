@@ -24,7 +24,9 @@
     iframe.style.border = "none";
     iframe.style.position = "absolute";
     iframe.setAttribute("sandbox", SANDBOX.join(" "));
-    iframe.src = "data:text/html," + encodeURIComponent(FIXED_HTML);
+    iframe.setAttribute("src", `data:text/html;,${encodeURIComponent(
+        Scratch.Cast.toString(HTML)
+      )}`);
     
     Scratch.renderer.addOverlay(iframe, "scale-centered");
   };
