@@ -12,17 +12,7 @@
   let iframe = null;
   let overlay = null;
 
- 
 
-  // const SANDBOX = [
-  //   "allow-same-origin",
-  //   "allow-scripts",
-  //   "allow-forms",
-  //   "allow-modals",
-  //   "allow-popups",
-
-  //   // The big one we don't want to include is allow-top-navigation
-  // ];
 
   let x = 0;
   let y = 0;
@@ -36,7 +26,7 @@
       return;
     }
 
-    iframe.style.pointerEvents = interactive ? "auto" : "none";
+    iframe.style.pointerEvents ="auto";
 
     const { stageWidth, stageHeight } = Scratch.vm.runtime;
     const effectiveWidth = width >= 0 ? width : stageWidth;
@@ -52,7 +42,6 @@
       iframe.style.top = "0";
       iframe.style.left = "0";
     } else {
-      // As the stage is resized in fullscreen mode, only % can be relied upon
       iframe.style.width = `${(effectiveWidth / stageWidth) * 100}%`;
       iframe.style.height = `${(effectiveHeight / stageHeight) * 100}%`;
 
