@@ -11,18 +11,9 @@
     "allow-popups"
   ];
 
-  const FIXED_HTML = `<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixed Content</title>
-  </head>
-  <body>
+  const FIXED_HTML = `
     <h1>Welcome to the Fixed Iframe Extension</h1>
-    <p>This content is predefined and cannot be changed.</p>
-  </body>
-  </html>`;
+    <p>This content is predefined and cannot be changed.</p>`;
 
   const createFrame = () => {
     if (iframe) return;
