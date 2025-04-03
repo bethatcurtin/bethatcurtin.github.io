@@ -22,12 +22,29 @@ Scratch.translate.setup({
 
   /** Security policies to restrict iframe capabilities. */
   const featurePolicy = {
-    accelerometer: "'none'",
+     accelerometer: "'none'",
+    "ambient-light-sensor": "'none'",
+    battery: "'none'",
     camera: "'none'",
+    "display-capture": "'none'",
+    "document-domain": "'none'",
+    "encrypted-media": "'none'",
+    fullscreen: "'none'",
+    geolocation: "'none'",
+    gyroscope: "'none'",
+    magnetometer: "'none'",
     microphone: "'none'",
+    midi: "'none'",
     payment: "'none'",
-    usb: "'none'",
     "picture-in-picture": "'none'",
+    "publickey-credentials-get": "'none'",
+    "speaker-selection": "'none'",
+    usb: "'none'",
+    vibrate: "'none'",
+    vr: "'none'",
+    "screen-wake-lock": "'none'",
+    "web-share": "'none'",
+    "interest-cohort": "'none'",
   };
 
   /** Sandbox settings for the iframe to prevent security risks. */
