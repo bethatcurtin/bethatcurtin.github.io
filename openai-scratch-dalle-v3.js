@@ -153,6 +153,7 @@ class ImageExtension {
         if (!this.imageElement) {
             this.createImageElement();
         }
+        console.log("Updating image element with URL:", this.imageUrl);
 
         this.imageElement.src = this.imageUrl;
         this.imageElement.style.width = `${this.width}px`;
