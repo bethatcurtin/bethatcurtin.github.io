@@ -74,7 +74,7 @@
 
     show() {
       createFrame();
-      if (iframe) iframe.style.display = "<h1>It works!</h1>";
+      if (iframe) iframe.style.display = "";
     }
 
     hide() {
