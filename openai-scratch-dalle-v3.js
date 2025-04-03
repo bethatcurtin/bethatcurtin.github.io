@@ -155,7 +155,18 @@ class ImageExtension {
         }
         console.log("Updating image element with URL:", this.imageUrl);
 
-        this.imageElement.src = this.imageUrl;
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = this.width;
+        canvas.height = this.height;
+        const img = new Image();
+        img.crossOrigin = "Anonymous"; // Prevent CORS issues
+        img.src = this.imageUrl;
+        img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, this.width, this.height);
+        };
+        document.body.appendChild(canvas);
         this.imageElement.style.width = `${this.width}px`;
         this.imageElement.style.height = `${this.height}px`;
         
