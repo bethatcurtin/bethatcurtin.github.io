@@ -1,8 +1,3 @@
-// Name: Iframe
-// ID: iframe
-// Description: Display webpages or HTML over the stage.
-// Context: "iframe" is an HTML element that lets websites embed other websites.
-// License: MIT AND MPL-2.0
 
 
 
@@ -15,15 +10,15 @@
 
 
 
-  const SANDBOX = [
-    "allow-same-origin",
-    "allow-scripts",
-    "allow-forms",
-    "allow-modals",
-    "allow-popups",
+  // const SANDBOX = [
+  //   "allow-same-origin",
+  //   "allow-scripts",
+  //   "allow-forms",
+  //   "allow-modals",
+  //   "allow-popups",
 
-    // The big one we don't want to include is allow-top-navigation
-  ];
+  //   // The big one we don't want to include is allow-top-navigation
+  // ];
 
   let x = 0;
   let y = 0;
@@ -79,7 +74,7 @@
     iframe.setAttribute("sandbox", SANDBOX.join(" "));
  
     iframe.setAttribute("allowtransparency", "true");
-    iframe.setAttribute("allowtransparency", "true");
+    
     iframe.setAttribute("src", src);
 
     overlay = Scratch.renderer.addOverlay(iframe, getOverlayMode());
