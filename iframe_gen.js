@@ -2,11 +2,25 @@
     'use strict';
 
     class DalleBackdropExtension {
+        constructor() {
+            this.apiKeyDalle = '';
+        }
         getInfo() {
             return {
                 id: 'dalleBackdrop',
                 name: 'DALL·E Backdrop',
                 blocks: [
+                     {
+                        opcode: 'setApiKeyDalle',
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'set API key (dall-e) to [KEY_DALLE]',
+                        arguments: {
+                            KEY_DALLE: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: 'sk-DalleAPIKeyHere'
+                            }
+                        }
+                    },
                     {
                         opcode: 'generateBackdrop',
                         blockType: Scratch.BlockType.COMMAND,
@@ -20,6 +34,9 @@
                     }
                 ]
             };
+        }
+        setApiKeyDalle(args) {
+            this.apiKeyDalle = args.KEY_DALLE;
         }
 
         async generateBackdrop(args, util) {
@@ -39,7 +56,7 @@
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${apiKey}`
+                        "Authorization": `Bearer ${this.apiKeyDalle}`
                     },
                     body: JSON.stringify(requestBody)
                 });
