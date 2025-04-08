@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mixed Media from Text Model</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .heart {
+      display: grid;
+      grid-template-columns: repeat(5, 20px);
+      grid-template-rows: repeat(5, 20px);
+      gap: 2px;
+      margin-top: 10px;
+    }
+    .pixel {
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+    }
+    .red {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Generated Visuals</h1>
+
+  <h2>1. SVG: Cat Sitting on a Mat</h2>
+  <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Mat -->
+    <ellipse cx="100" cy="170" rx="80" ry="20" fill="peru" />
+    <!-- Body -->
+    <ellipse cx="100" cy="120" rx="40" ry="50" fill="gray" />
+    <!-- Head -->
+    <circle cx="100" cy="60" r="30" fill="gray" />
+    <!-- Ears -->
+    <polygon points="80,50 90,30 100,50" fill="gray" />
+    <polygon points="120,50 110,30 100,50" fill="gray" />
+    <!-- Eyes -->
+    <circle cx="90" cy="60" r="5" fill="black" />
+    <circle cx="110" cy="60" r="5" fill="black" />
+    <!-- Nose -->
+    <circle cx="100" cy="70" r="3" fill="pink" />
+    <!-- Tail -->
+    <path d="M 130 140 Q 160 130 150 170" stroke="gray" stroke-width="8" fill="none" />
+  </svg>
+
+  <h2>2. ASCII Smiley Face</h2>
+  <pre>
+   _____
+  /     \
+ |  o o  |
+ |   ^   |
+ |  '-'  |
+  \_____/
+  </pre>
+
+  <h2>3. Pixel-Style Heart (HTML + CSS)</h2>
+  <div class="heart">
+    <div class="pixel"></div><div class="red"></div><div class="pixel"></div><div class="red"></div><div class="pixel"></div>
+    <div class="red"></div><div class="red"></div><div class="red"></div><div class="red"></div><div class="red"></div>
+    <div class="red"></div><div class="red"></div><div class="red"></div><div class="red"></div><div class="red"></div>
+    <div class="pixel"></div><div class="red"></div><div class="red"></div><div class="red"></div><div class="pixel"></div>
+    <div class="pixel"></div><div class="pixel"></div><div class="red"></div><div class="pixel"></div><div class="pixel"></div>
+  </div>
+
+  <h2>4. TikZ Diagram of a Neural Network (LaTeX Code)</h2>
+  <pre>
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm and 1.5cm, every node/.style={circle, draw, minimum size=1cm}]
+  % Input layer
+  \node (i1) {I1};
+  \node[below=of i1] (i2) {I2};
+  \node[below=of i2] (i3) {I3};
+
+  % Hidden layer
+  \node[right=of i1] (h1) {H1};
+  \node[below=of h1] (h2) {H2};
+  \node[below=of h2] (h3) {H3};
+
+  % Output layer
+  \node[right=of h2] (o1) {O1};
+
+  % Connections
+  \foreach \i in {i1,i2,i3}
+    \foreach \h in {h1,h2,h3}
+      \draw[->] (\i) -- (\h);
+
+  \foreach \h in {h1,h2,h3}
+    \draw[->] (\h) -- (o1);
+
+\end{tikzpicture}
+
+\end{document}
+  </pre>
+
+</body>
+</html>
