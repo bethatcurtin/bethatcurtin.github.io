@@ -15,17 +15,26 @@
 <body>
   
   <h2>Navigation</h2>
-  <button class="collapsible">Menu 1</button>
+  <button class="collapsible">qualtrics_styles</button>
   <div class="content">
     <a href="./qualtrics_styles/forms.css/" class="nav-link">forms</a>
-      
-    <button class="collapsible">Menu 2</button>
-  <div class="content">
-    <a href="./retired_extensions/openai-scratch-extension.js/" class="nav-link">openai-scratch-extension</a>
-    <a href="./retired_extensions/openai-scratch-extension-v2.js/" class="nav-link">openai-scratch-extension-v2</a>
-    <a href="./retired_extensions/openai-scratch-extension-v3.js/" class="nav-link">openai-scratch-extension-v3</a></div>
-  <script>constcollapsibles = document.querySelectorAll('.collapsible'); collapsibles.forEach(button => { button.addEventListener('click', () => { button.classList.toggle('active'); constcontent = button.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block'; }); });</script>
 
+    <button class="collapsible">retired_extensions</button>
+    <div class="content">
+      <a href="./retired_extensions/openai-scratch-extension.js/" class="nav-link">openai-scratch-extension</a>
+      <a href="./retired_extensions/openai-scratch-extension-v2.js/" class="nav-link">openai-scratch-extension-v2</a>
+      <a href="./retired_extensions/openai-scratch-extension-v3.js/" class="nav-link">openai-scratch-extension-v3</a>
+    </div>
+    <script>
+      constcollapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach(button => {
+        button.addEventListener('click', () => {
+          button.classList.toggle('active');
+          constcontent = button.nextElementSibling;
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+    </script>
 
   <nav>
     <ul>
