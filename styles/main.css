@@ -36,7 +36,21 @@
 }
 
 
+.section-style {
+        background-color: var(--color-1-light);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        border-radius: 10px;
+        
 
+}
+.list-style {
+        background-color: var(--color-6-light);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        border-radius: 10px;
+
+}
 
 h1 {
         font-size: 1.5rem;
@@ -63,21 +77,7 @@ p {
         color: var(--primary-dark);
 }
 
-.section-style {
-        background-color: var(--color-1-light);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
-        border-radius: 10px;
-        
 
-}
-.list-style {
-        background-color: var(--color-6-light);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
-        border-radius: 10px;
-
-}
 a {
         font-family: var(--body-font);
         text-decoration: underline;
