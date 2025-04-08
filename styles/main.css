@@ -36,21 +36,7 @@
 }
 
 
-.section-style {
-        background-color: var(--color-1-light);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
-        border-radius: 10px;
-        
 
-}
-.list-style {
-        background-color: var(--color-6-light);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
-        border-radius: 10px;
-
-}
 
 h1 {
         font-size: 1.5rem;
@@ -114,3 +100,18 @@ nav li {
 div {
         background-color: lightblue;
       }
+.section-style {
+        background-color: var(--color-1-light);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        border-radius: 10px;
+        
+
+}
+.list-style {
+        background-color: var(--color-6-light);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        border-radius: 10px;
+
+}
