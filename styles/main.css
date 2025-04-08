@@ -62,15 +62,38 @@ body {
 }
 
 p {
-        font-size: 1rem;
+
         font-family: var(--body-font);
         color: var(--background-2);
         background-color: var(--color-4-light);
 }
 
-a {
-        font-size: 1rem;
+body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #fff5fe;
+        margin: 0;
+        padding: 2rem;
+}
 
+
+
+nav ul {
+        list-style: none;
+        padding: 0;
+}
+
+nav li {
+        margin-bottom: 0.5rem;
+}
+
+
+
+a:hover {
+        text-decoration: underline;
+}
+
+a {
+        text-decoration: none;
         font-family: 'Poppins', sans-serif;
         color: var(--primary-dark);
         background-color: var(--background-2);
