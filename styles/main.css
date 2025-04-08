@@ -66,6 +66,27 @@ p {
         background-color: var(--color-6-light);
 }
 
+
+
+a {
+        text-decoration: none;
+        color: var(--primary-dark);
+
+}
+.button-style {
+        background-color:var(--color-5-dark);
+        color: var(--color-5-light);
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+
+}
+
+a:hover {
+        text-decoration: underline;
+}
+
 nav ul {
         list-style: none;
         padding: 0;
@@ -73,16 +94,6 @@ nav ul {
 
 nav li {
         margin-bottom: 0.5rem;
-}
-
-a {
-        text-decoration: none;
-        color: var(--primary-dark);
-
-}
-
-a:hover {
-        text-decoration: underline;
 }
 
 button {
