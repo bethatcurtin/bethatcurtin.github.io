@@ -112,6 +112,51 @@
 
 \end{document}
   </pre>
+<h2>4. Neural Network Diagram (SVG)</h2>
+<svg width="500" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Input Layer -->
+  <circle cx="50" cy="50" r="20" fill="#cce5ff" stroke="black" />
+  <text x="50" y="55" text-anchor="middle" font-size="12">I1</text>
+
+  <circle cx="50" cy="125" r="20" fill="#cce5ff" stroke="black" />
+  <text x="50" y="130" text-anchor="middle" font-size="12">I2</text>
+
+  <circle cx="50" cy="200" r="20" fill="#cce5ff" stroke="black" />
+  <text x="50" y="205" text-anchor="middle" font-size="12">I3</text>
+
+  <!-- Hidden Layer -->
+  <circle cx="200" cy="50" r="20" fill="#d5f5e3" stroke="black" />
+  <text x="200" y="55" text-anchor="middle" font-size="12">H1</text>
+
+  <circle cx="200" cy="125" r="20" fill="#d5f5e3" stroke="black" />
+  <text x="200" y="130" text-anchor="middle" font-size="12">H2</text>
+
+  <circle cx="200" cy="200" r="20" fill="#d5f5e3" stroke="black" />
+  <text x="200" y="205" text-anchor="middle" font-size="12">H3</text>
+
+  <!-- Output Layer -->
+  <circle cx="350" cy="125" r="20" fill="#f9e79f" stroke="black" />
+  <text x="350" y="130" text-anchor="middle" font-size="12">O1</text>
+
+  <!-- Connections -->
+  <!-- Input to Hidden -->
+  <line x1="70" y1="50" x2="180" y2="50" stroke="gray" />
+  <line x1="70" y1="50" x2="180" y2="125" stroke="gray" />
+  <line x1="70" y1="50" x2="180" y2="200" stroke="gray" />
+
+  <line x1="70" y1="125" x2="180" y2="50" stroke="gray" />
+  <line x1="70" y1="125" x2="180" y2="125" stroke="gray" />
+  <line x1="70" y1="125" x2="180" y2="200" stroke="gray" />
+
+  <line x1="70" y1="200" x2="180" y2="50" stroke="gray" />
+  <line x1="70" y1="200" x2="180" y2="125" stroke="gray" />
+  <line x1="70" y1="200" x2="180" y2="200" stroke="gray" />
+
+  <!-- Hidden to Output -->
+  <line x1="220" y1="50" x2="330" y2="125" stroke="gray" />
+  <line x1="220" y1="125" x2="330" y2="125" stroke="gray" />
+  <line x1="220" y1="200" x2="330" y2="125" stroke="gray" />
+</svg>
 
 </body>
 </html>
