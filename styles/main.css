@@ -37,6 +37,9 @@
 
 body {
         background-color: var(--background-2);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        
 }
 
 h1 {
@@ -60,10 +63,8 @@ h3 {
 }
 
 p {
-
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
         background-color: var(--color-6-light);
+        
 }
 
 
