@@ -35,24 +35,8 @@
         --heading-font: 'Courier New', monospace;
 }
 
-body {
-        background-color: var(--background-2);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
 
-}
-.section-style {
-        background-color: var(--background-2);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
 
-}
-.list-style {
-        background-color: var(--color-6-light);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
-
-}
 
 h1 {
         font-size: 1.5rem;
@@ -74,11 +58,25 @@ h3 {
         background-color: var(--color-4-light);
 }
 
+p {
+        font-family: var(--body-font);
+        color: var(--primary-dark);
+}
 
+.section-style {
+        background-color: var(--background-2);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        border-radius: 10px;
 
+}
+.list-style {
+        background-color: var(--color-6-light);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+        border-radius: 10px;
 
-
-
+}
 a {
         font-family: var(--body-font);
         text-decoration: underline;
@@ -112,3 +110,6 @@ nav ul {
 nav li {
         margin-bottom: 0.5rem;
 }
+div {
+        background-color: lightblue;
+      }
