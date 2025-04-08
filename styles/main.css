@@ -35,12 +35,7 @@
         --heading-font: 'Courier New', monospace;
 }
 
-body .section-style {
-        background-color: var(--background-2);
-        font-family: var(--body-font);
-        color: var(--color-6-dark);
-        
-}
+
 
 h1 {
         font-size: 1.5rem;
@@ -66,21 +61,30 @@ p .list-style {
         background-color: var(--color-6-light);
         font-family: var(--body-font);
         color: var(--color-6-dark);
-        
+
+}
+body .section-style {
+        background-color: var(--background-2);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
+
 }
 
 
-a:hover {
-        text-decoration: none;
-}
+
 a {
         font-family: var(--body-font);
         text-decoration: underline;
         color: var(--primary-dark);
 
 }
+
+a:hover {
+        text-decoration: none;
+}
+
 .button-style {
-        background-color:var(--primary-light);
+        background-color: var(--primary-light);
         color: var(--primary-dark);
         padding: 14px 25px;
         text-align: center;
@@ -100,4 +104,3 @@ nav ul {
 nav li {
         margin-bottom: 0.5rem;
 }
-
