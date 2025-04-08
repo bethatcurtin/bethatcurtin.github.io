@@ -1,0 +1,86 @@
+:root {
+        --background-1: #000;
+        --background-2: #fff;
+        --primary-color: #14DC9A;
+        --primary-light: #CEFAEC;
+        --primary-dark: #0A6E4D;
+
+
+        --color-1: #C280FF;
+        --color-1-light: #F3E6FF;
+        --color-1-dark: #6400BF;
+
+        --color-2: #F8625C;
+        --color-2-light: #FEE0DE;
+        --color-2-dark: #A30D07;
+
+        --color-3: #00D2FF;
+        --color-3-light: #CCF6FF;
+        --color-3-dark: #00697F;
+
+        --color-4: #FF68CC;
+        --color-4-light: #FFE1F5;
+        --color-4-dark: #B30077;
+
+        --color-5: #FFE300;
+        --color-5-light: #FFF9CC;
+        --color-5-dark: #7F7200;
+
+        --color-6: #88F0CE;
+        --color-6-light: #E7FCF5;
+        --color-6-dark: #15A777;
+
+        --body-font: 'Poppins', sans-serif;
+        --heading-font: 'Courier New', monospace;
+        ;
+}
+
+h1 {
+        font-size: 1.5rem;
+        font-family: var(--heading-font);
+        color: var(--color-1);
+        background-color: var(--background-2);
+}
+
+h2 {
+        font-size: 1rem;
+        var(--heading-font);
+        color: var(--color-3);
+        background-color: var(--background-2);
+}
+
+h3 {
+        font-size: 1rem;
+        font-weight: bold;
+        font-family: var(--heading-font);
+        color: var(--color-4, #000000);
+        background-color: var(--background-2);
+}
+
+body {
+        background-color: var(--background-2);
+}
+
+p {
+        font-size: 1rem;
+        font-family: var(--body-font);
+        color: var(--background-2);
+        background-color: var(--color-4-light);
+}
+
+a {
+        font-size: 1rem;
+
+        font-family: 'Poppins', sans-serif;
+        color: var(--primary-dark);
+        background-color: var(--background-2);
+}
+
+button {
+        cursor: pointer;
+        background: none;
+        border: 0;
+        border-radius: .25rem;
+        color: var(--primary-color);
+        font-family: var(--heading-font)
+}
