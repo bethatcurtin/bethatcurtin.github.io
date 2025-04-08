@@ -12,13 +12,15 @@
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <h1>system: You are an image generator. You generate svgs for the user in the form of &ltsvg width=\"100\"
-            height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"&gt[svg contents]. Output the svg.<br>
-            user: make me a picture of a black and white cat wearing a hat.</h1>
+        height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"&gt[svg contents]. Output the svg.<br>
+        user: make me a picture of a black and white cat wearing a hat.</h1>
 
 
     <h2>google/gemini-2.0-flash-001</h2>
@@ -89,7 +91,7 @@
         <polygon points="48,65 43,70 52,65" fill="black" />
     </svg>
 
-    <p><br>anthropic/claude-3-haiku</h2>
+    <h2>anthropic/claude-3-haiku</h2>
     <p>Here is an SVG image of a black and white cat wearing a hat:</p>
 
     <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +106,7 @@
     </svg>
 
 
-    <h1>system: YYou are an image generator. You generate svgs for the user which align with their request. Output the
+    <h1>system: You are an image generator. You generate svgs for the user which align with their request. Output the
         svg.<br>
         user: make me a picture of a black and white cat wearing a hat.</h1>
 
@@ -246,6 +248,134 @@
 
 
 
+
+
+
+
+    <h1>system: You are an image generator. You generate svgs for the user which align with their request. The user will
+        copy your output as-is into an html file. Output the svg.<br>
+        user: make me a picture of a black and white cat wearing a hat.</h1>
+
+
+
+    <h2>openai/gpt-4o-mini</h2>
+    <p> Here's an SVG representation of a black and white cat wearing a hat:</p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="200"
+        height="200">
+        <style>
+            .cat-body {
+                fill: white;
+            }
+
+            .cat-head {
+                fill: black;
+            }
+
+            .hat {
+                fill: black;
+            }
+
+            .hat-brim {
+                fill: white;
+            }
+        </style>
+        <!-- Cat Body -->
+        <ellipse class="cat-body" cx="100" cy="150" rx="60" ry="40" />
+
+        <!-- Cat Head -->
+        <circle class="cat-head" cx="100" cy="90" r="30" />
+
+        <!-- Cat Eyes -->
+        <circle cx="90" cy="85" r="5" fill="white" />
+        <circle cx="110" cy="85" r="5" fill="white" />
+        <circle cx="90" cy="85" r="2" fill="black" />
+        <circle cx="110" cy="85" r="2" fill="black" />
+
+        <!-- Cat Nose -->
+        <polygon points="100,95 97,100 103,100" fill="pink" />
+
+        <!-- Cat Ears -->
+        <polygon points="80,75 90,60 85,80" class="cat-head" />
+        <polygon points="120,75 110,60 115,80" class="cat-head" />
+
+        <!-- Hat -->
+        <rect class="hat" x="80" y="50" width="40" height="10" />
+        <polygon class="hat-brim" points="70,60 130,60 120,70 80,70" />
+    </svg>
+
+
+    <p>You can copy and paste this code into an HTML file to display the image of a black and white cat wearing a hat.
+    </p>
+    <h2>google/gemini-2.0-flash-001</h2>
+
+
+    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <circle cx="100" cy="100" r="70" fill="url(#grad1)" />
+        <ellipse cx="100" cy="70" rx="20" ry="10" fill="white" />
+        <ellipse cx="100" cy="70" rx="10" ry="5" fill="black" />
+        <path d="M 60 60 L 40 20 L 80 20 L 60 60" fill="grey" stroke="black" />
+        <path d="M 140 60 L 120 20 L 160 20 L 140 60" fill="grey" stroke="black" />
+    </svg>
+
+    <h2> meta-llama/llama-3-8b-instruct</h2>
+    <p>Here is an SVG of a black and white cat wearing a hat:</p>
+
+    <svg width="200" height="200">
+        <rect x="10" y="10" width="180" height="180" fill="#FFFFFF" rx="20" />
+        <rect x="30" y="30" width="140" height="140" fill="#000000" rx="15" />
+        <path d="M 60 60 L 80 60 L 70 70 Z" fill="#000000" />
+        <path d="M 70 50 L 80 50 L 90 60 Z" fill="#000000" />
+        <path d="M 80 60 L 70 70 Z" fill="#000000" />
+        <rect x="40" y="40" width="40" height="20" fill="#FFFFFF" rx="5" />
+        <rect x="60" y="40" width="20" height="20" fill="#000000" rx="5" />
+        <path d="M 60 65 L 80 65 L 70 75 Z" fill="#000000" />
+        <circle cx="70" cy="50" r="5" fill="#000000" />
+        <text x="80" y="140" font-size="20" font-family="Arial">.</text>
+        <rect x="40" y="160" width="80" height="20" fill="#000000" rx="5" />
+        <text x="50" y="170" font-size="15" font-family="Arial">Hat</text>
+    </svg>
+
+
+    <p>Please copy this code into your HTML file to view the cat wearing a hat!</p>
+    <h2>anthropic/claude-3-haiku</h2>
+    <p> Here is an SVG image of a black and white cat wearing a hat:</p>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+        <defs>
+            <style>
+                .cls-1 {
+                    fill: #fff;
+                    stroke: #000;
+                    stroke-miterlimit: 10;
+                    stroke-width: 5px;
+                }
+
+                .cls-2 {
+                    fill: #000;
+                }
+
+                .cls-3 {
+                    fill: #333;
+                }
+            </style>
+        </defs>
+        <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+                <path class="cls-1" d="M150,275A125,125,0,1,1,275,150,125.14,125.14,0,0,1,150,275Z" />
+                <path class="cls-2" d="M87.5,137.5a12.5,12.5,0,1,1-12.5,12.5,12.51,12.51,0,0,1,12.5-12.5" />
+                <path class="cls-2" d="M212.5,137.5a12.5,12.5,0,1,1-12.5,12.5,12.51,12.51,0,0,1,12.5-12.5" />
+                <path class="cls-2" d="M150,187.5a25,25,0,0,1-25-25v-25h50v25a25,25,0,0,1-25,25" />
+                <path class="cls-3" d="M150,225a37.5,37.5,0,0,1-37.5-37.5v-25h75v25A37.5,37.5,0,0,1,150,225Z" />
+            </g>
+        </g>
+    </svg>
 </body>
 
 </html>
