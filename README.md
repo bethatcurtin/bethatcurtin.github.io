@@ -20,38 +20,46 @@
 
 <body>
 
-qualtrics_styles
-https://bethatcurtin.github.io/qualtrics_styles/forms.css
+    <h2>qualtrics_styles</h2>
+    <a href="https://bethatcurtin.github.io/qualtrics_styles/forms.css">forms.css</a>
 
-retired_extensions
-https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension-v2.js
-https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension-v3.js
-https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension.js
+    <h2>retired_extensions</h2>
+    <a
+        href="https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension-v2.js">openai-scratch-extension-v2.js</a>
+    <a
+        href="https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension-v3.js">openai-scratch-extension-v3.js</a>
+    <a
+        href="https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension.js">openai-scratch-extension.js</a>
 
-testing
-https://bethatcurtin.github.iotesting/iframe_copy.js
-https://bethatcurtin.github.io/testing/iframe_gen.js
-https://bethatcurtin.github.io/testing/iframe_mod.js
-https://bethatcurtin.github.io/testing/openai-scratch-dalle-v3.js
-https://bethatcurtin.github.io/testing/svg_test.html
+    <h2>testing</h2>
+    <a href="https://bethatcurtin.github.iotesting/iframe_copy.js">iframe_copy.js</a>
+    <a href="https://bethatcurtin.github.io/testing/iframe_gen.js">iframe_gen.js</a>
+    <a href="https://bethatcurtin.github.io/testing/iframe_mod.js">iframe_mod.js</a>
+    <a href="https://bethatcurtin.github.io/testing/openai-scratch-dalle-v3.js">openai-scratch-dalle-v3.js</a>
+    <a href="https://bethatcurtin.github.io/testing/svg_test.html">svg_test.html</a>
 
-web_pages
-https://bethatcurtin.github.io/web_pages/gpt_img.html
-https://bethatcurtin.github.io/web_pages/index.html
+    <h2>web_pages</h2>
+    <a href="https://bethatcurtin.github.io/web_pages/gpt_img.html">gpt_img.html</a>
+    <a href="https://bethatcurtin.github.io/web_pages/index.html">index.html</a>
 
-README.md
-https://bethatcurtin.github.io/openai-scratch-chat-v1.js
-https://bethatcurtin.github.io/openai-scratch-chat-v2.js
-https://bethatcurtin.github.io/openai-scratch-dalle-v1.js
-https://bethatcurtin.github.io/openai-scratch-dalle-v2.js
+    <h2>Other</h2>
+    <a href="https://bethatcurtin.github.io/">README.md aka HOME</a>
+    <a href="https://bethatcurtin.github.io/openai-scratch-chat-v1.js">openai-scratch-chat-v1.js</a>
+    <a href="https://bethatcurtin.github.io/openai-scratch-chat-v2.js">openai-scratch-chat-v2.js</a>
+    <a href="https://bethatcurtin.github.io/openai-scratch-dalle-v1.js">openai-scratch-dalle-v1.js</a>
+    <a href="https://bethatcurtin.github.io/openai-scratch-dalle-v2.js">openai-scratch-dalle-v2.js</a>
 
 
 
-For Scratch Extensions:
-Using TurboWarp,
-https://turbowarp.org/editor
+    <h2>Scratch Extensions:</h2>
+    <p>Using TurboWarp,</p>
+    <a href="https://turbowarp.org/editor">Open TurboWarp editor</a>
 
-Paste the following url into the 'Custom Extension' url box:
-https://bethatcurtin.github.io/<filename.js>
 
-You'll then be able to use the OpenAI API in Blocky form. 
+    <p>Paste the applicable url into the 'Custom Extension' url box:<br>
+        https://bethatcurtin.github.io/[filename.js]<br><br>
+
+        You'll then be able to use the OpenAI API in Blocky form. </p>
+</body>
+
+</html>
