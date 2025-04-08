@@ -1,30 +1,21 @@
 # Beth's Project Page
 
 ## qualtrics_styles
-- [forms.css](https://bethatcurtin.github.io/qualtrics_styles/forms.css)
+- [qualtrics_styles](https://bethatcurtin.github.io/qualtrics_styles/)
 
 ## retired_extensions
-- [openai-scratch-extension-v2.js](https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension-v2.js)  
-- [openai-scratch-extension-v3.js](https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension-v3.js)  
-- [openai-scratch-extension.js](https://bethatcurtin.github.io/retired_extensions/openai-scratch-extension.js)
+- [retired_extensions](https://bethatcurtin.github.io/retired_extensions/)  
+
 
 ## testing
-- [iframe_copy.js](https://bethatcurtin.github.iotesting/iframe_copy.js)  
-- [iframe_gen.js](https://bethatcurtin.github.io/testing/iframe_gen.js)  
-- [iframe_mod.js](https://bethatcurtin.github.io/testing/iframe_mod.js)  
-- [openai-scratch-dalle-v3.js](https://bethatcurtin.github.io/testing/openai-scratch-dalle-v3.js)  
-- [svg_test.html](https://bethatcurtin.github.io/testing/svg_test.html)
+- [testing](https://bethatcurtin.github.io/testing/)  
 
 ## web_pages
-- [gpt_img.html](https://bethatcurtin.github.io/web_pages/gpt_img.html)  
-- [index.html](https://bethatcurtin.github.io/web_pages/index.html)
+- [web_pages](https://bethatcurtin.github.io/web_pages/)  
 
 ## Other
 - [README.md aka HOME](https://bethatcurtin.github.io/)  
-- [openai-scratch-chat-v1.js](https://bethatcurtin.github.io/openai-scratch-chat-v1.js)  
-- [openai-scratch-chat-v2.js](https://bethatcurtin.github.io/openai-scratch-chat-v2.js)  
-- [openai-scratch-dalle-v1.js](https://bethatcurtin.github.io/openai-scratch-dalle-v1.js)  
-- [openai-scratch-dalle-v2.js](https://bethatcurtin.github.io/openai-scratch-dalle-v2.js)
+
 
 ---
 
