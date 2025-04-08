@@ -75,10 +75,11 @@ a {
 
 }
 .button-style {
-        background-color:var(--color-5-dark);
-        color: var(--color-5-light);
+        background-color:var(--primary-light);
+        color: var(--primary-dark);
         padding: 14px 25px;
         text-align: center;
+        border-radius: 10px;
         text-decoration: none;
         display: inline-block;
 
@@ -97,11 +98,3 @@ nav li {
         margin-bottom: 0.5rem;
 }
 
-button {
-        cursor: pointer;
-        background: none;
-        border: 0;
-        border-radius: 5;
-        color: var(--primary-color);
-        font-family: var(--heading-font)
-}
