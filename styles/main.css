@@ -76,6 +76,7 @@ a {
         font-family: var(--body-font);
         text-decoration: underline;
         color: var(--primary-dark);
+        font-weight: bold;
 
 }
 
