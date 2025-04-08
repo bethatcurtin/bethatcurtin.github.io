@@ -43,14 +43,12 @@ h1 {
 }
 
 h2 {
-        font-size: 1rem;
-        var(--heading-font);
+        font-family: var(--heading-font);
         color: var(--color-3);
         background-color: var(--background-2);
 }
 
 h3 {
-        font-size: 1rem;
         font-weight: bold;
         font-family: var(--heading-font);
         color: var(--color-4, #000000);
@@ -86,6 +84,40 @@ nav li {
         margin-bottom: 0.5rem;
 }
 
+.collapsible {
+        background-color: var(--primary-color);
+        color: var(--background-1);
+        cursor: pointer;
+        padding: 12px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 16px;
+}
+
+.active,
+.collapsible:hover {
+        background-color: var(--primary-dark);
+}
+
+.content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: var(--color-1);
+}
+
+.nav-link {
+        display: block;
+        padding: 8px 0;
+        color: var(--color-3);
+        text-decoration: none;
+}
+
+.nav-link:hover {
+        text-decoration: underline;
+}
 
 
 a:hover {
@@ -94,7 +126,6 @@ a:hover {
 
 a {
         text-decoration: none;
-        font-family: 'Poppins', sans-serif;
         color: var(--primary-dark);
         background-color: var(--background-2);
 }
