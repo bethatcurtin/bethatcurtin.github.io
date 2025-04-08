@@ -64,12 +64,15 @@ h3 {
 
 p {
         background-color: var(--color-6-light);
+        font-family: var(--body-font);
+        color: var(--color-6-dark);
         
 }
 
 
 
 a {
+        font-family: var(--body-font);
         text-decoration: none;
         color: var(--primary-dark);
 
