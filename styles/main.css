@@ -64,10 +64,11 @@ p {
 }
 
 .section-style {
-        background-color: var(--background-2);
+        background-color: var(--color-1-light);
         font-family: var(--body-font);
         color: var(--color-6-dark);
         border-radius: 10px;
+        
 
 }
 .list-style {
