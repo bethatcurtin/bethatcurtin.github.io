@@ -62,7 +62,7 @@ h3 {
         background-color: var(--color-4-light);
 }
 
-p .list-style{
+p .list-style .section-style {
         background-color: var(--color-6-light);
         font-family: var(--body-font);
         color: var(--color-6-dark);
