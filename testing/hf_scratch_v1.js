@@ -13,7 +13,7 @@
 
         getInfo() {
             return {
-                id: 'dalleAPI',
+                id: 'hfAPI',
                 color1: '#C280FF',
                 name: 'HF Inference API v1',
                 blocks: [
@@ -24,7 +24,7 @@
                         arguments: {
                             KEY_HF: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'sk-hfAPIKeyHere'
+                                defaultValue: 'hf-APIKeyHere'
                             }
                         }
                     },
@@ -60,11 +60,11 @@
             };
         }
 
-        setApiKeyHF(args) {
+        setApiKey_hf(args) {
             this.apiKey_hf = args.KEY_HF;
         }
 
-        setDalleModelId(args) {
+        setHfModelId_hf(args) {
             this.modelId_hf = args.MODEL_HF;
         }
 
@@ -73,7 +73,7 @@
                 return 'API key not set!';
             }
 
-            if (this.modelId == 'stabilityai/stable-diffusion-3.5-medium') {
+            if (this.modelId_hf == 'stabilityai/stable-diffusion-3.5-medium') {
                 try {
                     const response = await fetch('https://router.huggingface.co/fal-ai/fal-ai/stable-diffusion-v35-medium', {
                         method: 'POST',
