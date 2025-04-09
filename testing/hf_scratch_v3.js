@@ -3,37 +3,39 @@
 (function (Scratch) {
     'use strict';
 
-    class dalleApiExtension {
+    class imageGeneratorExtension {
         constructor() {
-            this.apiKeyDalle = '';
-            this.modelIdDalle = 'dall-e-2'; // Default model
+            this.apiKey_hf = '';
+            this.modelId_hf = 'stable-diffusion-3.5-medium'; // Default model
+            this.imageURL = '';
+
         }
 
         getInfo() {
             return {
-                id: 'dalleAPI',
-                color1: '#3233F4',
-                name: 'OpenAI Dalle v1',
+                id: 'hfAPI',
+                color1: '#00D2FF', //color-blue
+                name: 'HF Inference API v2',
                 blocks: [
                     {
-                        opcode: 'setApiKeyDalle',
+                        opcode: 'setApiKey_hf',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set API key (dall-e) to [KEY_DALLE]',
+                        text: 'set API key (hf) to [KEY_HF]',
                         arguments: {
-                            KEY_DALLE: {
+                            KEY_HF: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'sk-DalleAPIKeyHere'
+                                defaultValue: 'hf-APIKeyHere'
                             }
                         }
                     },
                     {
-                        opcode: 'setModelIdDalle',
+                        opcode: 'setModelId_hf',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set model ID to [MODEL_DALLE]',
+                        text: 'set model ID to [MODEL_HF]',
                         arguments: {
-                            MODEL_DALLE: {
+                            MODEL_HF: {
                                 type: Scratch.ArgumentType.STRING,
-                                menu: 'MODEL_DALLE_MENU'
+                                menu: 'MODEL_HF_MENU'
                             }
                         }
                     },
@@ -44,85 +46,81 @@
                         arguments: {
                             DESCRIPTION: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'A cute cat wearing a hat'
+                                defaultValue: 'Astronaut riding a horse'
                             }
                         }
                     }
                 ],
                 menus: {
-                    MODEL_DALLE_MENU: {
+                    MODEL_HF_MENU: {
                         acceptReporters: true,
-                        items: ['dall-e-2', 'dall-e-3']
+                        items: ['openjourney', 'stable-diffusion-3.5-medium']
                     }
                 }
             };
         }
 
-        setApiKeyDalle(args) {
-            this.apiKeyDalle = args.KEY_DALLE;
+        setApiKey_hf(args) {
+            this.apiKey_hf = args.KEY_HF;
         }
 
-        setDalleModelId(args) {
-            this.modelIdDalle = args.MODEL_DALLE;
+        setHfModelId_hf(args) {
+            this.modelId_hf = args.MODEL_HF;
         }
 
         async generateImage(args) {
-            if (!this.apiKeyDalle) {
+            if (!this.apiKey_hf) {
                 return 'API key not set!';
             }
 
-            if (this.modelId == 'dall-e-2') {
+            if (this.modelId_hf == 'stable-diffusion-3.5-medium') {
                 try {
-                    const response = await fetch('https://api.openai.com/v1/images/generations', {
+                    const response = await fetch('https://router.huggingface.co/fal-ai/fal-ai/stable-diffusion-v35-medium', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${this.apiKeyDalle}`
+                            'Authorization': `Bearer ${this.apiKey_hf}`
                         },
-                        body: JSON.stringify({
-                            model: `${this.modelIdDalle}`,
-                            prompt: args.DESCRIPTION,
-                            n: 1,
-                            size: '256x256'
-                        })
+                        body: JSON.stringify({ inputs: args.DESCRIPTION })
                     });
+
 
                     if (!response.ok) {
                         return `Error: ${response.status}`;
                     }
 
-                    const data = await response.json();
-                    return data.data?.[0]?.url || 'Image generation failed';
+                    const blob = await response.blob();
+                    this.imageURL = URL.createObjectURL(blob);
+                    return this.imageURL || 'Image generation failed';
                 } catch (error) {
                     return 'Request failed';
                 }
             } else {
                 try {
-                    const response = await fetch('https://api.openai.com/v1/images/generations', {
+                    const response = await fetch('https://router.huggingface.co/hf-inference/models/prompthero/openjourney', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${this.apiKeyDalle}`
+                            'Authorization': `Bearer ${this.apiKey_hf}`
                         },
-                        body: JSON.stringify({
-                            model: `${this.modelIdDalle}`,
-                            prompt: args.DESCRIPTION,
-                            n: 1,
-                            size: '1024x1024'
-                        })
+                        body: JSON.stringify({ inputs: args.DESCRIPTION })
                     });
+
 
                     if (!response.ok) {
                         return `Error: ${response.status}`;
                     }
 
-                    const data = await response.json();
-                    return data.data?.[0]?.url || 'Image generation failed';
+                    const blob = await response.blob();
+                    this.imageURL = URL.createObjectURL(blob);
+                    return this.imageURL || 'Image generation failed';
+
+
                 } catch (error) {
                     return 'Request failed';
                 }
             }
         }
     }
-    Scratch.extensions.register(new dalleApiExtension());
+    Scratch.extensions.register(new imageGeneratorExtension());
 })(Scratch);
