@@ -85,7 +85,7 @@ div {
         border-radius: 10px;
 }
 img {
-        max-width: 10%;
+        width: 50px;
         height: auto;
         margin: 10px auto;
 }
