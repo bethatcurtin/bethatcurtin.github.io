@@ -84,7 +84,17 @@ div {
         width: 90%;
         border-radius: 10px;
 }
+img {
+        max-width: 10%;
+        height: auto;
+        margin: 10px auto;
 
+}
+
+.img-container {
+        align-content: center;
+        text-align: center;
+}
 .section-style {
         background-color: var(--color-purple-light);
 }
