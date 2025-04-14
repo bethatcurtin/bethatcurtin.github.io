@@ -24,6 +24,6 @@ button {
     font-family: var(--accent-font-family, 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace)
 }
 
-.upload-drag-target {
+.upload-drag-target .file-upload-canvas {
     background: var(--palettes-bg-3, #f5f5f5);
 }
