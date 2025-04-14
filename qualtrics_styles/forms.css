@@ -25,5 +25,5 @@ button {
 }
 
 .upload-drag-target .file-upload-canvas {
-    background: var(--palettes-bg-3, #f5f5f5);
+    background-color: var(--palettes-bg-3, #f5f5f5);
 }
