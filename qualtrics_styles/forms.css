@@ -24,7 +24,7 @@ button {
     font-family: var(--accent-font-family, 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace)
 }
 
-.file-upload-container .upload-drag-target {
+.file-upload-canvas {
     background: var(--palettes-bg-3, #f5f5f5);
     border: .0625rem solid var(--mixes-input-neutral-border-2, #777d85);
     border-radius: .25rem;
