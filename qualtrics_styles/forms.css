@@ -23,3 +23,8 @@ button {
     color: var(--branding-theme-3, #fff);
     font-family: var(--accent-font-family, 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace)
 }
+
+.file-upload-container .upload-drag-target {
+    background-color: var(--palettes-bg-3, #f5f5f5);
+    background: var(--palettes-bg-3, #f5f5f5);
+}
