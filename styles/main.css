@@ -89,11 +89,7 @@ img {
         height: auto;
         margin: 10px auto;
 }
-.column-container {
-        display:flex;
-        flex-direction: row; 
-        justify-content: space-between;
-}
+
 .img-container {
         align-content: center;
         text-align: center;
@@ -103,6 +99,11 @@ img {
 }
 .column-obj {
         padding: 10px;
+}
+.column-container {
+        display:flex;
+        flex-direction: row; 
+        justify-content: space-between;
 }
 
 
