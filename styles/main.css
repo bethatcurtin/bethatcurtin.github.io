@@ -89,7 +89,11 @@ img {
         height: auto;
         margin: 10px auto;
 }
-
+.column-container {
+        display:flex;
+        flex-direction: row; 
+        justify-content: space-between;
+}
 .img-container {
         align-content: center;
         text-align: center;
@@ -121,8 +125,4 @@ nav li {
         width: 40%;
 }
 
-.column-container {
-        display:flex;
-        flex-direction: row; 
-        justify-content: space-between";
-}
+
