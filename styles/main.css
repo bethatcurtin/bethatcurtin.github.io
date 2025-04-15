@@ -21,7 +21,7 @@
         --color-yellow-dark: #7F7200;
         --color-green: #88F0CE;
         --color-green-light: #e7fcf5;
-        --color-green-light-med: #;
+        --color-green-light-med: #15A777;
         --color-green-dark: #15A777;
         --body-font: 'Poppins', sans-serif;
         --heading-font: 'Courier New', monospace;
@@ -111,6 +111,7 @@ img {
         text-decoration: none;
         width: 40%;
         border-radius: 5px;
+        padding: 10px;
 }
 
 .color-block {
