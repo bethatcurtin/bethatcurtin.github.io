@@ -94,8 +94,11 @@ img {
         align-content: center;
         text-align: center;
 }
-.section-style {
+.section-style .column-obj {
         background-color: var(--color-purple-light);
+}
+.column-obj {
+        padding: 10px;
 }
 
 
@@ -116,4 +119,10 @@ nav li {
         text-align: center;
         text-decoration: none;
         width: 40%;
+}
+
+.column-container {
+        display:flex;
+        flex-direction: row; 
+        justify-content: space-between";
 }
