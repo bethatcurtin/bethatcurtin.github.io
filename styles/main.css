@@ -110,6 +110,7 @@ img {
         text-align: center;
         text-decoration: none;
         width: 40%;
+        border-radius: 5px;
 }
 
 .color-block {
