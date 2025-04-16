@@ -109,6 +109,7 @@ img {
 
 #result_model_info {
         margin: 20px 0;
+        font-family: var(--body-font);
 }
 
 .field {
