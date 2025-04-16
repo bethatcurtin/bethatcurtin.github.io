@@ -176,6 +176,8 @@ img {
 .img-container {
         align-content: center;
         text-align: center;
+         width:10%;
+        margin: 0 45%;
 }
 
 .button-style,
