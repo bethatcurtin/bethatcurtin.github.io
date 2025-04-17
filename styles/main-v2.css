@@ -56,7 +56,7 @@ body {
   }
   
   /* Buttons / Links */
-  .button-link {
+  .button-style {
     display: inline-block;
     margin: 8px 0;
     padding: 12px 20px;
@@ -67,8 +67,20 @@ body {
     border-radius: 10px;
     transition: background-color 0.3s ease;
   }
+
+button {
+        background-color: var(--primary-light);
+        color: var(--primary-dark);
+        text-align: center;
+        text-decoration: none;
+        min-width: 10%;
+        max-width: 200px;
+        margin: 5px 20px;
+        padding: 15px 10px;
+        border-radius: 10px;
+}
   
-  .button-link:hover {
+  .button-style:hover {
     background-color: var(--color-purple);
     color: #fff;
   }
@@ -118,3 +130,19 @@ body {
     }
   }
   
+.color-block {
+    color: #000;
+    font-size: small;
+    padding: 5px;
+    margin: 2px;
+    width: 60px;
+}
+
+.color-container {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%
+}
