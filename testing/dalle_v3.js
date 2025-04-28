@@ -47,6 +47,17 @@
                                 defaultValue: 'A cute cat wearing a hat'
                             }
                         }
+                    },
+                    {
+                        opcode: 'showImage',
+                        blockType: Scratch.BlockType.REPORTER,
+                        text: 'Set size [SIZE]',
+                        arguments: {
+                            DESCRIPTION: {
+                                type: Scratch.ArgumentType.NUMBER,
+                                defaultValue: 200
+                            }
+                        }
                     }
                 ],
                 menus: {
@@ -117,7 +128,7 @@
                     }
 
                     const data = await response.json();
-                    const return_html= `<img src="${data.data?.[0]?.url}" alt="generated image" width="100" height="100">` 
+                    const return_html= `<img src="${data.data?.[0]?.url}" alt="generated image" width="${size}" height="${size}">` 
                     return return_html || 'Image generation failed';
                 } catch (error) {
                     return 'Request failed';
