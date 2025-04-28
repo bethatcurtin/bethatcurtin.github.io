@@ -221,7 +221,7 @@
                 return result;
             } catch (error) {
                 const newResult = document.createElement('div');
-                newResult.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Prompt: "${prompt_data}</p>`;
+                newResult.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Prompt: "${prompt}</p>`;
                 resultDiv.appendChild(newResult);
 
                 const chatWindow = document.getElementById('chat-window');
