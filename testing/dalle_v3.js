@@ -117,7 +117,7 @@
                     }
 
                     const data = await response.json();
-                    const return_html= `<img src="data.data?.[0]?.url" alt="generated image" width="100" height="100">` 
+                    const return_html= `<img src="${data.data?.[0]?.url}" alt="generated image" width="100" height="100">` 
                     return return_html || 'Image generation failed';
                 } catch (error) {
                     return 'Request failed';
