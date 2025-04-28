@@ -6,7 +6,7 @@
     class hfApiImages {
         constructor() {
             this.apiKeyHF = '';
-            this.modelIdHF = 'AuraFlow-v0.3'; // Default model
+            this.modelIdHF = 'stable-diffusion-3.5-medium'; // Default model
             this.imageSize = 100;
         }
 
