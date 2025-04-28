@@ -44,11 +44,14 @@ body {
   /* display: flex; */
   justify-content: center;
   align-items: flex-start;
+
   min-height: 100vh;
+
 }
 
 .window {
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: row;
   gap: 20px;
   max-width: 1400px;
@@ -63,7 +66,8 @@ body {
   padding: 24px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   flex: 1;
-  overflow-y: auto;
+  overflow-y: scroll;
+
 }
 
 /* Sidebar */
@@ -122,8 +126,11 @@ select:focus {
 /* Main Content Area */
 .convo {
   display: flex;
+
   flex-direction: column;
+  justify-items: end;
   gap: 16px;
+
 }
 
 .convo label {
@@ -160,6 +167,16 @@ button:hover {
   font-size: 0.9rem;
 }
 
+#result * {
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+
+
 #result_model_info *,
 #result_info * {
   background-color: #fff;
@@ -172,10 +189,34 @@ button:hover {
   font-size: 0.9rem;
 }
 
-img {
-  max-width: 100%;
+/* img {
+  max-width: 80%;
   margin-top: 16px;
   border-radius: 12px;
+  
+} */
+
+#chat-window {
+  height: 700px;
+  /* or whatever fits your layout */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--color-blue-light);
+  min-height: 700px;
+
+}
+
+#result img {
+  max-width: 60%;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-msg {
+  max-width: 100px;
 }
 
 /* Scrollbars */
@@ -193,8 +234,8 @@ img {
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   .window {
     flex-direction: column;
   }
-}
+} */
