@@ -14,7 +14,7 @@
             return {
                 id: 'hfAPI',
                 color1: '#ff0000',
-                name: 'tets HF Api Images???',
+                name: 'HF Image Generator',
                 blocks: [
                     {
                         opcode: 'setApiKeyHF',
