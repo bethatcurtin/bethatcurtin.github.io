@@ -13,7 +13,7 @@
         getInfo() {
             return {
                 id: 'hfAPI',
-                color1: '#ff0000',
+                color1: '#ff00ff',
                 name: 'HF Image Generator',
                 blocks: [
                     {
@@ -147,13 +147,14 @@
                 }
 
                 const data = await response.json();
-             
+                // console.log(return_html)
                 const return_html = `<img src="${data.images[0].url}" alt="generated image" width="${this.imageSize}" height="${this.imageSize}">`
                 console.log(return_html)
                 return return_html || 'Image generation failed';
 
-                
+                // return data.images[0].url || 'Image generation failed';
             } catch (error) {
+                console.log(error)
                 return 'Request failed';
             }
 
