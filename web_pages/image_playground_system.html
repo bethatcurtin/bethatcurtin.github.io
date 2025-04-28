@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text-to-Image: System</title>
+    <title>Text-to-Image: System Prompts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../styles/image_playground.css">
+    <link rel="icon" type="image/x-icon" href="./assets/b-profile-pic.png">
 </head>
 
 <body>
@@ -45,8 +46,12 @@
 
 
         <div class="convo section-style">
-            <div id="result"></div>
-            <div id="result_info"></div>
+
+            <div id="chat-window">
+                <div id="result"></div>
+                <div id="loading_div"></div>
+                <!-- <div id="result_info"></div> -->
+            </div>
 
             <label for="prompt">prompt:</label>
             <textarea id="prompt" rows="4" placeholder="A scenic view of mountains during sunset..."></textarea>
@@ -120,7 +125,7 @@
             const model = document.getElementById('model').value;
             const hfId = models_aliases[model]?.hfId;
 
-            const resultDiv = document.getElementById('result_model_info');
+            // const resultDiv = document.getElementById('result_model_info');
 
             if (!model) {
                 resultDiv.innerHTML = '';
@@ -161,7 +166,7 @@
 
         async function generateImage() {
             const apiKey = document.getElementById("apiKey").value.trim();
-  
+     
             const model = document.getElementById("model").value;
             const prompt = document.getElementById("prompt").value;
             const system_prompt = document.getElementById("system_prompt").value;
@@ -169,10 +174,10 @@
 
             const resultDiv = document.getElementById("result");
             const resultInfo = document.getElementById("result_info");
+            const loadingDiv = document.getElementById("loading_div");
 
-
-            resultDiv.innerHTML = "Generating image...";
-            resultInfo.innerHTML = "";
+            loadingDiv.innerHTML = "<p><br>Generating image...</p<";
+            // resultInfo.innerHTML = "";
 
             if (!apiKey || !prompt || !model) {
                 resultDiv.innerHTML = "All fields are required.";
@@ -201,6 +206,7 @@
                 }
 
                 const result = await response.json();
+                loadingDiv.innerHTML = "";
                 // const imageURL = URL.createObjectURL(result);
                 const imageURL = result.images[0].url;
                 const height = result.images[0].height;
@@ -208,8 +214,26 @@
                 const content_type = result.images[0].content_type;
                 const prompt_data = result.prompt;
 
-                resultDiv.innerHTML = `<img src="${imageURL}" alt="Generated image" />`;
-                resultInfo.innerHTML = `<h3>Result Info</h3><p>Size (width x height): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: ${prompt_data}<p>`;
+                // resultDiv.innerHTML = `<img src="${imageURL}" alt="Generated image" />`;
+                // resultInfo.innerHTML = `<h3>Result Info</h3><p>Size (width x height): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: ${prompt_data}<p>`;
+
+
+
+                const newResult = document.createElement('div');
+                newResult.innerHTML = `<img src="${imageURL}" alt="Generated image" /><p>Result Info<br>Size (w x h): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<br>Model: ${model}</p>`;
+                resultDiv.appendChild(newResult);
+                // const newResultInfo = document.createElement('div');
+                // newResultInfo.innerHTML = `<p><strong>Result Info</strong><br>Size (width x height): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<br>Model: ${model}</p>`;
+                // resultDiv.appendChild(newResultInfo);
+
+                // Scroll to bottom after adding new content
+                const chatWindow = document.getElementById('chat-window');
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+
+
+
+
+
                 // resultDiv.innerHTML = `<img src="${imageURL}" alt="Generated image" /><pre>${JSON.stringify(result, null, 4)}</pre>`;
                 return result;
             } catch (error) {
