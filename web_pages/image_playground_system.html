@@ -166,7 +166,7 @@
 
         async function generateImage() {
             const apiKey = document.getElementById("apiKey").value.trim();
-     
+
             const model = document.getElementById("model").value;
             const prompt = document.getElementById("prompt").value;
             const system_prompt = document.getElementById("system_prompt").value;
@@ -222,11 +222,7 @@
                 const newResult = document.createElement('div');
                 newResult.innerHTML = `<img src="${imageURL}" alt="Generated image" /><p>Result Info<br>Size (w x h): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<br>Model: ${model}</p>`;
                 resultDiv.appendChild(newResult);
-                // const newResultInfo = document.createElement('div');
-                // newResultInfo.innerHTML = `<p><strong>Result Info</strong><br>Size (width x height): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<br>Model: ${model}</p>`;
-                // resultDiv.appendChild(newResultInfo);
-
-                // Scroll to bottom after adding new content
+               
                 const chatWindow = document.getElementById('chat-window');
                 chatWindow.scrollTop = chatWindow.scrollHeight;
 
@@ -234,12 +230,16 @@
 
 
 
-                // resultDiv.innerHTML = `<img src="${imageURL}" alt="Generated image" /><pre>${JSON.stringify(result, null, 4)}</pre>`;
                 return result;
             } catch (error) {
-                resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
-                resultInfo.innerHTML = `<h3>Result Info</h3><p>Size (width x height): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<p>`;
-                // resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p><pre>${JSON.stringify(result, null, 4)}</pre>`;
+                const newResult = document.createElement('div');
+                newResult.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Prompt: "${prompt_data}</p>`;
+                resultDiv.appendChild(newResult);
+               
+                const chatWindow = document.getElementById('chat-window');
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+
+                
             }
         }
     </script>
