@@ -14,8 +14,8 @@
         getInfo() {
             return {
                 id: 'OpenRouterAPI',
-                color1: '#5734E1', // block main colour
-                name: 'OpenRouter Chats v1',
+                color1: '#00ff00', // block main colour
+                name: 'OpenRouter Text Generator',
                 blocks: [
                     {
                         opcode: 'setApiKey',
