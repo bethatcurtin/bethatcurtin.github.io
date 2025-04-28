@@ -199,6 +199,17 @@ loadingDiv.innerHTML = "<p><br>Generating image...</p>";
                     const err = await response.json();
                     throw new Error(err.error || "Error generating image");
                 }
+                const result = await response.json();
+                loadingDiv.innerHTML = "";
+                // const imageURL = URL.createObjectURL(result);
+                const imageURL = result.images[0].url;
+                const height = result.images[0].height;
+                const width = result.images[0].width;
+                const content_type = result.images[0].content_type;
+                const prompt_data = result.prompt;
+                const newResult = document.createElement('div');
+                newResult.innerHTML = `<img src="${imageURL}" alt="Generated image" /><p>Result Info<br>Size (w x h): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<br>Model: ${model}</p>`;
+                resultDiv.appendChild(newResult);
 
                 const newResult = document.createElement('div');
                 newResult.innerHTML = `<img src="${imageURL}" alt="Generated image" /><p>Result Info<br>Size (w x h): ${width} x ${height}<br>Type: ${content_type}<br>Prompt: "${prompt_data}"<br>Model: ${model}</p>`;
