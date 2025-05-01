@@ -24,7 +24,7 @@
                         arguments: {
                             KEY: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'sk-YourAPIKeyHere'
+                                defaultValue: 'sk-or-v1-YourAPIKeyHere'
                             }
                         }
                     },
