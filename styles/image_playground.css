@@ -200,7 +200,7 @@ button:hover {
   height: 700px;
   /* or whatever fits your layout */
   overflow-y: auto;
-  border-radius: 10px;
+  border-radius: 5px;
 /*   border: 1px solid #ccc; */
   
   padding: 10px;
