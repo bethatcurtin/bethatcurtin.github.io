@@ -197,6 +197,7 @@ button:hover {
     /* or whatever fits your layout */
     overflow-y: auto;
     border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     background-color: var(--color-blue-light);
