@@ -66,7 +66,7 @@
                     {
                         opcode: 'askOpenRouter',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'ask OpenRouter [PROMPT]',
+                        text: 'ask OpenRouter (model) [PROMPT]',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
