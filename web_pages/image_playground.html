@@ -177,7 +177,7 @@
             const resultInfo = document.getElementById("result_info");
             const loadingDiv = document.getElementById("loading_div");
 
-            loadingDiv.innerHTML = "<p><br>Generating image...</p>";
+            loadingDiv.innerHTML = `<p><br>Generating image...</p><img src="../assets/icons/spinner-ring.svg">`;
 
             if (!apiKey || !prompt || !model) {
                 resultDiv.innerHTML = "All fields are required.";
