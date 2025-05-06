@@ -287,7 +287,7 @@
 
 
 
-            loadingDiv.innerHTML = "<p><br>Generating response...</p>";
+            loadingDiv.innerHTML = `<p><br>Generating response...</p><img src="../assets/icons/spinner-ring.svg">`;
 
             if (!apiKey || !prompt || !model) {
                 resultDiv.innerHTML = "All fields are required.";
