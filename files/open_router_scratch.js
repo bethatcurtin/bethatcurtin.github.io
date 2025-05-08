@@ -20,18 +20,18 @@
                     {
                         opcode: 'setApiKey',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set API key (chat) to [KEY]',
+                        text: 'Paste TEXT KEY: [KEY]',
                         arguments: {
                             KEY: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'sk-or-v1-YourAPIKeyHere'
+                                defaultValue: 'sk-or-v1-xxxxxx'
                             }
                         }
                     },
                     {
                         opcode: 'setSystemPrompt',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set system prompt to [PROMPT]',
+                        text: 'Set system prompt: [PROMPT]',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
@@ -42,7 +42,7 @@
                     {
                         opcode: 'setTemperature',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set temperature to [TEMP]',
+                        text: 'Set temperature: [TEMP]',
                         arguments: {
                             TEMP: {
                                 type: Scratch.ArgumentType.NUMBER,
@@ -53,7 +53,7 @@
                     {
                         opcode: 'setModelId',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set model ID to [MODEL]',
+                        text: 'Select Model: [MODEL]',
                         arguments: {
 
 
@@ -66,7 +66,7 @@
                     {
                         opcode: 'askOpenRouter',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'ask OpenRouter (model) [PROMPT]',
+                        text: 'Send Prompt: "[PROMPT]" to model',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
