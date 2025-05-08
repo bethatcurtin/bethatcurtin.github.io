@@ -94,7 +94,7 @@
 
         setTemperature(args) {
             const temp = parseFloat(args.TEMP);
-            if (!isNaN(temp) && temp >= 0 && temp <= 1) {
+            if (!isNaN(temp) && temp >= 0 && temp <= 2) {
                 this.temperature = temp;
             }
         }
