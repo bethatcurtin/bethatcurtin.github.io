@@ -86,7 +86,7 @@
 
         async generateImage(args) {
             if (!this.apiKeyHF) {
-                return 'API key not set!';
+                return 'IMAGE KEY not set!';
             }
             const models_aliases = {
                 "AuraFlow-v0.3": {
