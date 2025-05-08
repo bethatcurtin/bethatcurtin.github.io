@@ -6,7 +6,7 @@
     class hfApiImages {
         constructor() {
             this.apiKeyHF = '';
-            this.modelIdHF = 'AuraFlow-v0.3'; // Default model
+            this.modelIdHF = 'FLUX.1-schnell'; // Default model
             this.imageSize = 100;
         }
 
@@ -65,7 +65,7 @@
                     MODELS_MENU: {
                         acceptReporters: true,
                         // items: ['AuraFlow-v0.3', 'FLUX.1-dev', 'FLUX.1-schnell', 'HiDream-I1-Dev', 'HiDream-I1-Fast', 'HiDream-I1-Full', 'stable-diffusion-3.5-large', 'stable-diffusion-3.5-large-turbo', 'stable-diffusion-3.5-medium']
-                        items: ['AuraFlow-v0.3',  'FLUX.1-schnell',  'HiDream-I1-Fast', 'stable-diffusion-3.5-large-turbo']
+                        items: [ 'FLUX.1-schnell', 'AuraFlow-v0.3',  'HiDream-I1-Fast', 'stable-diffusion-3.5-large-turbo']
                     }
                 }
             };
