@@ -125,7 +125,15 @@
                         max_tokens: 100
                     })
                 });
-
+                console.log(JSON.stringify({
+                        model: this.modelId,
+                        messages: [
+                            { role: 'system', content: this.systemPrompt },
+                            { role: 'user', content: args.PROMPT }
+                        ],
+                        temperature: this.temperature,
+                        max_tokens: 100
+                    }))
                 if (!response.ok) {
                     return `Error: ${response.status}`;
                 }
