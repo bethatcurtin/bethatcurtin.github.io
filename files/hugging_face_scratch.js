@@ -19,18 +19,18 @@
                     {
                         opcode: 'setApiKeyHF',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set API key (hf) to [KEY_HF]',
+                        text: 'Paste IMAGE KEY to [KEY_HF]',
                         arguments: {
                             KEY_HF: {
                                 type: Scratch.ArgumentType.STRING,
-                                defaultValue: 'sk-HFAPIKeyHere'
+                                defaultValue: 'hf_xxxxxx'
                             }
                         }
                     },
                     {
                         opcode: 'setModelIdHF',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'set model ID to [MODEL_HF]',
+                        text: 'Select Model: [MODEL_HF]',
                         arguments: {
                             MODEL_HF: {
                                 type: Scratch.ArgumentType.STRING,
@@ -41,7 +41,7 @@
                     {
                         opcode: 'generateImage',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'generate image for [DESCRIPTION]',
+                        text: 'Generate image of: [DESCRIPTION]',
                         arguments: {
                             DESCRIPTION: {
                                 type: Scratch.ArgumentType.STRING,
@@ -52,11 +52,11 @@
                     {
                         opcode: 'setImageSize',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Set size [SIZE]',
+                        text: 'Set size: [SIZE]',
                         arguments: {
                             SIZE: {
                                 type: Scratch.ArgumentType.NUMBER,
-                                defaultValue: 200
+                                defaultValue: 150
                             }
                         }
                     }
@@ -149,7 +149,7 @@
 
                 const data = await response.json();
                 // console.log(return_html)
-                const return_html = `<img src="${data.images[0].url}" alt="generated image" width="${this.imageSize}" height="${this.imageSize}">`
+                const return_html = `<img src="${data.images[0].url}" alt="generated image" width="${this.imageSize}">`
                 console.log(return_html)
                 return return_html || 'Image generation failed';
 
