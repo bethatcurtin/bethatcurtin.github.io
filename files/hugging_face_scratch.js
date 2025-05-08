@@ -48,18 +48,18 @@
                                 defaultValue: 'A cute cat wearing a hat'
                             }
                         }
-                    },
-                    {
-                        opcode: 'setImageSize',
-                        blockType: Scratch.BlockType.COMMAND,
-                        text: 'Set size: [SIZE]',
-                        arguments: {
-                            SIZE: {
-                                type: Scratch.ArgumentType.NUMBER,
-                                defaultValue: 150
-                            }
-                        }
                     }
+                    // {
+                    //     opcode: 'setImageSize',
+                    //     blockType: Scratch.BlockType.COMMAND,
+                    //     text: 'Set size: [SIZE]',
+                    //     arguments: {
+                    //         SIZE: {
+                    //             type: Scratch.ArgumentType.NUMBER,
+                    //             defaultValue: 150
+                    //         }
+                    //     }
+                    // }
                 ],
                 menus: {
                     MODELS_MENU: {
@@ -78,9 +78,9 @@
         setModelIdHF(args) {
             this.modelIdHF = args.MODEL_HF;
         }
-        setImageSize(args) {
-            this.imageSize = args.SIZE;
-        }
+        // setImageSize(args) {
+        //     this.imageSize = args.SIZE;
+        // }
 
 
 
