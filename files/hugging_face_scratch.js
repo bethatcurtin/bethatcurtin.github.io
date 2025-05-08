@@ -19,7 +19,7 @@
                     {
                         opcode: 'setApiKeyHF',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Paste IMAGE KEY to [KEY_HF]',
+                        text: 'Paste IMAGE KEY: [KEY_HF]',
                         arguments: {
                             KEY_HF: {
                                 type: Scratch.ArgumentType.STRING,
