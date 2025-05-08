@@ -149,7 +149,8 @@
 
                 const data = await response.json();
                 // console.log(return_html)
-                const return_html = `<img src="${data.images[0].url}" alt="generated image" width="${this.imageSize}">`
+                // const return_html = `<img src="${data.images[0].url}" alt="generated image" width="${this.imageSize}">`
+                const return_html = `<img src="${data.images[0].url}" alt="generated image" width="95%">`
                 console.log(return_html)
                 return return_html || 'Image generation failed';
 
