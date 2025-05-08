@@ -20,7 +20,7 @@
                     {
                         opcode: 'setApiKey',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Paste TEXT KEY: [KEY]',
+                        text: 'Set TEXT KEY: [KEY]',
                         arguments: {
                             KEY: {
                                 type: Scratch.ArgumentType.STRING,
