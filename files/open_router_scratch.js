@@ -132,7 +132,7 @@
                             { role: 'user', content: args.PROMPT }
                         ],
                         temperature: this.temperature,
-                        max_tokens: 100
+                        max_tokens: 300
                     }))
                 if (!response.ok) {
                     return `Error: ${response.status}`;
