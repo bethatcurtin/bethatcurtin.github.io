@@ -131,6 +131,7 @@
                 }
 
                 const data = await response.json();
+                console.log(data)
                 return data.choices?.[0]?.message?.content || 'No response';
             } catch (error) {
                 return 'Request failed';
