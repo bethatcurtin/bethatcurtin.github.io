@@ -105,7 +105,7 @@
 
         async askOpenRouter(args) {
             if (!this.apiKey) {
-                return 'API key not set!';
+                return 'TEXT KEY not set!';
             }
 
             try {
