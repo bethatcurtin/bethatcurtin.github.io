@@ -126,6 +126,7 @@
         async function fetchModelInfo() {
             const model = document.getElementById('model').value;
             const hfId = models_aliases[model]?.hfId;
+            const providerId = models_aliases[model]?.providerId;
 
             const resultDiv = document.getElementById('result_model_info');
 
@@ -136,29 +137,11 @@
 
             resultDiv.innerHTML = 'Loading...';
 
-            try {
-                const response = await fetch(`https://huggingface.co/api/models?id=${hfId}`);
-                console.log(model)
-                console.log(hfId)
-                const data = await response.json();
-
-                if (!Array.isArray(data) || data.length === 0) {
-                    resultDiv.innerHTML = 'No model info found.';
-                    return;
-                }
-
-                const modelInfo = data[0];
+            const info = await return_model_info(providerId)
+            
                 resultDiv.innerHTML = `<h3>Model Information</h3>
   <div class="field"><strong>Model Name:</strong> ${hfId}</div>
-  <div class="field"><strong>Model ID:</strong> ${modelInfo.id}</div>
-  <div class="field"><strong>Created At:</strong> ${new Date(modelInfo.createdAt).toLocaleString()}</div>
-  <div class="field"><strong>Downloads:</strong> ${modelInfo.downloads.toLocaleString()}</div>
-  <div class="field"><strong>Likes:</strong> ${modelInfo.likes.toLocaleString()}</div>
-  <div class="field"><strong>Trending Score:</strong> ${modelInfo.trendingScore}</div>
-  <div class="field"><strong>Tags:</strong> ${modelInfo.tags.join(', ')}</div>
-  <div class="field"><strong>Library:</strong> ${modelInfo.library_name}</div>
-  <div class="field"><strong>Pipeline:</strong> ${modelInfo.pipeline_tag}</div>
-`;
+  <div class="field"><strong>Model Info:</strong> ${info}</div>`;
             } catch (error) {
                 console.error(error);
                 resultDiv.innerHTML = 'Error fetching model info.';
@@ -233,6 +216,206 @@
                 chatWindow.scrollTop = chatWindow.scrollHeight;
 
                 // resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p><pre>${JSON.stringify(result, null, 4)}</pre>`;
+            }
+        }
+        async function return_model_info(model_name) {
+
+            const model_info = {
+                "model_data": {
+                    "fal-ai/aura-flow": {
+                        "info": "AuraFlow v0.3 is an open-source flow-based text-to-image generation model that achieves state-of-the-art results on GenEval. The model is currently in beta.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/diffusion-edge": {
+                        "info": "Diffusion based high quality edge detection",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/dreamshaper": {
+                        "info": "Dreamshaper model.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fast-fooocus-sdxl": {
+                        "info": "Fooocus extreme speed mode as a standalone app.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fast-fooocus-sdxl/image-to-image": {
+                        "info": "Fooocus extreme speed mode as a standalone app.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fast-lcm-diffusion": {
+                        "info": "Run SDXL at the speed of light",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fast-lightning-sdxl": {
+                        "info": "Run SDXL at the speed of light",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fast-sdxl": {
+                        "info": "Run SDXL at the speed of light",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fast-sdxl-controlnet-canny": {
+                        "info": "Generate Images with ControlNet.",
+                        "unit_price": 0,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/flowedit": {
+                        "info": "The model provides you high quality image editing capabilities.",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/flux/dev": {
+                        "info": "FLUX.1 {dev} is a 12 billion parameter flow transformer that generates high-quality images from text. It is suitable for personal and commercial use.",
+                        "unit_price": 0.025,
+                        "unit": "megapixel",
+                        "tags": "Inference, Commercial use, Streaming"
+                    },
+                    "fal-ai/flux/schnell": {
+                        "info": "FLUX.1 {schnell} is a 12 billion parameter flow transformer that generates high-quality images from text in 1 to 4 steps, suitable for personal and commercial use.",
+                        "unit_price": 0.003,
+                        "unit": "megapixel",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fooocus": {
+                        "info": "Default parameters with automated optimizations and quality improvements.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fooocus/image-prompt": {
+                        "info": "Default parameters with automated optimizations and quality improvements.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fooocus/inpaint": {
+                        "info": "Default parameters with automated optimizations and quality improvements.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/fooocus/upscale-or-vary": {
+                        "info": "Default parameters with automated optimizations and quality improvements.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/hidream-i1-fast": {
+                        "info": "HiDream-I1 fast is a new open-source image generative foundation model with 17B parameters that achieves state-of-the-art image generation quality within 16 steps.",
+                        "unit_price": 0.01,
+                        "unit": "megapixel",
+                        "tags": "Inference, Commercial use, Streaming"
+                    },
+                    "fal-ai/hyper-sdxl": {
+                        "info": "Hyper-charge SDXL's performance and creativity.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/illusion-diffusion": {
+                        "info": "Create illusions conditioned on image.",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/janus": {
+                        "info": "DeepSeek Janus-Pro is a novel text-to-image model that unifies multimodal understanding and generation through an autoregressive framework",
+                        "unit_price": 0,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/kolors": {
+                        "info": "Photorealistic Text-to-Image",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/layer-diffusion": {
+                        "info": "SDXL with an alpha channel.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/lcm": {
+                        "info": "Produce high-quality images with minimal inference steps.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/lightning-models": {
+                        "info": "Collection of SDXL Lightning models.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/lora": {
+                        "info": "Run Any Stable Diffusion model with customizable LoRA weights.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/pixart-sigma": {
+                        "info": "Weak-to-Strong Training of Diffusion Transformer for 4K Text-to-Image Generation",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/playground-v25": {
+                        "info": "State-of-the-art open-source model in aesthetic quality",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/realistic-vision": {
+                        "info": "Generate realistic images.",
+                        "unit_price": 0.00111,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/sana": {
+                        "info": "Sana can synthesize high-resolution, high-quality images with strong text-image alignment at a remarkably fast speed, with the ability to generate 4K images in less than a second.",
+                        "unit_price": 0.001,
+                        "unit": "megapixel",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/stable-diffusion-v15": {
+                        "info": "Stable Diffusion v1.5",
+                        "unit_price": 0.000575,
+                        "unit": "compute second",
+                        "tags": "Inference, Commercial use"
+                    },
+                    "fal-ai/stable-diffusion-v35-medium": {
+                        "info": "Stable Diffusion 3.5 Medium is a Multimodal Diffusion Transformer (MMDiT) text-to-image model that features improved performance in image quality, typography, complex prompt understanding, and resource-efficiency.",
+                        "unit_price": 0.02,
+                        "unit": "megapixel",
+                        "tags": "Inference, Commercial use"
+                    }
+                }
+            }
+
+            const model = model_info.model_data[model_name];
+            if (model) {
+                return model.info;
+            } else {
+                throw new Error(`Model "${model_name}" not found.`);
             }
         }
     </script>
