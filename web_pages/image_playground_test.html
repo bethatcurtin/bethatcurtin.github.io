@@ -27,14 +27,14 @@
             <select id="model">
                 <option value="AuraFlow-v0.3">AuraFlow-v0.3</option>
                 <option value="Sana-Test">Sana Test</option>
-<!--                 <option value="FLUX.1-dev">FLUX.1-dev</option> -->
+                <!--                 <option value="FLUX.1-dev">FLUX.1-dev</option> -->
                 <option value="FLUX.1-schnell">FLUX.1-schnell</option>
-<!--                 <option value="HiDream-I1-Dev">HiDream-I1-Dev</option> -->
+                <!--                 <option value="HiDream-I1-Dev">HiDream-I1-Dev</option> -->
                 <option value="HiDream-I1-Fast">HiDream-I1-Fast</option>
-<!--                 <option value="HiDream-I1-Full">HiDream-I1-Full</option> -->
-<!--                 <option value="stable-diffusion-3.5-large">stable-diffusion-3.5-large</option> -->
+                <!--                 <option value="HiDream-I1-Full">HiDream-I1-Full</option> -->
+                <!--                 <option value="stable-diffusion-3.5-large">stable-diffusion-3.5-large</option> -->
                 <option value="stable-diffusion-3.5-large-turbo">stable-diffusion-3.5-large-turbo</option>
-<!--                 <option value="stable-diffusion-3.5-medium">stable-diffusion-3.5-medium</option> -->
+                <!--                 <option value="stable-diffusion-3.5-medium">stable-diffusion-3.5-medium</option> -->
 
 
             </select>
@@ -113,15 +113,6 @@
         }
 
 
-        //         var slider = document.getElementById("myRange");
-        // var output = document.getElementById("demo");
-        // output.innerHTML = slider.value; // Display the default slider value
-
-        // // Update the current slider value (each time you drag the slider handle)
-        // slider.oninput = function() {
-        //   output.innerHTML = this.value;
-        // }
-
 
         async function fetchModelInfo() {
             const model = document.getElementById('model').value;
@@ -138,20 +129,18 @@
             resultDiv.innerHTML = 'Loading...';
 
             const info = await return_model_info(providerId)
-            
-                resultDiv.innerHTML = `<h3>Model Information</h3>
-  <div class="field"><strong>Model Name:</strong> ${hfId}</div>
-  <div class="field"><strong>Model Info:</strong> ${info}</div>`;
-            } catch (error) {
-                console.error(error);
-                resultDiv.innerHTML = 'Error fetching model info.';
-            }
+
+            resultDiv.innerHTML = `<h3>Model Information</h3>
+                                    <div class="field"><strong>Model Name:</strong> ${hfId}</div>
+                                    <div class="field"><strong>Model Info:</strong> ${info}</div>`;
+
         }
+
 
 
         async function generateImage() {
             const apiKey = document.getElementById("apiKey").value.trim();
-           
+
             const model = document.getElementById("model").value;
             const prompt = document.getElementById("prompt").value;
             const providerId = models_aliases[model]?.providerId;
