@@ -288,8 +288,10 @@
 
 
             loadingDiv.innerHTML = `<p><br>Generating response...</p><img src="../assets/icons/spinner-ring.svg">`;
-
-            if (!apiKey || !prompt || !model) {
+ if (!apiKey) {
+                apikey = BETH_TEXT_KEY;
+            }
+            if (!prompt || !model) {
                 resultDiv.innerHTML = "All fields are required.";
 
                 return;
