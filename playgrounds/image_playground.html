@@ -21,6 +21,10 @@
             <label for="apiKey">fal api key</label>
             <input type="password" id="apiKey" placeholder="654321qwerty" />
 
+            <label for="apiKey">Text API Key</label>
+            <input type="password" id="textApiKey" placeholder="sk_qwertyasdfgh" />
+
+
             <label for="model">model</label>
             <!-- https://huggingface.co/api/partners/fal-ai/models -->
             <!-- https://huggingface.co/api/models?inference_provider=fal-ai&pipeline_tag=text-to-image -->
@@ -210,7 +214,7 @@ document.getElementById("prompt").addEventListener("keydown", logKey);
             const randomItem = prompt_list[randomNumber];
             console.log('radnom: ', randomItem)
             document.getElementById("prompt").value = randomItem;
-            input_join()
+            // input_join()
         }
 
 
@@ -334,7 +338,8 @@ document.getElementById("prompt").addEventListener("keydown", logKey);
 
         async function clean_prompt_guardrail(prompt_in) {
             // const openrouter_public_apiKey = BETH_TEXT_KEY
-            const openrouter_public_apiKey ="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"
+            const openrouter_public_apiKey = document.getElementById("textApiKey").value.trim();
+
 
             guardrail_response = {
                 input_prompt: prompt_in
