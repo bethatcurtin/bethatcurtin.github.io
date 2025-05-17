@@ -1,9 +1,11 @@
 {
+   
     "fal-ai/aura-flow": {
         "model": "fal-ai/aura-flow",
         "friendly_name": "Aura Flow",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "AuraFlow v0.3 is an open-source flow-based text-to-image generation model that achieves state-of-the-art results on GenEval. The model is currently in beta.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -18,8 +20,9 @@
     "fal-ai/bria/text-to-image/base": {
         "model": "fal-ai/bria/text-to-image/base",
         "friendly_name": "Bria | Text To Image | Base",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Bria's Text-to-Image model, trained exclusively on licensed data for safe and risk-free commercial use. Available also as source code and weights. For access to weights: https://bria.ai/contact-us",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.04",
         "unit": "generation",
         "inputs": [
@@ -39,8 +42,9 @@
     "fal-ai/bria/text-to-image/fast": {
         "model": "fal-ai/bria/text-to-image/fast",
         "friendly_name": "Bria | Text To Image | Fast",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Bria's Text-to-Image model with perfect harmony of latency and quality. Trained exclusively on licensed data for safe and risk-free commercial use. Available also as source code and weights. For access to weights: https://bria.ai/contact-us",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.028",
         "unit": "generation",
         "inputs": [
@@ -60,8 +64,9 @@
     "fal-ai/bria/text-to-image/hd": {
         "model": "fal-ai/bria/text-to-image/hd",
         "friendly_name": "Bria | Text To Image | Hd",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Bria's Text-to-Image model for HD images. Trained exclusively on licensed data for safe and risk-free commercial use. Available also as source code and weights. For access to weights: https://bria.ai/contact-us",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.04",
         "unit": "generation",
         "inputs": [
@@ -81,8 +86,9 @@
     "fal-ai/cogview4": {
         "model": "fal-ai/cogview4",
         "friendly_name": "Cogview4",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Generate high quality images from text prompts using CogView4. Longer text prompts will result in better quality images.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.1",
         "unit": "megapixel",
         "inputs": [
@@ -101,8 +107,9 @@
     "fal-ai/diffusion-edge": {
         "model": "fal-ai/diffusion-edge",
         "friendly_name": "Diffusion Edge",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "Diffusion based high quality edge detection",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -112,8 +119,9 @@
     "fal-ai/dreamshaper": {
         "model": "fal-ai/dreamshaper",
         "friendly_name": "Dreamshaper",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Dreamshaper model.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -137,8 +145,9 @@
     "fal-ai/fast-fooocus-sdxl": {
         "model": "fal-ai/fast-fooocus-sdxl",
         "friendly_name": "Fast Fooocus Sdxl",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Fooocus extreme speed mode as a standalone app.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -161,8 +170,9 @@
     "fal-ai/fast-fooocus-sdxl/image-to-image": {
         "model": "fal-ai/fast-fooocus-sdxl/image-to-image",
         "friendly_name": "Fast Fooocus Sdxl | Image To Image",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Fooocus extreme speed mode as a standalone app.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -187,8 +197,9 @@
     "fal-ai/fast-lcm-diffusion": {
         "model": "fal-ai/fast-lcm-diffusion",
         "friendly_name": "Fast Lcm Diffusion",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Run SDXL at the speed of light",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -212,8 +223,9 @@
     "fal-ai/fast-lightning-sdxl": {
         "model": "fal-ai/fast-lightning-sdxl",
         "friendly_name": "Fast Lightning Sdxl",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Run SDXL at the speed of light",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -235,8 +247,9 @@
     "fal-ai/fast-sdxl": {
         "model": "fal-ai/fast-sdxl",
         "friendly_name": "Fast Sdxl",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Run SDXL at the speed of light",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -260,8 +273,9 @@
     "fal-ai/fast-sdxl-controlnet-canny": {
         "model": "fal-ai/fast-sdxl-controlnet-canny",
         "friendly_name": "Fast Sdxl Controlnet Canny",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Generate Images with ControlNet.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0",
         "unit": "compute second",
         "inputs": [
@@ -284,8 +298,9 @@
     "fal-ai/f-lite/standard": {
         "model": "fal-ai/f-lite/standard",
         "friendly_name": "F Lite | Standard",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "F Lite is a 10B parameter diffusion model created by Fal and Freepik, trained exclusively on copyright-safe and SFW content.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.025",
         "unit": "megapixel",
         "inputs": [
@@ -303,8 +318,9 @@
     "fal-ai/f-lite/texture": {
         "model": "fal-ai/f-lite/texture",
         "friendly_name": "F Lite | Texture",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "F Lite is a 10B parameter diffusion model created by Fal and Freepik, trained exclusively on copyright-safe and SFW content. This is a high texture density variant of the model.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.025",
         "unit": "megapixel",
         "inputs": [
@@ -322,8 +338,9 @@
     "fal-ai/flowedit": {
         "model": "fal-ai/flowedit",
         "friendly_name": "Flowedit",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "The model provides you high quality image editing capabilities.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -342,8 +359,9 @@
     "fal-ai/flux/dev": {
         "model": "fal-ai/flux/dev",
         "friendly_name": "Flux | Dev",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "FLUX.1 [dev] is a 12 billion parameter flow transformer that generates high-quality images from text. It is suitable for personal and commercial use.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.025",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -360,8 +378,9 @@
     "fal-ai/flux/schnell": {
         "model": "fal-ai/flux/schnell",
         "friendly_name": "Flux | Schnell",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "FLUX.1 [schnell] is a 12 billion parameter flow transformer that generates high-quality images from text in 1 to 4 steps, suitable for personal and commercial use.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.003",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -377,8 +396,9 @@
     "fal-ai/flux-control-lora-canny": {
         "model": "fal-ai/flux-control-lora-canny",
         "friendly_name": "Flux Control Lora Canny",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "FLUX Control LoRA Canny is a high-performance endpoint that uses a control image to transfer structure to the generated image, using a Canny edge map.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.04",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -399,8 +419,9 @@
     "fal-ai/flux-control-lora-depth": {
         "model": "fal-ai/flux-control-lora-depth",
         "friendly_name": "Flux Control Lora Depth",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "FLUX Control LoRA Depth is a high-performance endpoint that uses a control image to transfer structure to the generated image, using a depth map.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.04",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -421,8 +442,9 @@
     "fal-ai/flux-general": {
         "model": "fal-ai/flux-general",
         "friendly_name": "Flux General",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "A versatile endpoint for the FLUX.1 [dev] model that supports multiple AI extensions including LoRA, ControlNet conditioning, and IP-Adapter integration, enabling comprehensive control over image generation through various guidance methods.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.075",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -458,8 +480,9 @@
     "fal-ai/flux-lora": {
         "model": "fal-ai/flux-lora",
         "friendly_name": "Flux Lora",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Super fast endpoint for the FLUX.1 [dev] model with LoRA support, enabling rapid and high-quality image generation using pre-trained LoRA adaptations for personalization, specific styles, brand identities, and product-specific outputs.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.035",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -478,8 +501,9 @@
     "fal-ai/flux-lora/inpainting": {
         "model": "fal-ai/flux-lora/inpainting",
         "friendly_name": "Flux Lora | Inpainting",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Super fast endpoint for the FLUX.1 [dev] inpainting model with LoRA support, enabling rapid and high-quality image inpaingting using pre-trained LoRA adaptations for personalization, specific styles, brand identities, and product-specific outputs.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.035",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -501,8 +525,9 @@
     "fal-ai/flux-pro/new": {
         "model": "fal-ai/flux-pro/new",
         "friendly_name": "Flux Pro | New",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "FLUX.1 [pro] new is an accelerated version of FLUX.1 [pro], maintaining professional-grade image quality while delivering significantly faster generation speeds.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.05",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -520,8 +545,9 @@
     "fal-ai/flux-pro/v1.1": {
         "model": "fal-ai/flux-pro/v1.1",
         "friendly_name": "Flux Pro | V1.1",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "FLUX1.1 [pro] is an enhanced version of FLUX.1 [pro], improved image generation capabilities, delivering superior composition, detail, and artistic fidelity compared to its predecessor.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.04",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -538,8 +564,9 @@
     "fal-ai/flux-pro/v1.1-ultra-finetuned": {
         "model": "fal-ai/flux-pro/v1.1-ultra-finetuned",
         "friendly_name": "Flux Pro | V1.1 Ultra Finetuned",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "FLUX1.1 [pro] ultra fine-tuned is the newest version of FLUX1.1 [pro] with a fine-tuned LoRA, maintaining professional-grade image quality while delivering up to 2K resolution with improved photo realism.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.07",
         "unit": "imageImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -559,8 +586,9 @@
     "fal-ai/flux-subject": {
         "model": "fal-ai/flux-subject",
         "friendly_name": "Flux Subject",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Super fast endpoint for the FLUX.1 [schnell] model with subject input capabilities, enabling rapid and high-quality image generation for personalization, specific styles, brand identities, and product-specific outputs.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.04",
         "unit": "megapixelImages are billed by rounding up to the nearest megapixel",
         "inputs": [
@@ -579,8 +607,9 @@
     "fal-ai/fooocus": {
         "model": "fal-ai/fooocus",
         "friendly_name": "Fooocus",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Default parameters with automated optimizations and quality improvements.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -611,8 +640,9 @@
     "fal-ai/fooocus/image-prompt": {
         "model": "fal-ai/fooocus/image-prompt",
         "friendly_name": "Fooocus | Image Prompt",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Default parameters with automated optimizations and quality improvements.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -649,8 +679,9 @@
     "fal-ai/fooocus/inpaint": {
         "model": "fal-ai/fooocus/inpaint",
         "friendly_name": "Fooocus | Inpaint",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Default parameters with automated optimizations and quality improvements.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -691,8 +722,9 @@
     "fal-ai/fooocus/upscale-or-vary": {
         "model": "fal-ai/fooocus/upscale-or-vary",
         "friendly_name": "Fooocus | Upscale Or Vary",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Default parameters with automated optimizations and quality improvements.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -723,8 +755,9 @@
     "fal-ai/hidream-i1-dev": {
         "model": "fal-ai/hidream-i1-dev",
         "friendly_name": "Hidream I1 Dev",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "HiDream-I1 dev is a new open-source image generative foundation model with 17B parameters that achieves state-of-the-art image generation quality within seconds.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.03",
         "unit": "megapixel",
         "inputs": [
@@ -742,8 +775,9 @@
     "fal-ai/hidream-i1-fast": {
         "model": "fal-ai/hidream-i1-fast",
         "friendly_name": "Hidream I1 Fast",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "HiDream-I1 fast is a new open-source image generative foundation model with 17B parameters that achieves state-of-the-art image generation quality within 16 steps.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.01",
         "unit": "megapixel",
         "inputs": [
@@ -761,8 +795,9 @@
     "fal-ai/hyper-sdxl": {
         "model": "fal-ai/hyper-sdxl",
         "friendly_name": "Hyper Sdxl",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Hyper-charge SDXL's performance and creativity.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -784,8 +819,9 @@
     "fal-ai/ideogram/v2": {
         "model": "fal-ai/ideogram/v2",
         "friendly_name": "Ideogram | V2",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Generate high-quality images, posters, and logos with Ideogram V2. Features exceptional typography handling and realistic outputs optimized for commercial and creative use.",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.08",
         "unit": "image",
         "inputs": [
@@ -800,8 +836,9 @@
     "fal-ai/ideogram/v2/turbo": {
         "model": "fal-ai/ideogram/v2/turbo",
         "friendly_name": "Ideogram | V2 | Turbo",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Accelerated image generation with Ideogram V2 Turbo. Create high-quality visuals, posters, and logos with enhanced speed while maintaining Ideogram's signature quality.",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.05",
         "unit": "image",
         "inputs": [
@@ -816,8 +853,9 @@
     "fal-ai/ideogram/v2a": {
         "model": "fal-ai/ideogram/v2a",
         "friendly_name": "Ideogram | V2A",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "Generate high-quality images, posters, and logos with Ideogram V2A. Features exceptional typography handling and realistic outputs optimized for commercial and creative use.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.04",
         "unit": "image",
         "inputs": [
@@ -831,8 +869,9 @@
     "fal-ai/ideogram/v2a/turbo": {
         "model": "fal-ai/ideogram/v2a/turbo",
         "friendly_name": "Ideogram | V2A | Turbo",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "Accelerated image generation with Ideogram V2A Turbo. Create high-quality visuals, posters, and logos with enhanced speed while maintaining Ideogram's signature quality.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.025",
         "unit": "image",
         "inputs": [
@@ -846,8 +885,9 @@
     "fal-ai/illusion-diffusion": {
         "model": "fal-ai/illusion-diffusion",
         "friendly_name": "Illusion Diffusion",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Create illusions conditioned on image.",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -867,8 +907,9 @@
     "fal-ai/imagen3": {
         "model": "fal-ai/imagen3",
         "friendly_name": "Imagen3",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Imagen3 is a high-quality text-to-image model that generates realistic images from text prompts.",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.05",
         "unit": "image",
         "inputs": [
@@ -882,8 +923,9 @@
     "fal-ai/imagen3/fast": {
         "model": "fal-ai/imagen3/fast",
         "friendly_name": "Imagen3 | Fast",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Imagen3 Fast is a high-quality text-to-image model that generates realistic images from text prompts.",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.025",
         "unit": "image",
         "inputs": [
@@ -897,8 +939,9 @@
     "fal-ai/janus": {
         "model": "fal-ai/janus",
         "friendly_name": "Janus",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "DeepSeek Janus-Pro is a novel text-to-image model that unifies multimodal understanding and generation through an autoregressive framework",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0",
         "unit": "compute second",
         "inputs": [
@@ -914,8 +957,9 @@
     "fal-ai/kolors": {
         "model": "fal-ai/kolors",
         "friendly_name": "Kolors",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Photorealistic Text-to-Image",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -935,8 +979,9 @@
     "fal-ai/layer-diffusion": {
         "model": "fal-ai/layer-diffusion",
         "friendly_name": "Layer Diffusion",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "SDXL with an alpha channel.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -951,8 +996,9 @@
     "fal-ai/lcm": {
         "model": "fal-ai/lcm",
         "friendly_name": "Lcm",
-        "negative_prompt": true,
-        "safety_checker": false,
+        "description": "Produce high-quality images with minimal inference steps.",
+        "negative_prompt": "true",
+        "safety_checker": "false",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -979,8 +1025,9 @@
     "fal-ai/lightning-models": {
         "model": "fal-ai/lightning-models",
         "friendly_name": "Lightning Models",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Collection of SDXL Lightning models.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1005,8 +1052,9 @@
     "fal-ai/lora": {
         "model": "fal-ai/lora",
         "friendly_name": "Lora",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Run Any Stable Diffusion model with customizable LoRA weights.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1052,8 +1100,9 @@
     "fal-ai/luma-photon": {
         "model": "fal-ai/luma-photon",
         "friendly_name": "Luma Photon",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "Generate images from your prompts using Luma Photon. Photon is the most creative, personalizable, and intelligent visual models for creatives, bringing a step-function change in the cost of high-quality image generation.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.019",
         "unit": "megapixel",
         "inputs": [
@@ -1064,8 +1113,9 @@
     "fal-ai/luma-photon/flash": {
         "model": "fal-ai/luma-photon/flash",
         "friendly_name": "Luma Photon | Flash",
-        "negative_prompt": false,
-        "safety_checker": false,
+        "description": "Generate images from your prompts using Luma Photon Flash. Photon Flash is the most creative, personalizable, and intelligent visual models for creatives, bringing a step-function change in the cost of high-quality image generation.",
+        "negative_prompt": "false",
+        "safety_checker": "false",
         "unit_price": "0.005",
         "unit": "megapixel",
         "inputs": [
@@ -1076,8 +1126,9 @@
     "fal-ai/lumina-image/v2": {
         "model": "fal-ai/lumina-image/v2",
         "friendly_name": "Lumina Image | V2",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Lumina-Image-2.0 is a 2 billion parameter flow-based diffusion transforer which features improved performance in image quality, typography, complex prompt understanding, and resource-efficiency.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.075",
         "unit": "megapixel",
         "inputs": [
@@ -1099,8 +1150,9 @@
     "fal-ai/pixart-sigma": {
         "model": "fal-ai/pixart-sigma",
         "friendly_name": "Pixart Sigma",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Weak-to-Strong Training of Diffusion Transformer for 4K Text-to-Image Generation",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -1120,8 +1172,9 @@
     "fal-ai/playground-v25": {
         "model": "fal-ai/playground-v25",
         "friendly_name": "Playground V25",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "State-of-the-art open-source model in aesthetic quality",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1143,8 +1196,9 @@
     "fal-ai/realistic-vision": {
         "model": "fal-ai/realistic-vision",
         "friendly_name": "Realistic Vision",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Generate realistic images.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1168,8 +1222,9 @@
     "fal-ai/sana": {
         "model": "fal-ai/sana",
         "friendly_name": "Sana",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Sana can synthesize high-resolution, high-quality images with strong text-image alignment at a remarkably fast speed, with the ability to generate 4K images in less than a second.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.001",
         "unit": "megapixel",
         "inputs": [
@@ -1189,8 +1244,9 @@
     "fal-ai/sana/sprint": {
         "model": "fal-ai/sana/sprint",
         "friendly_name": "Sana | Sprint",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Sana Sprint is a text-to-image model capable of generating 4K images with exceptional speed.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.0025",
         "unit": "megapixel",
         "inputs": [
@@ -1210,8 +1266,9 @@
     "fal-ai/sana/v1.5/1.6b": {
         "model": "fal-ai/sana/v1.5/1.6b",
         "friendly_name": "Sana | V1.5 | 1.6B",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Sana v1.5 1.6B is a lightweight text-to-image model that delivers 4K image generation with impressive efficiency.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.0075",
         "unit": "megapixel",
         "inputs": [
@@ -1231,8 +1288,9 @@
     "fal-ai/sana/v1.5/4.8b": {
         "model": "fal-ai/sana/v1.5/4.8b",
         "friendly_name": "Sana | V1.5 | 4.8B",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Sana v1.5 4.8B is a powerful text-to-image model that generates ultra-high quality 4K images with remarkable detail.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.01",
         "unit": "megapixel",
         "inputs": [
@@ -1252,8 +1310,9 @@
     "fal-ai/sdxl-controlnet-union": {
         "model": "fal-ai/sdxl-controlnet-union",
         "friendly_name": "Sdxl Controlnet Union",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "An efficent SDXL multi-controlnet text-to-image model.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1290,8 +1349,9 @@
     "fal-ai/stable-cascade": {
         "model": "fal-ai/stable-cascade",
         "friendly_name": "Stable Cascade",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Stable Cascade: Image generation on a smaller & cheaper latent space.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1311,8 +1371,9 @@
     "fal-ai/stable-cascade/sote-diffusion": {
         "model": "fal-ai/stable-cascade/sote-diffusion",
         "friendly_name": "Stable Cascade | Sote Diffusion",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Anime finetune of W�rstchen V3.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1332,8 +1393,9 @@
     "fal-ai/stable-diffusion-v15": {
         "model": "fal-ai/stable-diffusion-v15",
         "friendly_name": "Stable Diffusion V15",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Stable Diffusion v1.5",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.000575",
         "unit": "compute second",
         "inputs": [
@@ -1355,8 +1417,9 @@
     "fal-ai/stable-diffusion-v35-large": {
         "model": "fal-ai/stable-diffusion-v35-large",
         "friendly_name": "Stable Diffusion V35 Large",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Stable Diffusion 3.5 Large is a Multimodal Diffusion Transformer (MMDiT) text-to-image model that features improved performance in image quality, typography, complex prompt understanding, and resource-efficiency.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.065",
         "unit": "megapixel",
         "inputs": [
@@ -1378,8 +1441,9 @@
     "fal-ai/stable-diffusion-v35-medium": {
         "model": "fal-ai/stable-diffusion-v35-medium",
         "friendly_name": "Stable Diffusion V35 Medium",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Stable Diffusion 3.5 Medium is a Multimodal Diffusion Transformer (MMDiT) text-to-image model that features improved performance in image quality, typography, complex prompt understanding, and resource-efficiency.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.02",
         "unit": "megapixel",
         "inputs": [
@@ -1398,8 +1462,9 @@
     "fal-ai/stable-diffusion-v3-medium": {
         "model": "fal-ai/stable-diffusion-v3-medium",
         "friendly_name": "Stable Diffusion V3 Medium",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Stable Diffusion 3 Medium (Text to Image) is a Multimodal Diffusion Transformer (MMDiT) model that improves image quality, typography, prompt understanding, and efficiency.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.035",
         "unit": "image",
         "inputs": [
@@ -1418,8 +1483,9 @@
     "fal-ai/switti": {
         "model": "fal-ai/switti",
         "friendly_name": "Switti",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Switti is a scale-wise transformer for fast text-to-image generation that outperforms existing T2I AR models and competes with state-of-the-art T2I diffusion models while being faster than distilled diffusion models.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1442,8 +1508,9 @@
     "fal-ai/switti/512": {
         "model": "fal-ai/switti/512",
         "friendly_name": "Switti | 512",
-        "negative_prompt": true,
-        "safety_checker": true,
+        "description": "Switti is a scale-wise transformer for fast text-to-image generation that outperforms existing T2I AR models and competes with state-of-the-art T2I diffusion models while being faster than distilled diffusion models.",
+        "negative_prompt": "true",
+        "safety_checker": "true",
         "unit_price": "0.00111",
         "unit": "compute second",
         "inputs": [
@@ -1466,8 +1533,9 @@
     "rundiffusion-fal/juggernaut-flux/base": {
         "model": "rundiffusion-fal/juggernaut-flux/base",
         "friendly_name": "Rundiffusion Fal | Juggernaut Flux | Base",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Juggernaut Base Flux by RunDiffusion is a drop-in replacement for Flux [Dev] that delivers sharper details, richer colors, and enhanced realism, while instantly boosting LoRAs and LyCORIS with full compatibility.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.035",
         "unit": "megapixel",
         "inputs": [
@@ -1484,8 +1552,9 @@
     "rundiffusion-fal/juggernaut-flux/lightning": {
         "model": "rundiffusion-fal/juggernaut-flux/lightning",
         "friendly_name": "Rundiffusion Fal | Juggernaut Flux | Lightning",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Juggernaut Lightning Flux by RunDiffusion provides blazing-fast, high-quality images rendered at five times the speed of Flux. Perfect for mood boards and mass ideation, this model excels in both realism and prompt adherence.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.006",
         "unit": "megapixel",
         "inputs": [
@@ -1501,8 +1570,9 @@
     "rundiffusion-fal/juggernaut-flux/pro": {
         "model": "rundiffusion-fal/juggernaut-flux/pro",
         "friendly_name": "Rundiffusion Fal | Juggernaut Flux | Pro",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Juggernaut Pro Flux by RunDiffusion is the flagship Juggernaut model rivaling some of the most advanced image models available, often surpassing them in realism. It combines Juggernaut Base with RunDiffusion Photo and features enhancements like reduced background blurriness.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.055",
         "unit": "megapixel",
         "inputs": [
@@ -1519,8 +1589,9 @@
     "rundiffusion-fal/juggernaut-flux-lora": {
         "model": "rundiffusion-fal/juggernaut-flux-lora",
         "friendly_name": "Rundiffusion Fal | Juggernaut Flux Lora",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "Juggernaut Base Flux LoRA by RunDiffusion is a drop-in replacement for Flux [Dev] that delivers sharper details, richer colors, and enhanced realism to all your LoRAs and LyCORIS with full compatibility.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.045",
         "unit": "megapixel",
         "inputs": [
@@ -1539,8 +1610,9 @@
     "rundiffusion-fal/rundiffusion-photo-flux": {
         "model": "rundiffusion-fal/rundiffusion-photo-flux",
         "friendly_name": "Rundiffusion Fal | Rundiffusion Photo Flux",
-        "negative_prompt": false,
-        "safety_checker": true,
+        "description": "RunDiffusion Photo Flux provides insane realism. With this enhancer, textures and skin details burst to life, turning your favorite prompts into vivid, lifelike creations. Recommended to keep it at 0.65 to 0.80 weight. Supports resolutions up to 1536x1536.",
+        "negative_prompt": "false",
+        "safety_checker": "true",
         "unit_price": "0.045",
         "unit": "megapixel",
         "inputs": [
