@@ -166,6 +166,7 @@
                 <div>
                     <button onclick="generateCompletion()">Generate</button>
                     <button onclick="giveExample()">Give me an example</button>
+                    <button onclick="saveChat()">Save</button>
                 </div>
             </div>
             <div class="toggle_container">
@@ -190,6 +191,9 @@
 
         </div>
     </div>
+    <div id="result_logging"></div>
+    <div id="file_saved_ts">1716290942000</div>
+    <div id="last_output_ts">1716290942000</div>
 
 
     <script>
@@ -264,7 +268,9 @@
             data = await prompt_examples_list.json()
 
             console.log('Loaded JSON:', data);
+
             const prompt_list = data.text_prompt_examples;
+
             console.log('Loaded list:', prompt_list);
             console.log('size:', prompt_list.length);
 
@@ -276,8 +282,43 @@
         }
 
 
+        function log_ts(id) {
+            //id = div id
+            //file saved = file_saved_ts
+            //last output = last_output_ts
+            const ts_log = document.getElementById(id);
+            const ts = Date.now();
+            ts_log.innerHTML = ts;
 
 
+        }
+
+        function saveChat() {
+            const chatContent = document.getElementById('result_logging').innerText;
+            // const file_saved_log = document.getElementById('file_saved_ts');
+            const blob = new Blob([chatContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const apiKey = document.getElementById("apiKey").value.trim();
+
+            const ts = Date.now();
+
+            let key = apiKey;
+            const id = key.slice(-5);
+            ts_secs = Math.floor(ts / 1000);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `chat_id${id}_ts${ts_secs}.txt`;
+            a.click();
+
+            log_ts('file_saved_ts')
+            // file_saved_log.innerHTML=ts;
+
+
+
+            // Clean up
+            URL.revokeObjectURL(url);
+
+        }
 
 
 
@@ -376,21 +417,36 @@
             console.log(input)
 
 
-
-
-
-
-
             inputDiv.innerHTML = `<pre class="json_format">${JSON.stringify(input, null, 4)}</pre>`;
             return input
         }
 
+        function file_format_append(mode, content) {
+            //this keeps a record of the chat in the download file format
+            //mode is 'input' or 'output' or 'error'
 
+            const utcDate = new Date(Date.now());
+            const timestamp = utcDate.toTimeString()
+            console.log(timestamp);
+
+
+            const logs = document.getElementById("result_logging");
+            const add_log = document.createElement('div')
+            add_log.innerHTML = `### ${timestamp} ###
+${mode}:
+${content}
+
+
+`
+            logs.appendChild(add_log);
+
+            return
+        }
 
 
         async function generateCompletion() {
             const apiKey = document.getElementById("apiKey").value.trim();
-           
+
 
             const model = document.getElementById("model").value;
             const prompt = document.getElementById("prompt").value;
@@ -410,6 +466,7 @@
 
             newInput.innerHTML = `<div class="msg"><h3 class="input">User Input</h3><p>${input_send.prompt}</p></div>`;
             resultDiv.appendChild(newInput);
+            file_format_append('Input', `${input_send.prompt}`)
             const chatWindow = document.getElementById('chat-window');
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
@@ -451,8 +508,7 @@
 
 
                 const text_response = result.choices[0].text;
-                // const formattedText = text_response.replace(/\n\*\s+/g, '\n  • ').replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\*(.*?)\*/g, '<i>$1</i>').replace(/```/g, '<span style ="color: red";>');
-                // const formattedText = text_response.replace('\n', '<br>');
+      
 
                 const formattedText = marked.parse(text_response);
                 console.log(formattedText)
@@ -466,6 +522,12 @@
                 // const newResult = document.createElement('div');
                 // newResult.innerHTML = formattedText;
                 resultDiv.appendChild(newResult);
+                file_format_append('Output', `${model}
+${formattedText}
+
+id: ${response_id}
+finish_reason: ${finish_reason}`)
+                log_ts('last_output_ts')
 
                 const chatWindow = document.getElementById('chat-window');
                 chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -477,16 +539,45 @@
                 return result;
             } catch (error) {
                 const newResult = document.createElement('div');
-                newResult.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Prompt: "${prompt}</p>"`;
+                // Construct the error message
+                newResult.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Prompt: "${prompt}"</p>`;
                 resultDiv.appendChild(newResult);
+
+                // Construct the logfile's data and call the function to append to the log data
+                file_format_append('Error', `Error: ${error.message}, Prompt: "${prompt}"`)
+                log_ts('last_output_ts')
 
                 const chatWindow = document.getElementById('chat-window');
                 chatWindow.scrollTop = chatWindow.scrollHeight;
                 console.error(error);
 
-                // resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p><pre>${JSON.stringify(result, null, 4)}</pre>`;
             }
         }
+
+
+        // Remind the user to download their logs before leaving/refreshing
+        window.addEventListener('beforeunload', function (e) {
+            const last_saved = document.getElementById('file_saved_ts').innerHTML;
+            const last_output = document.getElementById('last_output_ts').innerHTML;
+            console.log("got ts")
+            // const ts = Date.now();
+
+
+            //10 mins??
+            console.log(last_output > last_saved)
+            if (last_output > last_saved) {
+                // Show confirmation dialog
+                const confirmationMessage = "Make sure you download your chat records before you leave! Save them to your USB file.";
+                e.returnValue = confirmationMessage; // Required for Chrome
+                return confirmationMessage;          // Required for Firefox
+            }
+
+            //chat_id20131_ts 1747826487445 .txt
+
+
+
+
+        });
     </script>
 
 </body>
