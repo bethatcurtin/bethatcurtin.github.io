@@ -314,7 +314,7 @@
             // Create & download the file
             const a = document.createElement('a');
             a.href = url;
-            a.download = `chat_id${id}_ts${ts_secs}.txt`;
+            a.download = `chat_id-${id}_ts-${ts_secs}.txt`;
             a.click();
 
             // Update the event TS logs
