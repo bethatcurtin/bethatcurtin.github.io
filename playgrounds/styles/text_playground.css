@@ -227,6 +227,17 @@ button:hover {
     justify-content: space-around;
 }
 
+#result_model_info * {
+    background-color: #fff;
+    padding: 0px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-family: var(--heading-font);
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.9rem;
+}
+
 
 .json_format {
     background-color: #fff;
@@ -314,4 +325,12 @@ ol {
     max-height: 90vh;
     width: 100%;
     margin: 0 auto;
+}
+
+#result_logging {
+    display: none;
+}
+
+#result_logging {
+    display: none;
 }
