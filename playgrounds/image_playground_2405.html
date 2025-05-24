@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text-to-Image Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles/image_playground.css">
+    <link rel="icon" type="image/x-icon" href="../assets/b-profile-pic.png">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Text-to-Image Generator</h2>
+    <div class="window">
+        <div class="sidebar section-style">
+            <label for="apiKey">Image API Key</label>
+            <input type="password" id="apiKey" placeholder="hf_12345" />
+
+            <label for="apiKey">Text API Key</label>
+            <input type="password" id="textApiKey" placeholder="sk_qwertyasdfgh" />
+
+
+            <label for="model">Model</label>
+            <!-- https://huggingface.co/api/partners/fal-ai/models -->
+            <!-- https://huggingface.co/api/models?inference_provider=fal-ai&pipeline_tag=text-to-image -->
+            <select id="model">
+                <option value=""></option>
+                <option value="AuraFlow-v0.3">AuraFlow-v0.3</option>
+                <option value="Sana-Test">Sana Test</option>
+                <!--<option value="FLUX.1-dev">FLUX.1-dev</option> -->
+                <option value="FLUX.1-schnell">FLUX.1-schnell</option>
+                <!--<option value="HiDream-I1-Dev">HiDream-I1-Dev</option> -->
+                <option value="HiDream-I1-Fast">HiDream-I1-Fast</option>
+                <!--<option value="HiDream-I1-Full">HiDream-I1-Full</option> -->
+                <!--<option value="stable-diffusion-3.5-large">stable-diffusion-3.5-large</option> -->
+                <option value="stable-diffusion-3.5-large-turbo">stable-diffusion-3.5-large-turbo</option>
+                <!--<option value="stable-diffusion-3.5-medium">stable-diffusion-3.5-medium</option> -->
+            </select>
+            <!-- <div id="result_model_info"></div> -->
+            <div class="toggle_container">
+                <p>Show/hide the model info</p>
+                <img id="toggle_icon_model_info" class="toggle_img" src="../assets/icons/toggle_off.svg"
+                    alt="Toggle view model info" onclick="toggle_model_info()">
+                <div id="result_model_info" class="toggle_disp">
+                    <pre class="json_format">{}</pre>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="convo section-style">
+            <div id="chat-window">
+                <div id="result"></div>
+                <div id="loading_div"></div>
+                <!-- <div id="result_info"></div> -->
+            </div>
+
+
+            <label for="prompt">Prompt:</label>
+            <div id="button_container">
+                <textarea id="prompt" rows="4" placeholder="A scenic view of mountains during sunset..."></textarea>
+
+
+                <div>
+                    <button onclick="generateImage()">Generate</button>
+                    <button onclick="giveExample()">Give me an example</button>
+                    <button onclick="saveMessagesAsZip()">Save</button>
+                </div>
+            </div>
+            <!-- <div class="toggle_container">
+                <p>Show/hide the input json</p>
+                <img id="toggle_icon_input" class="toggle_img" src="../assets/icons/toggle_off.svg"
+                    alt="Toggle view input json" onclick="toggle_input_json()">
+                <div id="input" class="toggle_disp">
+                    <pre class="json_format">{}</pre>
+                </div>
+            </div> -->
+
+
+            <!-- <label for="prompt">prompt:</label>
+            <textarea id="prompt" rows="4" placeholder="A scenic view of mountains during sunset..."></textarea>
+
+
+
+            <div id="input"></div>
+            <button onclick="generateImage()">generate</button> -->
+
+
+            <!-- </div> -->
+        </div>
+    </div>
+    <div id="result_logging"></div>
+    <div id="file_saved_ts">1716290942000</div>
+    <div id="last_output_ts">1716290942000</div>
+
+
+    <script>
+
+        document.getElementById('model').addEventListener('change', fetchModelInfo);
+
+
+
+
+        models_aliases = {
+            "AuraFlow-v0.3": {
+                "hfId": "fal/AuraFlow-v0.3",
+                "providerId": "fal-ai/aura-flow"
+            },
+            "Sana-Test": {
+                "hfId": "fal/sana",
+                "providerId": "fal-ai/sana"
+            },
+            "FLUX.1-dev": {
+                "hfId": "black-forest-labs/FLUX.1-dev",
+                "providerId": "fal-ai/flux/dev"
+            },
+            "FLUX.1-schnell": {
+                "hfId": "black-forest-labs/FLUX.1-schnell",
+                "providerId": "fal-ai/flux/schnell"
+            },
+            "HiDream-I1-Dev": {
+                "hfId": "HiDream-ai/HiDream-I1-Dev",
+                "providerId": "fal-ai/hidream-i1-dev"
+            },
+            "HiDream-I1-Fast": {
+                "hfId": "HiDream-ai/HiDream-I1-Fast",
+                "providerId": "fal-ai/hidream-i1-fast"
+            },
+            "HiDream-I1-Full": {
+                "hfId": "HiDream-ai/HiDream-I1-Full",
+                "providerId": "fal-ai/hidream-i1-full"
+            },
+            "stable-diffusion-3.5-large": {
+                "hfId": "stabilityai/stable-diffusion-3.5-large",
+                "providerId": "fal-ai/stable-diffusion-v35-large"
+            },
+            "stable-diffusion-3.5-large-turbo": {
+                "hfId": "stabilityai/stable-diffusion-3.5-large-turbo",
+                "providerId": "fal-ai/stable-diffusion-v35-large/turbo"
+            },
+            "stable-diffusion-3.5-medium": {
+                "hfId": "stabilityai/stable-diffusion-3.5-medium",
+                "providerId": "fal-ai/stable-diffusion-v35-medium"
+            }
+        }
+
+
+        document.getElementById("prompt").addEventListener("keydown", logKey);
+
+
+        let isVisible = false;
+        let input_json_visible = false;
+        let model_info_visible = false;
+        const inputDiv = document.getElementById('input');
+
+        function logKey(e) {
+            if (e.code == 'Enter') {
+                generateImage()
+            }
+        }
+
+
+        // template toggle func
+        function toggleElement() {
+            const element = document.getElementById("toggle_element");
+            const icon = document.getElementById("toggleIcon");
+
+            isVisible = !isVisible;
+            element.style.display = isVisible ? "block" : "none";
+            icon.src = isVisible ? "../assets/icons/toggle_on.svg" : "../assets/icons/toggle_off.svg";
+        }
+
+
+        // toggle the json input visibility
+        function toggle_input_json() {
+            const element = document.getElementById("input");
+            const icon = document.getElementById("toggle_icon_input");
+
+
+
+            input_json_visible = !input_json_visible;
+            element.style.display = input_json_visible ? "block" : "none";
+            icon.src = input_json_visible ? "../assets/icons/toggle_on.svg" : "../assets/icons/toggle_off.svg";
+
+        }
+
+        // toggle the model info visibility
+        function toggle_model_info() {
+            const element = document.getElementById("result_model_info");
+            const icon = document.getElementById("toggle_icon_model_info");
+
+            model_info_visible = !model_info_visible;
+            element.style.display = model_info_visible ? "block" : "none";
+            icon.src = model_info_visible ? "../assets/icons/toggle_on.svg" : "../assets/icons/toggle_off.svg";
+            fetchModelInfo();
+        }
+
+        // gives the user a random example prompt
+        async function giveExample() {
+            document.getElementById('prompt');
+            const prompt_examples_list = await fetch('https://bethatcurtin.github.io/files/image_prompt_examples.json')
+            data = await prompt_examples_list.json()
+
+            console.log('Loaded JSON:', data);
+            const prompt_list = data.image_prompt_examples;
+            console.log('Loaded list:', prompt_list);
+            console.log('size:', prompt_list.length);
+
+            const randomNumber = Math.floor(Math.random() * prompt_list.length)
+            const randomItem = prompt_list[randomNumber];
+            console.log('radnom: ', randomItem)
+            document.getElementById("prompt").value = randomItem;
+            // input_join()
+        }
+
+
+        function log_ts(id) {
+            //The 'id' passed in is the id of the div to be updated (either file_saved_ts or last_output_ts)
+            //Time that the log file was last saved: file_saved_ts
+            //Time that the last output was generated: last_output_ts
+            const ts_log = document.getElementById(id);
+            const ts = Date.now();
+            ts_log.innerHTML = ts;
+        }
+
+        // // This function retreives the logged data and downloads it as a .txt file. The .txt file's name contains a user ID and the Unix TS.
+        // function saveChat() {
+        //     const chatContent = document.getElementById('result_logging').innerText;
+        //     const blob = new Blob([chatContent], { type: 'text/plain' });
+        //     const url = URL.createObjectURL(blob);
+        //     const apiKey = document.getElementById("apiKey").value.trim();
+        //     const ts = Date.now();
+
+        //     // Get the last 5 characters of the apiKey for user identifier
+        //     let key = apiKey;
+        //     const id = key.slice(-5);
+
+        //     // Shorten the TS to seconds instead of milliseconds
+        //     ts_secs = Math.floor(ts / 1000);
+
+
+        //     const chatDiv = document.getElementById('chat-window');
+
+        //     html2canvas(chatDiv).then(canvas => {
+        //         const link = document.createElement('a');
+        //         link.href = canvas.toDataURL('image/png');
+        //         link.download = 'chat-screenshot.png';
+        //         link.click();
+        //     });
+
+
+
+
+        //     // Create & download the file
+        //     const a = document.createElement('a');
+        //     a.href = url;
+        //     a.download = `chat_id${id}_ts${ts_secs}.txt`;
+        //     a.click();
+
+        //     // Update the event TS logs
+        //     log_ts('file_saved_ts')
+
+        //     // Clean up
+        //     URL.revokeObjectURL(url);
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        async function saveMessagesAsZip() {
+            const zip = new JSZip();
+
+            const chatContent = document.getElementById('result_logging').innerText;
+            const blob = new Blob([chatContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const apiKey = document.getElementById("apiKey").value.trim();
+            const ts = Date.now();
+
+
+            // Get the last 5 characters of the apiKey for user identifier
+            let key = apiKey;
+            const id = key.slice(-5);
+
+            // Shorten the TS to seconds instead of milliseconds
+            ts_secs = Math.floor(ts / 1000);
+
+
+            zip.file(`chat_content_id${id}_ts${ts_secs}.txt`, blob)
+
+
+
+
+            const messages = document.querySelectorAll('#chat-window #indv-msg');
+
+            console.log(messages)
+
+
+
+
+
+
+            for (let i = 0; i < messages.length; i++) {
+                const msg = messages[i];
+
+                // Clone to avoid style interference
+                const clone = msg.cloneNode(true);
+                clone.style.position = 'absolute';
+                clone.style.left = '-9999px';
+                document.body.appendChild(clone);
+
+                const canvas = await html2canvas(clone);
+                const dataUrl = canvas.toDataURL('image/png');
+                const base64 = dataUrl.split(',')[1];
+
+                zip.file(`image_${i + 1}.png`, base64, { base64: true });
+
+                document.body.removeChild(clone);
+            }
+
+
+
+            const zipBlob = await zip.generateAsync({ type: 'blob' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(zipBlob);
+            link.download = `messages_id${id}_ts${ts_secs}.zip`;
+            link.click();
+
+            // Update the event TS logs
+            log_ts('file_saved_ts')
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        function file_format_append(mode, content) {
+            //The "mode" is 'Input' or 'Output' or 'Error'
+            //The "content" is some string that is passed to the function - usually prompt, output or error data.
+
+            const utcDate = new Date(Date.now());
+            const timestamp = utcDate.toTimeString()
+            console.log(timestamp);
+
+            const logs = document.getElementById("result_logging");
+
+            //Create the next element to add
+            const add_log = document.createElement('div')
+            add_log.innerHTML = `### ${timestamp} ###
+${mode}:
+${content}
+
+
+`
+            // Append the new element
+            logs.appendChild(add_log);
+
+            return
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        async function fetchModelInfo() {
+            const model = document.getElementById('model').value;
+            const hfId = models_aliases[model]?.hfId;
+            const providerId = models_aliases[model]?.providerId;
+
+            const resultDiv = document.getElementById('result_model_info');
+
+            if (!model) {
+                resultDiv.innerHTML = '';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Loading...';
+            console.log(providerId)
+            const info = await return_model_info(providerId)
+
+
+            resultDiv.innerHTML = `<div><h3>Model Information</h3>
+<pre><strong>Model Name:</strong> ${hfId}<br>
+<strong>Model Info:</strong> ${info.description}<br>
+<strong>Inputs:</strong> ${info.inputs}<br>
+<strong>Price:</strong> ${info.unit_price} per ${info.unit}</pre></div>`;
+
+
+        }
+
+
+
+
+
+
+
+        async function return_model_info(model_name) {
+
+            const raw_data = await fetch('https://bethatcurtin.github.io/files/fal_models.json')
+            data = await raw_data.json()
+
+            console.log('Loaded JSON:', data);
+            // You can now use data.name, data.version, etc.
+            const model = data[model_name];
+            console.log('Model: ', model)
+            if (model) {
+                return model;
+            } else {
+                throw new Error(`Model "${model_name}" not found.`);
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        async function clean_prompt_guardrail(prompt_in) {
+
+            const openrouter_public_apiKey = document.getElementById("textApiKey").value.trim();
+
+
+            guardrail_response = {
+                input_prompt: prompt_in
+            }
+            // Append the input to the log data
+            file_format_append('Input', `${prompt_in}`)
+
+
+            const body_clean_prompt = {
+                model: "openai/gpt-4.1-nano",
+                messages: [
+                    {
+                        role: "system",
+                        content: "You are a guardrail in between a user and a text to image generator. You'll be given a Prompt to review and complete the following steps. Only output what you are explicitly asked to.\n1. Decide: is the prompt asking to generate something that will show material which is NOT suitable for under 18 year olds? Unsuitable topics include nsfw, nudity, violence, gore, horror, death, blood and so on.\n2. If the prompt is NOT suitable: a. Can you re-write it to remove the unsuitable elements? If so, rewrite the prompt and output the new version and nothing else. b. If you cannot rewrite it to remove the unsuitable elements, output 'This doesn't look like an appropriate prompt. Try generating something different.' and nothing else.\n3. If the prompt IS suitable: output the original prompt and nothing else."
+                    },
+                    {
+                        role: "user",
+                        content: prompt_in
+                    }
+                ]
+            }
+
+            const response = await fetch(`https://openrouter.ai/api/v1/chat/completions`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${openrouter_public_apiKey}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body_clean_prompt)
+
+            });
+            console.log(response);
+
+            if (!response.ok) {
+                const err = await response.json();
+                throw new Error(err.error || "Error generating response");
+
+            }
+            const result = await response.json();
+            console.log(result);
+            const clean_prompt = result.choices[0].message.content;
+            guardrail_response.output = clean_prompt
+            console.log(`guardrail_response${guardrail_response.output}`)
+            console.log(`clean_prompt: ${clean_prompt}`)
+
+            if (prompt_in.trim() == clean_prompt.trim()) {
+                guardrail_response.action = "na"
+                console.log("na")
+            }
+            else if (clean_prompt.includes("doesn't look like an appropriate prompt")) {
+                guardrail_response.action = "rewrite"
+                console.log("rewrite")
+            } else {
+                guardrail_response.action = "block"
+                console.log("block")
+            }
+            console.log(guardrail_response)
+            return guardrail_response
+        }
+
+
+
+
+        function scrollToEnd() {
+            let chatWindow = document.getElementById('chat-window');
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            console.log("scrolled")
+            return;
+        }
+
+
+
+
+
+
+
+        async function generateImage() {
+
+            const apiKey = document.getElementById("apiKey").value.trim();
+
+
+
+
+
+            const model = document.getElementById("model").value;
+            const prompt_init = document.getElementById("prompt").value;
+            const providerId = models_aliases[model]?.providerId;
+
+            const resultDiv = document.getElementById("result");
+            // const resultInfo = document.getElementById("result_info");
+            const loadingDiv = document.getElementById("loading_div");
+
+            loadingDiv.innerHTML = `<p><br>Generating image...</p><img src="../assets/icons/spinner-ring.svg">`;
+            scrollToEnd()
+
+            if (!apiKey || !prompt_init || !model) {
+                resultDiv.innerHTML = "All fields are required.";
+                loadingDiv.innerHTML = "";
+                scrollToEnd()
+                return;
+            }
+
+            const guardrail = await clean_prompt_guardrail(prompt_init)
+
+            guardrail_activated = guardrail.action
+            console.log(guardrail_activated)
+            const prompt = guardrail.output
+
+
+            console.log(prompt)
+            if (guardrail_activated != "block" && !((prompt.toLowerCase()).includes("doesn't look like an appropriate prompt"))) {
+                console.log(!((prompt.toLowerCase()).includes("doesn't look like an appropriate prompt")))
+                try {
+
+
+                    const response = await fetch(`https://router.huggingface.co/fal-ai/${providerId}`, {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${apiKey}`,
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            sync_mode: true,
+                            prompt: prompt,
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const err = await response.json();
+                        throw new Error(err.error || "Error generating image");
+                    }
+                    result = await response.json();
+
+
+                    console.log(result);
+                    console.log(result.data);
+
+
+                    console.log(result)
+                    loadingDiv.innerHTML = "";
+                    // const imageURL = URL.createObjectURL(result);
+                    const imageURL = result.images[0].url;
+                    const height = result.images[0].height;
+                    const width = result.images[0].width;
+                    const content_type = result.images[0].content_type;
+                    const prompt_data = result.prompt;
+                    const newResult = document.createElement('div');
+                    newResult.id = "indv-msg"
+
+                    if (guardrail.action = "na") {
+                        newResult.innerHTML = `<img src="${imageURL}" alt="Generated image" />
+<pre>Result Info
+Size (w x h): ${width} x ${height}
+Input Prompt: "${prompt_init}"
+Model's Prompt: "${prompt_data}"
+Model: ${model}</pre>`;
+                    } else {
+                        newResult.innerHTML = `<img src="${imageURL}" alt="Generated image" />
+<pre>Result Info
+Size (w x h): ${width} x ${height}
+Input Prompt: "${prompt_init}"
+Guardrail Activated: "${guardrail.action}"
+Processed Prompt: "${prompt}"
+Model's Prompt: "${prompt_data}"
+Model: ${model}</pre>`;
+                    }
+                    scrollToEnd()
+                    resultDiv.appendChild(newResult);
+                    scrollToEnd()
+
+
+                    //Append the log info to the logging data
+                    const messages = document.querySelectorAll('#chat-window #indv-msg');
+
+
+
+
+
+
+
+
+
+                    file_format_append('Output', `img_file: image_${messages.length}.png
+size: ${width}x${height}
+input_prompt: ${prompt_init}
+guardrail_activated: ${guardrail.action}
+processed_prompt: ${prompt}
+models_prompt: "${prompt_data}
+model: ${model}`)
+
+                    //Log the timestamp of the output
+                    log_ts('last_output_ts')
+
+
+
+                    return result;
+                } catch (error) {
+                    const newResult = document.createElement('div');
+
+                    newResult.innerHTML = `<p style="color: red;">Error: ${error.message}<br>Prompt: "${prompt}</p>`;
+                    resultDiv.appendChild(newResult);
+
+                    // Construct the log data and call the function to append to the log data
+                    file_format_append('Error', `Error: ${error.message}, Prompt: "${prompt}"`)
+                    //Update the output ts
+                    log_ts('last_output_ts')
+                    const chatWindow = document.getElementById('chat-window');
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+
+                }
+            } else {
+                loadingDiv.innerHTML = "";
+                const newResult = document.createElement('div');
+
+                newResult.innerHTML = `<p style="color: red;">Error: ${prompt}<br>Prompt: "${prompt_init}"</p>`
+                resultDiv.appendChild(newResult);
+                // Construct the log data and call the function to append to the log data
+                file_format_append('Error', `Error: ${error.message}, Prompt: "${prompt}"`)
+                //Update the output ts
+                log_ts('last_output_ts')
+                scrollToEnd();
+                return;
+            }
+        }
+
+        // Remind the user to download their logs before leaving/refreshing
+        window.addEventListener('beforeunload', function (e) {
+            const last_saved = document.getElementById('file_saved_ts').innerHTML;
+            const last_output = document.getElementById('last_output_ts').innerHTML;
+
+
+            //This will remind the user to save their log file if they have generated an output more recently than if they saved the file (i.e. time of last output > time of last logfile download)
+            console.log(last_output > last_saved)
+            if (last_output > last_saved) {
+                // Show confirmation dialog - this doesnt seem to show anywhere tho
+                const confirmationMessage = "Make sure you download your chat records before you leave! Save them to your USB file.";
+                e.returnValue = confirmationMessage; // Required for Chrome
+                return confirmationMessage;          // Required for Firefox
+            }
+
+
+        });
+
+    </script>
+
+</body>
+
+</html>
