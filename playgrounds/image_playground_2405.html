@@ -262,7 +262,7 @@
         //     // Create & download the file
         //     const a = document.createElement('a');
         //     a.href = url;
-        //     a.download = `chat_id${id}_ts${ts_secs}.txt`;
+        //     a.download = `chat_id-${id}_ts-${ts_secs}.txt`;
         //     a.click();
 
         //     // Update the event TS logs
@@ -306,7 +306,7 @@
             ts_secs = Math.floor(ts / 1000);
 
 
-            zip.file(`chat_content_id${id}_ts${ts_secs}.txt`, blob)
+            zip.file(`chat_content_id-${id}_ts-${ts_secs}.txt`, blob)
 
 
 
@@ -343,7 +343,7 @@
             const zipBlob = await zip.generateAsync({ type: 'blob' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(zipBlob);
-            link.download = `messages_id${id}_ts${ts_secs}.zip`;
+            link.download = `messages_id-${id}_ts-${ts_secs}.zip`;
             link.click();
 
             // Update the event TS logs
