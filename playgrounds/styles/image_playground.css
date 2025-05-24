@@ -312,8 +312,8 @@ ol {
 }
 
 #result img {
-  max-width: 60%;
-  max-height: 60%;
+  max-width: 40%;
+/*   max-height: 60%; */
   margin: 10px 0;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
