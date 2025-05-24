@@ -38,8 +38,8 @@ body {
   justify-content: center;
   align-items: flex-start;
 
-      min-height: 95vh;
-    max-height: 100vh;
+  min-height: 95vh;
+  max-height: 100vh;
 
 }
 
@@ -131,13 +131,13 @@ select:focus {
 .info {
   font-size: 0.8rem;
   color: #a0a0a0;
-  margin-bottom: 80px;
+  margin-bottom: 0px;
 }
 
 /* Main Content Area */
 .convo {
   display: flex;
-/* max-height:100vh; */
+  /* max-height:100vh; */
   flex-direction: column;
   justify-items: end;
   gap: 16px;
@@ -345,12 +345,21 @@ ol {
 } */
 
 .window {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    gap: 20px;
-    max-width: 95vw;
-    max-height: 90vh;
-    width: 100%;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 20px;
+  max-width: 95vw;
+  max-height: 90vh;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+#result_logging {
+  display: none;
+}
+
+#result_logging {
+  display: none;
 }
