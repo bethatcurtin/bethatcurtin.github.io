@@ -487,7 +487,7 @@ ${content}
 
 
             const body_clean_prompt = {
-                model: "openai/gpt-4.1-nano",
+                model: "google/gemini-2.0-flash-lite-001",
                 messages: [
                     {
                         role: "system",
@@ -695,7 +695,7 @@ model: ${model}`)
                 newResult.innerHTML = `<p style="color: red;">Error: ${prompt}<br>Prompt: "${prompt_init}"</p>`
                 resultDiv.appendChild(newResult);
                 // Construct the log data and call the function to append to the log data
-                file_format_append('Error', `Error: ${error.message}, Prompt: "${prompt}"`)
+                file_format_append('Error', `Prompt: "${prompt}"`)
                 //Update the output ts
                 log_ts('last_output_ts')
                 scrollToEnd();
