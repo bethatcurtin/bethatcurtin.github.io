@@ -421,29 +421,37 @@ ${content}
         // This function is a guardrail against unsafe content
         async function clean_prompt_guardrail(prompt_in) {
 
+            console.log(`raw prompt in: ${prompt_in}`)
             const openrouter_public_apiKey = document.getElementById("textApiKey").value.trim();
-            // prompt_length=prompt_in.length
-            // if ((prompt_in.trim()).slice(-0)=='"') {
-            //     prompt_in=(prompt_in.trim()).slice(0,prompt_length-2)
-            //     console.log(prompt_in)
 
-            // } else if ((prompt_in.trim()).slice(1)=='"') {
-            //     prompt_in=(prompt_in.trim()).slice(1,prompt_length-2)
-            //     console.log(prompt_in)
-            // }
+            //this is catching the error when there is a quotation mark " at the beginning or end of the prompt.
+            prompt_length=prompt_in.length
+            console.log(`check last char: ${(prompt_in.trim()).slice(prompt_length-1,prompt_length)}`)
+            console.log(`check first char: ${(prompt_in.trim()).slice(0,1)}`)
+            if ((prompt_in.trim()).slice(0,1)=='"') {
+                prompt_in=(prompt_in.trim()).slice(1,prompt_length)
+                console.log(`trimmed: ${prompt_in}`)
+
+            } if ((prompt_in.trim()).slice(prompt_length-1,prompt_length)=='"') {
+                prompt_in=(prompt_in.trim()).slice(0,prompt_length-1)
+                console.log(`trimmed: ${prompt_in}`)
+               
+            }
+            
+            prompt_in=prompt_in.trim()
+            console.log(`trimmed: ${prompt_in}`)
 
 
             //construct the guardrail output json
-            guardrail_response = {
-                input_prompt: prompt_in
-            }
+            guardrail_response = {input_prompt: prompt_in}
+            
             // Append the input to the log data
             file_format_append('Input', `${prompt_in}`)
 
             
             // construct the input for the  
             const body_clean_prompt = {
-                model: "google/gemini-2.0-flash-exp:free",
+                model: "google/gemini-2.0-flash-lite-001",
                 messages: [
                     {
                         role: "system",
@@ -451,11 +459,12 @@ ${content}
                     },
                     {
                         role: "user",
-                        content: prompt_in
+                        content: `${prompt_in}`
                     }
                 ]
             }
 
+            //Using Openrouter for the guardrail
             const response = await fetch(`https://openrouter.ai/api/v1/chat/completions`, {
                 method: "POST",
                 headers: {
@@ -476,14 +485,15 @@ ${content}
             console.log(result);
             const clean_prompt = result.choices[0].message.content;
             guardrail_response.output = clean_prompt
-            console.log(`guardrail_response${guardrail_response.output}`)
+            console.log(`guardrail_response: ${guardrail_response.output}`)
+            console.log(`guardrail_response json: ${guardrail_response}`)
             console.log(`clean_prompt: ${clean_prompt}`)
 
             if (prompt_in.trim() == clean_prompt.trim()) {
                 guardrail_response.action = "na"
                 console.log("na")
             }
-            else if (clean_prompt.includes("doesn't look like an appropriate prompt")) {
+            else if (!(clean_prompt.includes("doesn't look like an appropriate prompt"))) {
                 guardrail_response.action = "rewrite"
                 console.log("rewrite")
             } else {
@@ -540,7 +550,7 @@ ${content}
 
             guardrail_activated = guardrail.action
             console.log(guardrail_activated)
-            const prompt = guardrail.output
+            const prompt = (guardrail.output).trim()
 
 
             console.log(prompt)
@@ -557,7 +567,7 @@ ${content}
                         },
                         body: JSON.stringify({
                             sync_mode: true,
-                            prompt: prompt,
+                            prompt: prompt
                         })
                     });
 
