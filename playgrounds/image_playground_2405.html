@@ -207,15 +207,15 @@
             const prompt_examples_list = await fetch('https://bethatcurtin.github.io/files/image_prompt_examples.json')
             data = await prompt_examples_list.json()
 
-            console.log('Loaded JSON:', data);
+            console.log('Loaded Prompt Examples File:', data);
             const prompt_list = data.image_prompt_examples;
-            console.log('Loaded list:', prompt_list);
-            console.log('size:', prompt_list.length);
+            console.log('Loaded Prompt Examples list:', prompt_list);
+            console.log('List Size:', prompt_list.length);
 
             //Retrieve a random item from this list
             const randomNumber = Math.floor(Math.random() * prompt_list.length)
             const randomItem = prompt_list[randomNumber];
-            console.log('radnom: ', randomItem)
+            console.log('Randomly Selected List Item: ', randomItem)
             // Update the Prompt field with the selected item
             document.getElementById("prompt").value = randomItem;
 
@@ -257,7 +257,7 @@
             // Find all the messages where an image was generated
             const messages = document.querySelectorAll('#chat-window #indv-msg');
 
-            console.log(messages)
+            console.log(`Retrieved messages to save: ${messages}`)
 
 
 
@@ -312,7 +312,7 @@
 
             const utcDate = new Date(Date.now());
             const timestamp = utcDate.toTimeString()
-            console.log(timestamp);
+            console.log(`Current Timestamp: ${timestamp}`);
 
             const logs = document.getElementById("result_logging");
 
@@ -361,7 +361,7 @@ ${content}
             }
 
             resultDiv.innerHTML = 'Loading...';
-            console.log(providerId)
+            console.log(`Provider (HF) Model ID: ${providerId}`)
             const info = await return_model_info(providerId)
 
 
@@ -385,10 +385,10 @@ ${content}
             const raw_data = await fetch('https://bethatcurtin.github.io/files/fal_models.json')
             data = await raw_data.json()
 
-            console.log('Loaded JSON:', data);
+            console.log('Loaded Model Info JSON: ', data);
             // You can now use data.name, data.version, etc.
             const model = data[model_name];
-            console.log('Model: ', model)
+            console.log('Selected Model Info: ', model)
             if (model) {
                 return model;
             } else {
@@ -421,25 +421,25 @@ ${content}
         // This function is a guardrail against unsafe content
         async function clean_prompt_guardrail(prompt_in) {
 
-            console.log(`raw prompt in: ${prompt_in}`)
+            console.log(`Raw prompt from input: ${prompt_in}`)
             const openrouter_public_apiKey = document.getElementById("textApiKey").value.trim();
 
             //this is catching the error when there is a quotation mark " at the beginning or end of the prompt.
             prompt_length=prompt_in.length
-            console.log(`check last char: ${(prompt_in.trim()).slice(prompt_length-1,prompt_length)}`)
-            console.log(`check first char: ${(prompt_in.trim()).slice(0,1)}`)
+            console.log(`[Check] Last char: ${(prompt_in.trim()).slice(prompt_length-1,prompt_length)}`)
+            console.log(`[Check] First char: ${(prompt_in.trim()).slice(0,1)}`)
             if ((prompt_in.trim()).slice(0,1)=='"') {
                 prompt_in=(prompt_in.trim()).slice(1,prompt_length)
-                console.log(`trimmed: ${prompt_in}`)
+                console.log(`Trimmed first char: ${prompt_in}`)
 
             } if ((prompt_in.trim()).slice(prompt_length-1,prompt_length)=='"') {
                 prompt_in=(prompt_in.trim()).slice(0,prompt_length-1)
-                console.log(`trimmed: ${prompt_in}`)
+                console.log(`Trimmed last char: ${prompt_in}`)
                
             }
             
             prompt_in=prompt_in.trim()
-            console.log(`trimmed: ${prompt_in}`)
+            console.log(`Trimmed prompt: ${prompt_in}`)
 
 
             //construct the guardrail output json
@@ -474,7 +474,7 @@ ${content}
                 body: JSON.stringify(body_clean_prompt)
 
             });
-            console.log(response);
+            console.log('Response from guardrail: ',response);
 
             if (!response.ok) {
                 const err = await response.json();
@@ -482,12 +482,12 @@ ${content}
 
             }
             const result = await response.json();
-            console.log(result);
+            console.log('Result from Guardrail: ',result);
             const clean_prompt = result.choices[0].message.content;
             guardrail_response.output = clean_prompt
-            console.log(`guardrail_response: ${guardrail_response.output}`)
-            console.log(`guardrail_response json: ${guardrail_response}`)
-            console.log(`clean_prompt: ${clean_prompt}`)
+            
+            console.log(`Build Guardrail JSON: ${guardrail_response.json()}`)
+            console.log(`Guardrail Cleaned Prompt: ${clean_prompt}`)
 
             if (prompt_in.trim() == clean_prompt.trim()) {
                 guardrail_response.action = "na"
@@ -549,7 +549,7 @@ ${content}
             const guardrail = await clean_prompt_guardrail(prompt_init)
 
             guardrail_activated = guardrail.action
-            console.log(guardrail_activated)
+            console.log(guardrail_activated.json())
             const prompt = (guardrail.output).trim()
 
 

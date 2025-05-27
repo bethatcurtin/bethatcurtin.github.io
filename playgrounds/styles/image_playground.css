@@ -360,6 +360,6 @@ ol {
   display: none;
 }
 
-#result_logging {
+#result_logging, #file_saved_ts #last_output_ts {
   display: none;
 }

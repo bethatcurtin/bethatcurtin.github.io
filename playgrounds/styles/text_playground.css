@@ -331,6 +331,6 @@ ol {
     display: none;
 }
 
-#result_logging {
-    display: none;
+#result_logging, #file_saved_ts #last_output_ts {
+  display: none;
 }
