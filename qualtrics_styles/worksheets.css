@@ -1,8 +1,6 @@
-
-.Skin #SkinContent {
-    margin: 0 auto;
-    width: 90vw;
-} 
-.Skin .QuestionOuter { 
-    max-width: 90vw; 
+#Questions * { 
+    max-width: 90vw; !important
 }
+#SkinContent {
+    width: 90vw; !important
+} 
