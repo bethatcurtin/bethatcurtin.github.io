@@ -163,32 +163,24 @@
 
         function logKey(e) {
             if (e.code == 'Enter') {
-                e.preventDefault();
-                generateImage()
+                e.preventDefault(); // don't enter a return character
+                generateImage() // run the generate() function
             }
         }
 
 
-        // template toggle func
-        function toggleElement() {
-            const element = document.getElementById("toggle_element");
-            const icon = document.getElementById("toggleIcon");
 
-            isVisible = !isVisible;
-            element.style.display = isVisible ? "block" : "none";
-            icon.src = isVisible ? "../assets/icons/toggle_on.svg" : "../assets/icons/toggle_off.svg";
-        }
-
-
-        // toggle the json input visibility
+ // This function controls the toggle visibility for the json input section
         function toggle_input_json() {
             const element = document.getElementById("input");
             const icon = document.getElementById("toggle_icon_input");
 
 
-
+            //Toggle visibility
             input_json_visible = !input_json_visible;
+            //Show or hide the element
             element.style.display = input_json_visible ? "block" : "none";
+            //Change the appearance of the 'toggle' icon itself
             icon.src = input_json_visible ? "../assets/icons/toggle_on.svg" : "../assets/icons/toggle_off.svg";
 
         }
@@ -198,15 +190,20 @@
             const element = document.getElementById("result_model_info");
             const icon = document.getElementById("toggle_icon_model_info");
 
+            //Toggle visibility
             model_info_visible = !model_info_visible;
+            //Show or hide the element
             element.style.display = model_info_visible ? "block" : "none";
+            //Change the appearance of the 'toggle' icon itself
             icon.src = model_info_visible ? "../assets/icons/toggle_on.svg" : "../assets/icons/toggle_off.svg";
             fetchModelInfo();
         }
 
-        // gives the user a random example prompt
+        // This function populates the 'prompt' field with a random example prompt
         async function giveExample() {
             document.getElementById('prompt');
+
+            // Retrieve from the example image prompts list
             const prompt_examples_list = await fetch('https://bethatcurtin.github.io/files/image_prompt_examples.json')
             data = await prompt_examples_list.json()
 
@@ -215,11 +212,13 @@
             console.log('Loaded list:', prompt_list);
             console.log('size:', prompt_list.length);
 
+            //Retrieve a random item from this list
             const randomNumber = Math.floor(Math.random() * prompt_list.length)
             const randomItem = prompt_list[randomNumber];
             console.log('radnom: ', randomItem)
+            // Update the Prompt field with the selected item
             document.getElementById("prompt").value = randomItem;
-            // input_join()
+
         }
 
 
@@ -232,63 +231,7 @@
             ts_log.innerHTML = ts;
         }
 
-        // // This function retreives the logged data and downloads it as a .txt file. The .txt file's name contains a user ID and the Unix TS.
-        // function saveChat() {
-        //     const chatContent = document.getElementById('result_logging').innerText;
-        //     const blob = new Blob([chatContent], { type: 'text/plain' });
-        //     const url = URL.createObjectURL(blob);
-        //     const apiKey = document.getElementById("apiKey").value.trim();
-        //     const ts = Date.now();
-
-        //     // Get the last 5 characters of the apiKey for user identifier
-        //     let key = apiKey;
-        //     const id = key.slice(-5);
-
-        //     // Shorten the TS to seconds instead of milliseconds
-        //     ts_secs = Math.floor(ts / 1000);
-
-
-        //     const chatDiv = document.getElementById('chat-window');
-
-        //     html2canvas(chatDiv).then(canvas => {
-        //         const link = document.createElement('a');
-        //         link.href = canvas.toDataURL('image/png');
-        //         link.download = 'chat-screenshot.png';
-        //         link.click();
-        //     });
-
-
-
-
-        //     // Create & download the file
-        //     const a = document.createElement('a');
-        //     a.href = url;
-        //     a.download = `chat_id-${id}_ts-${ts_secs}.txt`;
-        //     a.click();
-
-        //     // Update the event TS logs
-        //     log_ts('file_saved_ts')
-
-        //     // Clean up
-        //     URL.revokeObjectURL(url);
-
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // // This function retreives the logged data and downloads it as a ZIP with a .txt file and .png screenshots of all images. The ZIP and .txt file's name contains a user ID and the Unix TS. The .txt file contains the text outputs and corresponding filenames of images.
         async function saveMessagesAsZip() {
             const zip = new JSZip();
 
@@ -306,12 +249,12 @@
             // Shorten the TS to seconds instead of milliseconds
             ts_secs = Math.floor(ts / 1000);
 
-
+            // Create & download the file object
             zip.file(`chat_content_id-${id}_ts-${ts_secs}.txt`, blob)
 
 
 
-
+            // Find all the messages where an image was generated
             const messages = document.querySelectorAll('#chat-window #indv-msg');
 
             console.log(messages)
@@ -320,7 +263,7 @@
 
 
 
-
+            //loop through the list of [image + info] messages and add their screenshots to the ZIP folder
             for (let i = 0; i < messages.length; i++) {
                 const msg = messages[i];
 
@@ -340,9 +283,10 @@
             }
 
 
-
+            // Compile/create them i guess??
             const zipBlob = await zip.generateAsync({ type: 'blob' });
             const link = document.createElement('a');
+            // download the file
             link.href = URL.createObjectURL(zipBlob);
             link.download = `messages_id-${id}_ts-${ts_secs}.zip`;
             link.click();
@@ -474,29 +418,40 @@ ${content}
 
 
 
-
+        // This function is a guardrail against unsafe content
         async function clean_prompt_guardrail(prompt_in) {
 
             const openrouter_public_apiKey = document.getElementById("textApiKey").value.trim();
+            prompt_length=prompt_in.length
+            if ((prompt_in.trim()).slice(-0)=='"') {
+                prompt_in=(prompt_in.trim()).slice(0,prompt_length-2)
+                console.log(prompt_in)
+
+            } else if ((prompt_in.trim()).slice(1)=='"') {
+                prompt_in=(prompt_in.trim()).slice(1,prompt_length-2)
+                console.log(prompt_in)
+            }
 
 
+            //construct the guardrail output json
             guardrail_response = {
-                input_prompt: prompt_in
+                input_prompt: prompt_in.trim()
             }
             // Append the input to the log data
             file_format_append('Input', `${prompt_in}`)
 
-
+            
+            // construct the input for the  
             const body_clean_prompt = {
-                model: "google/gemini-2.0-flash-lite-001",
+                model: "google/gemini-2.0-flash-exp:free",
                 messages: [
                     {
                         role: "system",
-                        content: "You are a guardrail in between a user and a text to image generator. You'll be given a Prompt to review and complete the following steps. Only output what you are explicitly asked to.\n1. Decide: is the prompt asking to generate something that will show material which is NOT suitable for under 18 year olds? Unsuitable topics include nsfw, nudity, violence, gore, horror, death, blood and so on.\n2. If the prompt is NOT suitable: a. Can you re-write it to remove the unsuitable elements? If so, rewrite the prompt and output the new version and nothing else. b. If you cannot rewrite it to remove the unsuitable elements, output 'This doesn't look like an appropriate prompt. Try generating something different.' and nothing else.\n3. If the prompt IS suitable: output the original prompt and nothing else."
+                        content: "You are a guardrail in between a user and a text to image generator. You'll be given a Prompt to review and complete the following steps. Only output what you are explicitly asked to.\n1. Decide: is the prompt asking to generate something that will show material which is NOT suitable for under 18 year olds? Unsuitable topics include NSFW, nudity, violence, gore, horror, death, blood and so on.\n2. If the prompt is NOT suitable: a. Can you re-write it to remove the unsuitable elements? If so, rewrite the prompt and output the new version and nothing else. b. If you cannot rewrite it to remove the unsuitable elements, output 'This doesn't look like an appropriate prompt. Try generating something different.' and nothing else.\n3. If the prompt IS suitable: output the original prompt and nothing else."
                     },
                     {
                         role: "user",
-                        content: prompt_in
+                        content: prompt_in.trim()
                     }
                 ]
             }

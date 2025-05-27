@@ -213,8 +213,8 @@
         //this function binds the <Enter> key to the 'generate' function
         function logKey(e) {
             if (e.code == 'Enter') {
-                e.preventDefault();
-                generateCompletion()
+                e.preventDefault(); // don't enter a return character
+                generateCompletion() // run the generate() function
             }
         }
 
