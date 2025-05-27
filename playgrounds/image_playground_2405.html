@@ -486,7 +486,7 @@ ${content}
             const clean_prompt = result.choices[0].message.content;
             guardrail_response.output = clean_prompt
             
-            console.log(`Build Guardrail JSON: ${guardrail_response.json()}`)
+            console.log(`Build Guardrail JSON: ${guardrail_response}`)
             console.log(`Guardrail Cleaned Prompt: ${clean_prompt}`)
 
             if (prompt_in.trim() == clean_prompt.trim()) {
