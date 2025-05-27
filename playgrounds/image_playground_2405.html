@@ -422,20 +422,20 @@ ${content}
         async function clean_prompt_guardrail(prompt_in) {
 
             const openrouter_public_apiKey = document.getElementById("textApiKey").value.trim();
-            prompt_length=prompt_in.length
-            if ((prompt_in.trim()).slice(-0)=='"') {
-                prompt_in=(prompt_in.trim()).slice(0,prompt_length-2)
-                console.log(prompt_in)
+            // prompt_length=prompt_in.length
+            // if ((prompt_in.trim()).slice(-0)=='"') {
+            //     prompt_in=(prompt_in.trim()).slice(0,prompt_length-2)
+            //     console.log(prompt_in)
 
-            } else if ((prompt_in.trim()).slice(1)=='"') {
-                prompt_in=(prompt_in.trim()).slice(1,prompt_length-2)
-                console.log(prompt_in)
-            }
+            // } else if ((prompt_in.trim()).slice(1)=='"') {
+            //     prompt_in=(prompt_in.trim()).slice(1,prompt_length-2)
+            //     console.log(prompt_in)
+            // }
 
 
             //construct the guardrail output json
             guardrail_response = {
-                input_prompt: prompt_in.trim()
+                input_prompt: prompt_in
             }
             // Append the input to the log data
             file_format_append('Input', `${prompt_in}`)
@@ -451,7 +451,7 @@ ${content}
                     },
                     {
                         role: "user",
-                        content: prompt_in.trim()
+                        content: prompt_in
                     }
                 ]
             }
