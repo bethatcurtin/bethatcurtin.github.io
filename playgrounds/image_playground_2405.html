@@ -163,6 +163,7 @@
 
         function logKey(e) {
             if (e.code == 'Enter') {
+                e.preventDefault();
                 generateImage()
             }
         }
