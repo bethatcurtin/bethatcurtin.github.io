@@ -549,7 +549,7 @@ ${content}
             const guardrail = await clean_prompt_guardrail(prompt_init)
 
             guardrail_activated = guardrail.action
-            console.log(guardrail_activated.json())
+            console.log(guardrail_activated)
             const prompt = (guardrail.output).trim()
 
 
