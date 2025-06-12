@@ -182,7 +182,7 @@
                     models.forEach(modelId => {
                         const option = document.createElement("option");
                         option.value = modelId;
-                        option.textContent = data?.modelId.name;
+                        option.textContent = data[modelId]?.name;
                         dropdown.appendChild(option);
                     });
                 })
