@@ -202,7 +202,7 @@
             const dropdown = document.getElementById("models");
 
             // Fetch your JSON file (e.g., models.json)
-            fetch('./openrouter_models.json') // <-- replace with your actual file path
+            fetch('openrouter_models.json') // <-- replace with your actual file path
                 .then(response => response.json())
                 .then(data => {
                     const models = data.models_list; // Extract the list
