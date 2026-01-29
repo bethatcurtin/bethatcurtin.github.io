@@ -25,43 +25,116 @@
             align-items: center;
         }
 
-        #gameTitle {
+        #topBar {
             position: absolute;
-            top: 30px;
+            top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        #gameTitle {
             font-family: var(--heading-font);
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: white;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            z-index: 10;
+            margin: 0;
         }
 
         #scoreBoard {
-            position: absolute;
-            top: 100px;
             font-family: var(--body-font);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: white;
             background: rgba(0,0,0,0.3);
-            padding: 10px 30px;
+            padding: 8px 25px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
-            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #progressContainer {
+            width: 150px;
+            height: 12px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #progressBar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00ff88, #00ffcc);
+            border-radius: 10px;
+            transition: width 0.3s ease;
         }
 
         #instructions {
-            position: absolute;
-            top: 160px;
             font-family: var(--body-font);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: white;
             text-align: center;
-            z-index: 10;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.6; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+        }
+
+        @keyframes scorePop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); color: #00ff88; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes clearFlash {
+            0% { box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 0 60px rgba(0,255,136,0.8); }
+            100% { box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease;
+        }
+
+        .score-pop {
+            animation: scorePop 0.3s ease;
+        }
+
+        .clear-flash {
+            animation: clearFlash 0.3s ease;
+        }
+
+        #comboDisplay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20px rgba(0,255,136,0.8);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        @keyframes comboAnim {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1) translateY(-30px); }
         }
 
         #gameCanvas {
@@ -157,32 +230,51 @@
                 height: 300px;
             }
 
+            #topBar {
+                top: 10px;
+            }
+
             #gameTitle {
-                font-size: 2rem;
-                top: 20px;
+                font-size: 1.8rem;
             }
 
             #scoreBoard {
-                font-size: 1.2rem;
-                top: 80px;
+                font-size: 1rem;
+                padding: 6px 15px;
+                gap: 10px;
+            }
+
+            #progressContainer {
+                width: 100px;
             }
 
             #instructions {
-                font-size: 1rem;
-                top: 130px;
+                font-size: 0.9rem;
+            }
+
+            #comboDisplay {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <div id="gameContainer">
-        <h1 id="gameTitle">Jump to Enter!</h1>
-        <div id="scoreBoard">Laptops Cleared: <span id="score">0</span> / 5</div>
-        <div id="instructions">Press SPACE or CLICK to Jump!</div>
+        <div id="topBar">
+            <h1 id="gameTitle">Jump to Enter!</h1>
+            <div id="scoreBoard">
+                <span><span id="score">0</span> / 5</span>
+                <div id="progressContainer">
+                    <div id="progressBar"></div>
+                </div>
+            </div>
+            <div id="instructions">Press SPACE or TAP to Jump!</div>
+        </div>
 
         <div id="gameCanvas">
             <div id="player"></div>
             <div id="ground"></div>
+            <div id="comboDisplay"></div>
         </div>
 
         <div id="gameOver">
@@ -199,13 +291,20 @@
         const gameOverScreen = document.getElementById('gameOver');
         const enterBtn = document.getElementById('enterBtn');
         const instructions = document.getElementById('instructions');
+        const progressBar = document.getElementById('progressBar');
+        const comboDisplay = document.getElementById('comboDisplay');
 
         let isJumping = false;
         let score = 0;
         let gameActive = true;
-        let obstacleSpeed = 4;
+        let baseSpeed = 6;
+        let obstacleSpeed = baseSpeed;
         let obstacles = [];
         let animationId;
+        let obstacleInterval;
+
+        // Fun obstacle emojis
+        const obstacleEmojis = ['💻', '📱', '🖥️', '⌨️', '🖱️', '💾', '📀', '🔌'];
 
         // Jump mechanics
         function jump() {
@@ -244,7 +343,7 @@
 
             const obstacle = document.createElement('div');
             obstacle.className = 'obstacle';
-            obstacle.textContent = '💻';
+            obstacle.textContent = obstacleEmojis[Math.floor(Math.random() * obstacleEmojis.length)];
             obstacle.style.right = '-50px';
             gameCanvas.appendChild(obstacle);
             const obsData = {
@@ -254,6 +353,42 @@
                 collided: false
             };
             obstacles.push(obsData);
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            progressBar.style.width = (score / 5 * 100) + '%';
+        }
+
+        // Show combo text
+        function showCombo(text) {
+            comboDisplay.textContent = text;
+            comboDisplay.style.animation = 'none';
+            comboDisplay.offsetHeight; // Trigger reflow
+            comboDisplay.style.animation = 'comboAnim 0.6s ease forwards';
+        }
+
+        // Screen shake on collision
+        function triggerShake() {
+            gameCanvas.classList.add('shake');
+            setTimeout(() => gameCanvas.classList.remove('shake'), 400);
+        }
+
+        // Flash on clear
+        function triggerClearFlash() {
+            gameCanvas.classList.add('clear-flash');
+            setTimeout(() => gameCanvas.classList.remove('clear-flash'), 300);
+        }
+
+        // Score pop animation
+        function triggerScorePop() {
+            scoreDisplay.classList.add('score-pop');
+            setTimeout(() => scoreDisplay.classList.remove('score-pop'), 300);
+        }
+
+        // Increase difficulty
+        function updateDifficulty() {
+            obstacleSpeed = baseSpeed + (score * 0.5);
         }
 
         // Move obstacles
@@ -284,8 +419,13 @@
                     obs.collided = true;
                     score = 0;
                     scoreDisplay.textContent = score;
+                    updateProgress();
+                    triggerShake();
+                    showCombo('OOPS!');
                     // Mark all obstacles as not passed so they can be recounted
                     obstacles.forEach(o => o.passed = false);
+                    // Reset speed on collision
+                    obstacleSpeed = baseSpeed;
                 }
 
                 // Check if player cleared the obstacle (obstacle fully past the player)
@@ -293,8 +433,21 @@
                     obs.passed = true;
                     score++;
                     scoreDisplay.textContent = score;
+                    updateProgress();
+                    triggerClearFlash();
+                    triggerScorePop();
+                    updateDifficulty();
+
+                    // Show encouraging combo text
+                    const comboTexts = ['NICE!', 'SWEET!', 'COOL!', 'AWESOME!', 'GREAT!'];
+                    if (score === 4) {
+                        showCombo('ONE MORE!');
+                    } else if (score < 5) {
+                        showCombo(comboTexts[Math.floor(Math.random() * comboTexts.length)]);
+                    }
 
                     if (score >= 5) {
+                        showCombo('YOU DID IT!');
                         winGame();
                     }
                 }
@@ -339,24 +492,39 @@
         });
 
         gameCanvas.addEventListener('click', jump);
+        document.addEventListener('touchstart', (e) => {
+            if (gameActive) {
+                e.preventDefault();
+                jump();
+            }
+        }, { passive: false });
 
         enterBtn.addEventListener('click', () => {
             window.location.href = 'portfolio.html';
         });
 
+        // Spawn obstacles with varying intervals for excitement
+        function scheduleNextObstacle() {
+            if (!gameActive) return;
+            // Random interval between 1.5 and 2.8 seconds (faster and more varied!)
+            const interval = 1500 + Math.random() * 1300;
+            obstacleInterval = setTimeout(() => {
+                createObstacle();
+                scheduleNextObstacle();
+            }, interval);
+        }
+
         // Start game
         gameLoop();
         createObstacle();
-        setInterval(() => {
-            if (gameActive) {
-                createObstacle();
-            }
-        }, 5200);
+        scheduleNextObstacle();
 
-        // Hide instructions after 5 seconds
+        // Hide instructions after 4 seconds
         setTimeout(() => {
-            instructions.style.display = 'none';
-        }, 5000);
+            instructions.style.opacity = '0';
+            instructions.style.transition = 'opacity 0.5s';
+            setTimeout(() => instructions.style.display = 'none', 500);
+        }, 4000);
     </script>
 </body>
 </html>
