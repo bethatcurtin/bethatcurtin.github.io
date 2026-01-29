@@ -211,7 +211,6 @@
         function jump() {
             if (isJumping || !gameActive) return;
 
-            console.log('🦘 JUMP!');
             isJumping = true;
             let jumpHeight = 0;
             const maxJump = 180;
@@ -252,52 +251,47 @@
                 element: obstacle,
                 position: -50,
                 passed: false,
-                id: Date.now() // Add ID for tracking
+                collided: false
             };
             obstacles.push(obsData);
-            console.log('🎯 Created obstacle', obsData.id);
         }
 
         // Move obstacles
         function moveObstacles() {
+            // Track obstacles to remove (avoid splicing during iteration)
+            const toRemove = [];
+
             obstacles.forEach((obs, index) => {
                 obs.position += obstacleSpeed;
                 obs.element.style.right = obs.position + 'px';
 
-                // Player is at left: 100px (width 60px)
+                // Player is at left: 100px (width 60px), so spans x=100 to x=160
                 // Canvas is 800px wide
-                // Obstacle position is distance from right edge
-                // When right = 700px, obstacle is at left edge (100px from left)
+                // Obstacle is 50px wide, positioned by 'right' property
+                // When right=R: obstacle spans x=(800-R-50) to x=(800-R)
+                // Collision when: player right (160) > obstacle left AND player left (100) < obstacle right
+                // That means: 160 > (800-R-50) AND 100 < (800-R)
+                // Simplifies to: R > 590 AND R < 700
 
                 // Get computed bottom position (not just inline style)
                 const computedBottom = window.getComputedStyle(player).bottom;
                 const playerBottom = parseInt(computedBottom);
-                const isPlayerHigh = playerBottom > 110; // Player is jumping if more than 30px off ground
+                const isPlayerHigh = playerBottom > 130; // Player is jumping if more than 50px off ground
 
-                console.log(`Player state: bottom=${playerBottom}px, isHigh=${isPlayerHigh}, isJumping=${isJumping}`);
-
-                // Log state for obstacles in critical zone
-                if (obs.position > 600 && obs.position < 800) {
-                    console.log(`📊 Obstacle ${obs.id}: pos=${obs.position}, playerBottom=${playerBottom}, isHigh=${isPlayerHigh}, passed=${obs.passed}, score=${score}`);
-                }
-
-                // Check collision FIRST (only for obstacles not yet passed)
-                // Only check collision in the narrow zone where player and obstacle overlap
-                if (!obs.passed && obs.position > 660 && obs.position < 670 && !isPlayerHigh) {
+                // Check collision in the zone where player and obstacle overlap
+                if (!obs.passed && !obs.collided && obs.position > 590 && obs.position < 700 && !isPlayerHigh) {
                     // Hit obstacle - reset score
-                    console.log(`💥 COLLISION! Obstacle ${obs.id} at pos ${obs.position}, resetting score from ${score} to 0`);
+                    obs.collided = true;
                     score = 0;
                     scoreDisplay.textContent = score;
                     // Mark all obstacles as not passed so they can be recounted
                     obstacles.forEach(o => o.passed = false);
                 }
 
-                // Check if player cleared the obstacle (obstacle passed the player)
-                // Only count if not yet passed AND didn't just collide
-                if (!obs.passed && obs.position >= 750) {
+                // Check if player cleared the obstacle (obstacle fully past the player)
+                if (!obs.passed && !obs.collided && obs.position >= 700) {
                     obs.passed = true;
                     score++;
-                    console.log(`✅ CLEARED! Obstacle ${obs.id} passed. Score: ${score-1} → ${score}`);
                     scoreDisplay.textContent = score;
 
                     if (score >= 5) {
@@ -305,13 +299,17 @@
                     }
                 }
 
-                // Remove obstacle if off screen
+                // Mark obstacle for removal if off screen
                 if (obs.position > 900) {
-                    console.log(`🗑️ Removed obstacle ${obs.id}`);
                     obs.element.remove();
-                    obstacles.splice(index, 1);
+                    toRemove.push(index);
                 }
             });
+
+            // Remove obstacles in reverse order to avoid index shifting issues
+            for (let i = toRemove.length - 1; i >= 0; i--) {
+                obstacles.splice(toRemove[i], 1);
+            }
         }
 
         // Game loop
