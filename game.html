@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Beth's Portfolio</title>
+    <script src="./js/loadHead.js"></script>
+    <link rel="stylesheet" href="./styles/main.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 50%, var(--blue) 100%);
+            font-family: var(--body-font);
+        }
+
+        #gameContainer {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #gameTitle {
+            position: absolute;
+            top: 30px;
+            font-family: var(--heading-font);
+            font-size: 3rem;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        #scoreBoard {
+            position: absolute;
+            top: 100px;
+            font-family: var(--body-font);
+            font-size: 1.5rem;
+            color: white;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        #instructions {
+            position: absolute;
+            top: 160px;
+            font-family: var(--body-font);
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        #gameCanvas {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        #ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to bottom, var(--green) 0%, var(--light-green) 100%);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        #player {
+            position: absolute;
+            bottom: 80px;
+            left: 100px;
+            width: 60px;
+            height: 60px;
+            background-image: url('./assets/beth-circle.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            transition: bottom 0.1s linear;
+            z-index: 5;
+        }
+
+        .obstacle {
+            position: absolute;
+            bottom: 80px;
+            width: 50px;
+            height: 50px;
+            font-size: 50px;
+            z-index: 4;
+        }
+
+        #gameOver {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            display: none;
+            z-index: 20;
+        }
+
+        #gameOver h2 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin: 0 0 20px 0;
+        }
+
+        #gameOver p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        #gameOver button {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-family: var(--body-font);
+            background: var(--purple);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #gameOver button:hover {
+            background: var(--pink);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 850px) {
+            #gameCanvas {
+                width: 95vw;
+                height: 300px;
+            }
+
+            #gameTitle {
+                font-size: 2rem;
+                top: 20px;
+            }
+
+            #scoreBoard {
+                font-size: 1.2rem;
+                top: 80px;
+            }
+
+            #instructions {
+                font-size: 1rem;
+                top: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <h1 id="gameTitle">Jump to Enter!</h1>
+        <div id="scoreBoard">Laptops Cleared: <span id="score">0</span> / 5</div>
+        <div id="instructions">Press SPACE or CLICK to Jump!</div>
+
+        <div id="gameCanvas">
+            <div id="player"></div>
+            <div id="ground"></div>
+        </div>
+
+        <div id="gameOver">
+            <h2 id="gameOverTitle">Congratulations!</h2>
+            <p id="gameOverMessage">You've unlocked the portfolio!</p>
+            <button id="enterBtn">Enter Portfolio</button>
+        </div>
+    </div>
+
+    <script>
+        const player = document.getElementById('player');
+        const gameCanvas = document.getElementById('gameCanvas');
+        const scoreDisplay = document.getElementById('score');
+        const gameOverScreen = document.getElementById('gameOver');
+        const enterBtn = document.getElementById('enterBtn');
+        const instructions = document.getElementById('instructions');
+
+        let isJumping = false;
+        let score = 0;
+        let gameActive = true;
+        let obstacleSpeed = 4;
+        let obstacles = [];
+        let animationId;
+
+        // Jump mechanics
+        function jump() {
+            if (isJumping || !gameActive) return;
+
+            console.log('🦘 JUMP!');
+            isJumping = true;
+            let jumpHeight = 0;
+            const maxJump = 180;
+            const jumpSpeed = 8;
+
+            const jumpInterval = setInterval(() => {
+                if (jumpHeight >= maxJump) {
+                    clearInterval(jumpInterval);
+
+                    // Fall down
+                    const fallInterval = setInterval(() => {
+                        jumpHeight -= jumpSpeed;
+                        player.style.bottom = (80 + jumpHeight) + 'px';
+
+                        if (jumpHeight <= 0) {
+                            clearInterval(fallInterval);
+                            player.style.bottom = '80px';
+                            isJumping = false;
+                        }
+                    }, 15);
+                } else {
+                    jumpHeight += jumpSpeed;
+                    player.style.bottom = (80 + jumpHeight) + 'px';
+                }
+            }, 15);
+        }
+
+        // Create obstacle
+        function createObstacle() {
+            if (!gameActive) return;
+
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            obstacle.textContent = '💻';
+            obstacle.style.right = '-50px';
+            gameCanvas.appendChild(obstacle);
+            const obsData = {
+                element: obstacle,
+                position: -50,
+                passed: false,
+                id: Date.now() // Add ID for tracking
+            };
+            obstacles.push(obsData);
+            console.log('🎯 Created obstacle', obsData.id);
+        }
+
+        // Move obstacles
+        function moveObstacles() {
+            obstacles.forEach((obs, index) => {
+                obs.position += obstacleSpeed;
+                obs.element.style.right = obs.position + 'px';
+
+                // Player is at left: 100px (width 60px)
+                // Canvas is 800px wide
+                // Obstacle position is distance from right edge
+                // When right = 700px, obstacle is at left edge (100px from left)
+
+                // Get computed bottom position (not just inline style)
+                const computedBottom = window.getComputedStyle(player).bottom;
+                const playerBottom = parseInt(computedBottom);
+                const isPlayerHigh = playerBottom > 110; // Player is jumping if more than 30px off ground
+
+                console.log(`Player state: bottom=${playerBottom}px, isHigh=${isPlayerHigh}, isJumping=${isJumping}`);
+
+                // Log state for obstacles in critical zone
+                if (obs.position > 600 && obs.position < 800) {
+                    console.log(`📊 Obstacle ${obs.id}: pos=${obs.position}, playerBottom=${playerBottom}, isHigh=${isPlayerHigh}, passed=${obs.passed}, score=${score}`);
+                }
+
+                // Check collision FIRST (only for obstacles not yet passed)
+                // Only check collision in the narrow zone where player and obstacle overlap
+                if (!obs.passed && obs.position > 660 && obs.position < 670 && !isPlayerHigh) {
+                    // Hit obstacle - reset score
+                    console.log(`💥 COLLISION! Obstacle ${obs.id} at pos ${obs.position}, resetting score from ${score} to 0`);
+                    score = 0;
+                    scoreDisplay.textContent = score;
+                    // Mark all obstacles as not passed so they can be recounted
+                    obstacles.forEach(o => o.passed = false);
+                }
+
+                // Check if player cleared the obstacle (obstacle passed the player)
+                // Only count if not yet passed AND didn't just collide
+                if (!obs.passed && obs.position >= 750) {
+                    obs.passed = true;
+                    score++;
+                    console.log(`✅ CLEARED! Obstacle ${obs.id} passed. Score: ${score-1} → ${score}`);
+                    scoreDisplay.textContent = score;
+
+                    if (score >= 5) {
+                        winGame();
+                    }
+                }
+
+                // Remove obstacle if off screen
+                if (obs.position > 900) {
+                    console.log(`🗑️ Removed obstacle ${obs.id}`);
+                    obs.element.remove();
+                    obstacles.splice(index, 1);
+                }
+            });
+        }
+
+        // Game loop
+        function gameLoop() {
+            if (!gameActive) return;
+
+            moveObstacles();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+
+        // Win game
+        function winGame() {
+            gameActive = false;
+            localStorage.setItem('portfolioUnlocked', 'true');
+
+            setTimeout(() => {
+                gameOverScreen.style.display = 'block';
+            }, 500);
+        }
+
+        // Event listeners
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                jump();
+            }
+        });
+
+        gameCanvas.addEventListener('click', jump);
+
+        enterBtn.addEventListener('click', () => {
+            window.location.href = 'portfolio.html';
+        });
+
+        // Start game
+        gameLoop();
+        createObstacle();
+        setInterval(() => {
+            if (gameActive) {
+                createObstacle();
+            }
+        }, 5200);
+
+        // Hide instructions after 5 seconds
+        setTimeout(() => {
+            instructions.style.display = 'none';
+        }, 5000);
+    </script>
+</body>
+</html>

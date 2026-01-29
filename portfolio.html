@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beth's Portfolio</title>
+    <script src="./js/loadHead.js"></script>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/portfolio.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <img src="./assets/beth-circle.png" alt="Beth" class="profile-img">
+                <div>
+                    <h1>Beth's Project Page</h1>
+                    <p class="subtitle">Look at my cool stuff</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="projects-section">
+
+            <div class="projects-grid">
+                <div class="project-card pink">
+                    <span class="project-icon">🎨</span>
+                    <h3 class="project-title">Project One</h3>
+                    <p class="project-description">
+                        An amazing creative project that showcases design and development skills.
+                    </p>
+                    <a href="#" class="project-link"><span>View Project</span></a>
+                </div>
+
+                <div class="project-card purple">
+                    <span class="project-icon">🚀</span>
+                    <h3 class="project-title">Project Two</h3>
+                    <p class="project-description">
+                        A cutting-edge application built with modern technologies and best practices.
+                    </p>
+                    <a href="#" class="project-link"><span>View Project</span></a>
+                </div>
+
+                <div class="project-card blue">
+                    <span class="project-icon">💡</span>
+                    <h3 class="project-title">Project Three</h3>
+                    <p class="project-description">
+                        An innovative solution to a complex problem with elegant implementation.
+                    </p>
+                    <a href="#" class="project-link"><span>View Project</span></a>
+                </div>
+
+                <!-- <div class="project-card green">
+                    <span class="project-icon">🎯</span>
+                    <h3 class="project-title">Project Four</h3>
+                    <p class="project-description">
+                        A focused project demonstrating expertise in specific technologies.
+                    </p>
+                    <a href="#" class="project-link"><span>View Project</span></a>
+                </div> -->
+
+                <!-- <div class="project-card pink">
+                    <span class="project-icon">🌟</span>
+                    <h3 class="project-title">Project Five</h3>
+                    <p class="project-description">
+                        A standout piece showcasing creativity and technical prowess.
+                    </p>
+                    <a href="#" class="project-link"><span>View Project</span></a>
+                </div>-->
+
+                <!--<div class="project-card purple">
+                    <span class="project-icon">🔥</span>
+                    <h3 class="project-title">Project Six</h3>
+                    <p class="project-description">
+                        An exciting project that pushes boundaries and explores new possibilities.
+                    </p>
+                    <a href="#" class="project-link"><span>View Project</span></a>
+                </div> -->
+            </div>
+        </section>
+
+        <footer>
+            <!-- <p>&copy; 2026 Beth's Portfolio | Made with 💜</p> -->
+            <div class="social-links">
+                <a href="https://github.com/bethatcurtin/" class="social-link github" title="GitHub">
+                    <img src="./assets/github.svg" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/beth-cusack/" class="social-link linkedin" title="LinkedIn">
+                    <img src="./assets/linkedin.svg" alt="LinkedIn">
+                </a>
+                <a href="#" class="social-link email" title="Email">
+                    <img src="./assets/email.svg" alt="Email">
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Check if portfolio is unlocked
+        if (!localStorage.getItem('portfolioUnlocked')) {
+            window.location.href = 'game.html';
+        }
+
+        // Add parallax effect to floating shapes on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 10;
+                const x = mouseX * speed;
+                const y = mouseY * speed;
+                shape.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

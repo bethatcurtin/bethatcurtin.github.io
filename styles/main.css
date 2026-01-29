@@ -1,0 +1,108 @@
+ /* Reset and Base Styling */
+
+
+:root {
+    --background-1: #000;
+    --background-2: #fff;
+   --body-font: 'Poppins', sans-serif;
+    --heading-font: 'Chewy', sans-serif;
+
+
+
+    /* Beth's theme colours*/ 
+
+    --pink: #E32D91;
+    --extralight-pink: color-mix(in srgb, var(--pink) 10%, white);
+    --light-pink: color-mix(in srgb, var(--pink) 30%, white);
+    --dark-pink: color-mix(in srgb, var(--pink) 80%, black);
+--purple: #A365D1;
+--light-purple: color-mix(in srgb, var(--purple) 30%, white);
+--dark-purple: color-mix(in srgb, var(--purple) 80%, black);
+--blue:  #4EA6DC;
+--light-blue: color-mix(in srgb, var(--blue) 30%, white);
+--dark-blue: #4775E7;
+--pale-blue: #81C8F3;
+--green: #43BFC6;
+--light-green: color-mix(in srgb, var(--green) 30%, white);
+}
+
+
+
+
+/* Homepage Additions for Beth's Theme */
+
+/* General Styling */
+body {
+    background-color: var(--extralight-pink);
+    padding: 20px;
+    font-family: var(--body-font);
+    color: #000;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  
+  .blue {
+    background-color: var(--color-blue);
+    color: #fff;
+  }
+
+  .pink {
+    background-color: var(--color-pink);
+    color: #fff;
+  }
+
+  .purple {
+    background-color: var(--color-purple);
+    color: #fff;
+  }
+  .dark-purple {
+    background-color: var(--dark-purple);
+    color: #fff;
+  }
+  .dark-pink {
+    background-color: var(--dark-pink);
+    color: #fff;
+  }
+
+  .green {
+    background-color: var(--color-green);
+    color: #000;
+  }
+
+  .pale-blue {
+    background-color: var(--pale-blue);
+    color: #000;
+  }
+
+  .dark-blue {
+    background-color: var(--dark-blue);
+    color: #fff;
+  }
+
+  .light-blue {
+    background-color: var(--light-blue);
+    color: #000;
+  }
+
+  .light-pink {
+    background-color: var(--light-pink);
+    color: #000;
+  }
+
+  .light-purple {
+    background-color: var(--light-purple);
+    color: #000;
+  }
+
+
+.light-green {
+    background-color: var(--light-green);
+    color: #000;
+  }
+
+
+
+
+
+
+
